@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Para Lourdes 🤍</title>
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --card:#121212;
+  --accent:#ffffff;
+  --soft:#bdbdbd;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:radial-gradient(1200px 600px at 50% -10%, #1a1a1a 0%, var(--bg) 60%);
+  color:var(--accent);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* corazones suaves */
+.heart{
+  position:absolute;
+  width:8px;height:8px;
+  background:#ff6b81;
+  transform:rotate(45deg);
+  opacity:.15;
+  animation:float 12s linear infinite;
+}
+.heart::before,.heart::after{
+  content:"";
+  position:absolute;
+  width:8px;height:8px;
+  background:#ff6b81;
+  border-radius:50%;
+}
+.heart::before{left:-4px}
+.heart::after{top:-4px}
+@keyframes float{
+  from{transform:translateY(120vh) rotate(45deg)}
+  to{transform:translateY(-20vh) rotate(45deg)}
+}
+
+.container{
+  width:min(420px,92vw);
+  background:linear-gradient(180deg, #141414, var(--card));
+  border-radius:28px;
+  padding:28px 22px 30px;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  text-align:center;
+}
+
+h1{
+  font-weight:400;
+  letter-spacing:.5px;
+  margin:6px 0 6px;
+}
+.sub{
+  color:var(--soft);
+  font-size:14px;
+}
+
+.btn{
+  margin-top:18px;
+  padding:14px 36px;
+  border-radius:999px;
+  border:none;
+  background:#fff;
+  color:#000;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.card{
+  margin-top:18px;
+  display:none;
+  animation:fade .8s ease forwards;
+}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.snoopy{
+  width:170px;
+  margin:14px auto 6px;
+  display:block;
+}
+
+.text{
+  margin-top:10px;
+  font-size:17px;
+  line-height:1.6;
+  min-height:120px;
+}
+
+.footer{
+  margin-top:18px;
+  color:#8a8a8a;
+  font-size:12px;
+}
+
+.tap{
+  margin-top:10px;
+  color:#9a9a9a;
+  font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- corazones -->
+<script>
+for(let i=0;i<22;i++){
+  const h=document.createElement('div');
+  h.className='heart';
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDelay=(Math.random()*10)+'s';
+  h.style.opacity=Math.random()*0.25;
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="container">
+  <h1>Para Lourdes</h1>
+  <div class="sub">Toca el botón…</div>
+
+  <button class="btn" onclick="abrir()">Abrir carta</button>
+
+  <div class="card" id="carta">
+    <img class="snoopy" src="https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png" alt="Snoopy"/>
+
+    <div class="text" id="mensaje"></div>
+    <div class="tap">toca de nuevo para seguir</div>
+  </div>
+
+  <div class="footer">Hecho con intención — Benjamín</div>
+</div>
+
+<script>
+const frases=[
+  "Lourdes… no vengo a prometer cosas grandes.",
+  "Solo quería dejarte algo real.",
+  "Tu presencia calma más de lo que imaginas.",
+  "No siempre sé decirlo bonito, pero sí honesto.",
+  "Me importas. Así de simple.",
+  "Cuando pienso en ti, intento ser mejor.",
+  "Gracias por existir en mis días. 🤍"
+];
+
+let i=0;
+
+function abrir(){
+  document.getElementById("carta").style.display="block";
+  escribir();
+}
+
+function escribir(){
+  if(i < frases.length){
+    const m=document.getElementById("mensaje");
+    m.innerHTML += frases[i] + "<br><br>";
+    i++;
+  }else{
+    // reinicia si tocan otra vez
+    i=0;
+    document.getElementById("mensaje").innerHTML="";
+  }
+}
+</script>
+
+</body>
+  </html>
