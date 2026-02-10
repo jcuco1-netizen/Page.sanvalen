@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Lourdes 🤍</title>
+
+<style>
+body{
+margin:0;
+background:#0a0a0a;
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI;
+color:white;
+text-align:center;
+}
+
+.container{
+padding:40px 20px;
+}
+
+h1{
+font-weight:300;
+letter-spacing:1px;
+}
+
+button{
+margin-top:30px;
+padding:15px 40px;
+border:none;
+border-radius:20px;
+background:white;
+color:black;
+font-size:16px;
+}
+
+.card{
+margin-top:40px;
+display:none;
+animation:fade 1s;
+}
+
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}
+}
+
+img{
+width:200px;
+margin-top:20px;
+}
+
+.text{
+margin-top:25px;
+font-size:18px;
+line-height:1.6;
+opacity:.9;
+}
+
+footer{
+margin-top:60px;
+opacity:.4;
+font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Para Lourdes</h1>
+<p>Toca abajo.</p>
+
+<button onclick="abrir()">Abrir</button>
+
+<div class="card" id="carta">
+
+<img src="https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png">
+
+<div class="text" id="mensaje"></div>
+
+</div>
+
+<footer>
+Hecho con intención.
+</footer>
+
+</div>
+
+<script>
+
+const frases = [
+"Lourdes… no vengo a prometer nada que no pueda cumplir.",
+"Solo quiero que sepas que tu presencia calma más de lo que imaginas.",
+"No soy perfecto, pero cuando pienso en ti, intento ser mejor.",
+"A veces no sé decirlo bonito, pero sí real.",
+"Me importas. Así, simple. Sin adornos.",
+"Gracias por existir en mis días.",
+"— Benjamín"
+];
+
+let i=0;
+
+function abrir(){
+document.getElementById("carta").style.display="block";
+escribir();
+}
+
+function escribir(){
+if(i < frases.length){
+document.getElementById("mensaje").innerHTML += frases[i]+"<br><br>";
+i++;
+setTimeout(escribir,1500);
+}
+}
+
+</script>
+
+</body>
+</html>
