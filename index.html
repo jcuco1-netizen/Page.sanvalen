@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,29 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para Lourdes</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family:'Cormorant Garamond', serif;
-  background:linear-gradient(135deg,#4b1e2f,#7a3b54,#3a1422);
-  color:#fbe6ec;
+  font-family:'Poppins', sans-serif;
+  background:linear-gradient(135deg,#ff4d88,#c9184a,#6a0572);
   overflow:hidden;
+  color:white;
 }
 
-/* ===== FONDO CORAZONES SUAVES ===== */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background-image:url("https://www.transparenttextures.com/patterns/hearts.png");
-  opacity:0.08;
-  z-index:-1;
-}
-
-/* ===== INTRO ===== */
+/* ===== INTRO SNOOPY ===== */
 .intro{
   position:fixed;
   inset:0;
@@ -41,33 +25,47 @@ body::before{
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  background:linear-gradient(135deg,#7a3b54,#4b1e2f);
+  background:linear-gradient(135deg,#ff4d88,#c9184a,#6a0572);
   z-index:999;
+  text-align:center;
   cursor:pointer;
   transition:1s ease;
-  text-align:center;
 }
 
-.intro.hide{opacity:0;visibility:hidden;}
+.intro.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.intro img{
+  width:200px;
+  margin-bottom:20px;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-15px);}
+}
 
 .intro h1{
   font-family:'Playfair Display', serif;
   font-size:32px;
+  margin-bottom:10px;
 }
 
 .intro small{
-  margin-top:8px;
   font-size:14px;
   opacity:.8;
 }
 
 .intro-text{
-  margin-top:30px;
-  font-size:18px;
+  margin-top:20px;
+  font-size:16px;
   opacity:.8;
 }
 
-/* ===== MENU ===== */
+/* ===== PANTALLA ===== */
 .screen{
   position:absolute;
   inset:0;
@@ -78,17 +76,20 @@ body::before{
   transition:1s ease;
 }
 
-.hidden{opacity:0;visibility:hidden;}
+.hidden{
+  opacity:0;
+  visibility:hidden;
+}
 
 .container{
   width:100%;
-  max-width:650px;
-  background:rgba(255,192,203,0.08);
+  max-width:600px;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(12px);
   padding:50px;
-  border-radius:25px;
-  backdrop-filter:blur(10px);
+  border-radius:30px;
   text-align:center;
-  border:1px solid rgba(255,182,193,0.3);
+  box-shadow:0 0 40px rgba(0,0,0,0.3);
 }
 
 h2{
@@ -99,43 +100,44 @@ h2{
 
 .subtitle{
   margin-bottom:30px;
-  opacity:.8;
+  opacity:.9;
 }
 
-/* ===== BOTONES ===== */
+/* BOTONES */
 .card-btn{
   width:100%;
   padding:18px;
   margin:15px 0;
-  background:#f3c6d3;
-  color:#4b1e2f;
-  border-radius:18px;
+  background:linear-gradient(135deg,#ff85a1,#ff4d6d);
   border:none;
+  border-radius:25px;
+  color:white;
   font-size:18px;
   cursor:pointer;
   transition:.4s;
 }
 
 .card-btn:hover{
-  background:#e6a9bd;
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(255,255,255,0.5);
 }
 
-/* ===== SOBRE SNOOPY STYLE ===== */
+/* SOBRE */
 .envelope{
-  width:300px;
-  height:200px;
-  background:#f7d9e3;
+  width:280px;
+  height:180px;
+  background:#ff8fab;
   position:relative;
-  border-radius:10px;
+  border-radius:12px;
   cursor:pointer;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
 
 .flap{
   position:absolute;
   width:100%;
   height:100%;
-  background:#eab5c5;
+  background:#ff4d6d;
   clip-path:polygon(0 0,100% 0,50% 60%);
   transform-origin:top;
   transition:1s ease;
@@ -145,26 +147,15 @@ h2{
   transform:rotateX(180deg);
 }
 
-/* Pequeño Snoopy decorativo */
-.envelope::after{
-  content:"🐾";
-  position:absolute;
-  bottom:10px;
-  right:15px;
-  font-size:22px;
-  opacity:0.6;
-}
-
-/* ===== CARTA ===== */
+/* CARTA */
 .letter-box{
-  max-width:650px;
+  max-width:600px;
   width:100%;
-  background:#ffeaf0;
-  color:#4b1e2f;
+  background:white;
+  color:#6a0572;
   padding:40px;
-  border-radius:25px;
-  text-align:left;
-  line-height:1.9;
+  border-radius:30px;
+  line-height:1.8;
   font-size:18px;
   position:relative;
 }
@@ -174,24 +165,21 @@ h2{
   bottom:15px;
   right:20px;
   font-size:14px;
-  opacity:.7;
+  color:#c9184a;
 }
 
 .back-btn{
-  margin-top:30px;
+  margin-top:25px;
   padding:10px 18px;
-  border:none;
-  background:#c46a84;
+  background:#c9184a;
   color:white;
-  border-radius:12px;
+  border:none;
+  border-radius:15px;
   cursor:pointer;
 }
 
-.back-btn:hover{
-  background:#b25572;
-}
-
 @media(max-width:600px){
+  .intro img{width:150px;}
   .letter-box{font-size:16px;padding:25px;}
   h2{font-size:26px;}
 }
@@ -200,22 +188,19 @@ h2{
 </head>
 <body>
 
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5c0d1b6b44.mp3" type="audio/mpeg">
-</audio>
-
 <!-- INTRO -->
 <div class="intro" id="intro" onclick="entrar()">
+  <img src="https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif">
   <h1>Feliz 14 de febrero, mi amor</h1>
   <small>de Benja</small>
-  <div class="intro-text">Toca para continuar</div>
+  <div class="intro-text">Toca para comenzar</div>
 </div>
 
 <!-- MENU -->
 <div class="screen hidden" id="menu">
   <div class="container">
     <h2>Para Lourdes</h2>
-    <div class="subtitle">Con cariño sincero</div>
+    <div class="subtitle">Con todo mi cariño</div>
     <button class="card-btn" onclick="preAbrir(1)">Mi Corazón</button>
     <button class="card-btn" onclick="preAbrir(2)">Mi Verdad</button>
     <button class="card-btn" onclick="preAbrir(3)">Para Siempre</button>
@@ -243,7 +228,6 @@ h2{
 let cartaActual=1;
 
 function entrar(){
-  document.getElementById("music").play();
   document.getElementById("intro").classList.add("hide");
   document.getElementById("menu").classList.remove("hidden");
 }
