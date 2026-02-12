@@ -5,14 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para Lourdes</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:'Cormorant Garamond', serif;
@@ -31,7 +27,6 @@ body{
   opacity:.4;
   z-index:-1;
 }
-
 @keyframes moveStars{
   from{background-position:0 0;}
   to{background-position:10000px 5000px;}
@@ -47,27 +42,21 @@ body{
   background:radial-gradient(circle, #2a1a3e 0%, #0a0514 80%);
   z-index:999;
   cursor:pointer;
-  transition:.8s ease;
+  transition:1s ease;
 }
-
-.intro.hide{
-  opacity:0;
-  visibility:hidden;
-}
+.intro.hide{opacity:0;visibility:hidden;}
 
 .intro-text{
   font-family:'Playfair Display', serif;
   font-size:38px;
-  text-align:center;
   animation:pulse 2s infinite;
 }
-
 @keyframes pulse{
   0%,100%{transform:scale(1);}
   50%{transform:scale(1.08);}
 }
 
-/* ===== PANTALLA PRINCIPAL ===== */
+/* ===== SCREENS ===== */
 .screen{
   position:absolute;
   inset:0;
@@ -75,38 +64,29 @@ body{
   justify-content:center;
   align-items:center;
   padding:20px;
-  transition:.6s ease;
+  transition:1s ease;
 }
+.hidden{opacity:0;visibility:hidden;}
 
-.hidden{
-  opacity:0;
-  visibility:hidden;
-}
-
-/* ===== CONTENEDOR ===== */
+/* ===== MENU ===== */
 .container{
   width:100%;
   max-width:700px;
-  background:rgba(255,255,255,0.07);
-  padding:40px;
+  background:rgba(255,255,255,0.08);
+  padding:50px;
   border-radius:30px;
   backdrop-filter:blur(10px);
   text-align:center;
-  box-shadow:0 0 40px rgba(255,105,180,0.2);
+  box-shadow:0 0 50px rgba(255,105,180,0.2);
 }
 
 h1{
   font-family:'Playfair Display', serif;
-  font-size:40px;
+  font-size:42px;
   margin-bottom:10px;
 }
+.subtitle{opacity:.8;margin-bottom:30px;}
 
-.subtitle{
-  opacity:.8;
-  margin-bottom:30px;
-}
-
-/* ===== BOTONES ===== */
 .card-btn{
   width:100%;
   padding:18px;
@@ -114,14 +94,37 @@ h1{
   background:white;
   color:#222;
   border-radius:20px;
-  border:2px solid #ff6b9d;
-  cursor:pointer;
+  border:none;
   font-size:18px;
-  transition:.3s;
+  cursor:pointer;
+  transition:.4s;
 }
-
 .card-btn:hover{
   transform:scale(1.05);
+  box-shadow:0 0 20px rgba(255,105,180,0.4);
+}
+
+/* ===== SOBRE ===== */
+.envelope{
+  width:320px;
+  height:220px;
+  background:#fff;
+  position:relative;
+  border-radius:10px;
+  cursor:pointer;
+  perspective:1000px;
+}
+.flap{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#f5f5f5;
+  clip-path:polygon(0 0,100% 0,50% 60%);
+  transform-origin:top;
+  transition:1s ease;
+}
+.envelope.open .flap{
+  transform:rotateX(180deg);
 }
 
 /* ===== CARTA ===== */
@@ -135,12 +138,7 @@ h1{
   text-align:left;
   line-height:1.8;
   font-size:18px;
-  animation:fadeIn .6s ease;
-}
-
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
+  box-shadow:0 0 40px rgba(0,0,0,0.2);
 }
 
 .back-btn{
@@ -151,95 +149,122 @@ h1{
   color:white;
   border-radius:15px;
   cursor:pointer;
-  font-size:16px;
 }
 
-.back-btn:hover{
-  opacity:.8;
-}
-
-/* ===== RESPONSIVE ===== */
 @media(max-width:600px){
   h1{font-size:28px;}
   .intro-text{font-size:26px;}
-  .letter-box{font-size:16px; padding:25px;}
+  .letter-box{font-size:16px;padding:25px;}
 }
 
 </style>
 </head>
-
 <body>
 
 <div class="stars"></div>
 
+<!-- AUDIO -->
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5c0d1b6b44.mp3" type="audio/mpeg">
+</audio>
+
 <!-- INTRO -->
 <div class="intro" id="intro" onclick="entrar()">
-  <div class="intro-text">
-    Toca para ingresar
-  </div>
+  <div class="intro-text">Toca para ingresar</div>
 </div>
 
-<!-- MENU PRINCIPAL -->
+<!-- MENU -->
 <div class="screen" id="menu">
   <div class="container">
     <h1>Para Lourdes</h1>
     <div class="subtitle">Un mensaje del corazón</div>
-
-    <button class="card-btn" onclick="abrirCarta(1)">Mi Corazón</button>
-    <button class="card-btn" onclick="abrirCarta(2)">Mi Verdad</button>
-    <button class="card-btn" onclick="abrirCarta(3)">Para Siempre</button>
+    <button class="card-btn" onclick="preAbrir(1)">Mi Corazón</button>
+    <button class="card-btn" onclick="preAbrir(2)">Mi Verdad</button>
+    <button class="card-btn" onclick="preAbrir(3)">Para Siempre</button>
   </div>
 </div>
 
-<!-- CARTAS -->
-<div class="screen hidden" id="cartaScreen">
-  <div class="letter-box" id="contenidoCarta"></div>
+<!-- SOBRE -->
+<div class="screen hidden" id="envelopeScreen">
+  <div class="envelope" id="envelope" onclick="abrirCarta()">
+    <div class="flap"></div>
+  </div>
+</div>
+
+<!-- CARTA -->
+<div class="screen hidden" id="letterScreen">
+  <div class="letter-box">
+    <div id="texto"></div>
+    <button class="back-btn" onclick="regresar()">Regresar</button>
+  </div>
 </div>
 
 <script>
 
+let cartaActual=1;
+
 function entrar(){
+  document.getElementById("music").play();
   document.getElementById("intro").classList.add("hide");
 }
 
-const textos = {
-1: `Desde que llegaste a mi vida entendí que hay personas que no se buscan... simplemente llegan.
-No fue casualidad que aparecieras, fue una pausa hermosa en medio de mis días.
-Contigo aprendí que el amor no necesita ruido, solo verdad y presencia.`,
-
-2: `Mi verdad es que me importas profundamente.
-No desde la necesidad, sino desde la elección.
-Te admiro, te respeto y encuentro calma cuando pienso en ti.
-Eso no es algo que se encuentre todos los días.`,
-
-3: `No prometo un cuento perfecto, prometo intención sincera.
-Prometo quedarme cuando sea difícil,
-escuchar cuando el mundo pese,
-y caminar contigo sin máscaras.
-Si el destino nos permite escribir algo juntos,
-quiero hacerlo con el corazón abierto.`
-};
-
-function abrirCarta(num){
+function preAbrir(num){
+  cartaActual=num;
   document.getElementById("menu").classList.add("hidden");
-  const cartaScreen = document.getElementById("cartaScreen");
-  const contenido = document.getElementById("contenidoCarta");
+  document.getElementById("envelopeScreen").classList.remove("hidden");
+}
 
-  contenido.innerHTML = textos[num] + 
-  `<br><br><button class="back-btn" onclick="regresar()">Regresar</button>`;
+function abrirCarta(){
+  document.getElementById("envelope").classList.add("open");
 
-  cartaScreen.classList.remove("hidden");
+  setTimeout(()=>{
+    document.getElementById("envelopeScreen").classList.add("hidden");
+    document.getElementById("letterScreen").classList.remove("hidden");
+    escribirTexto(textos[cartaActual]);
+  },1000);
 }
 
 function regresar(){
-  document.getElementById("cartaScreen").classList.add("hidden");
+  document.getElementById("letterScreen").classList.add("hidden");
   document.getElementById("menu").classList.remove("hidden");
+  document.getElementById("envelope").classList.remove("open");
+  document.getElementById("texto").innerHTML="";
+}
+
+const textos={
+1:`Desde que llegaste entendí que hay personas que no se buscan... simplemente llegan.
+No hiciste ruido, pero cambiaste mi calma.
+Y en esa tranquilidad descubrí algo que no sabía que necesitaba.`,
+
+2:`Mi verdad es sencilla pero profunda:
+Me importas.
+No por costumbre, no por ilusión pasajera,
+sino porque tu esencia me transmite paz.`,
+
+3:`No prometo perfección.
+Prometo intención sincera.
+Prometo quedarme cuando sea difícil,
+y elegirte incluso en los días grises.`
+};
+
+function escribirTexto(texto){
+  let i=0;
+  const speed=35;
+  function type(){
+    if(i<texto.length){
+      document.getElementById("texto").innerHTML+=texto.charAt(i);
+      i++;
+      setTimeout(type,speed);
+    }
+  }
+  type();
 }
 
 </script>
 
 </body>
 </html>
+
 
 
 
