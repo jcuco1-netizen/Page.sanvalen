@@ -17,19 +17,19 @@
 body{
   font-family:'Cormorant Garamond', serif;
   background:radial-gradient(ellipse at bottom, #1b0c2e 0%, #090012 100%);
-  overflow-x:hidden;
   color:white;
+  overflow:hidden;
 }
 
-/* Estrellas */
+/* ===== ESTRELLAS ===== */
 .stars{
   position:fixed;
   width:100%;
   height:100%;
   background:url("https://www.transparenttextures.com/patterns/stardust.png");
   animation:moveStars 120s linear infinite;
-  z-index:-1;
   opacity:.4;
+  z-index:-1;
 }
 
 @keyframes moveStars{
@@ -37,82 +37,132 @@ body{
   to{background-position:10000px 5000px;}
 }
 
-/* Contenedor */
-.container{
-  width:90%;
-  max-width:750px;
-  margin:100px auto;
-  background:rgba(255,255,255,0.06);
-  padding:60px;
-  border-radius:35px;
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,0.2);
-  text-align:center;
-  box-shadow:0 0 60px rgba(255,105,180,0.2);
-  animation:fadeIn 1.5s ease;
+/* ===== INTRO ===== */
+.intro{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle, #2a1a3e 0%, #0a0514 80%);
+  z-index:999;
+  cursor:pointer;
+  transition:.8s ease;
 }
 
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(30px);}
-  to{opacity:1; transform:translateY(0);}
+.intro.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.intro-text{
+  font-family:'Playfair Display', serif;
+  font-size:38px;
+  text-align:center;
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+}
+
+/* ===== PANTALLA PRINCIPAL ===== */
+.screen{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  transition:.6s ease;
+}
+
+.hidden{
+  opacity:0;
+  visibility:hidden;
+}
+
+/* ===== CONTENEDOR ===== */
+.container{
+  width:100%;
+  max-width:700px;
+  background:rgba(255,255,255,0.07);
+  padding:40px;
+  border-radius:30px;
+  backdrop-filter:blur(10px);
+  text-align:center;
+  box-shadow:0 0 40px rgba(255,105,180,0.2);
 }
 
 h1{
   font-family:'Playfair Display', serif;
-  font-size:48px;
+  font-size:40px;
   margin-bottom:10px;
-  letter-spacing:2px;
 }
 
 .subtitle{
   opacity:.8;
-  margin-bottom:20px;
+  margin-bottom:30px;
 }
 
-.pick{
-  color:#ff8bb5;
-  margin-bottom:40px;
-  font-size:18px;
-}
-
-/* Botones */
+/* ===== BOTONES ===== */
 .card-btn{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:22px 30px;
-  margin:20px 0;
-  background:rgba(255,255,255,0.95);
+  width:100%;
+  padding:18px;
+  margin:15px 0;
+  background:white;
   color:#222;
-  border-radius:25px;
-  border:3px solid #ff6b9d;
+  border-radius:20px;
+  border:2px solid #ff6b9d;
   cursor:pointer;
-  font-size:20px;
+  font-size:18px;
   transition:.3s;
-  box-shadow:0 0 25px rgba(255,105,180,0.4);
 }
 
 .card-btn:hover{
   transform:scale(1.05);
 }
 
-/* Carta abierta */
-.letter{
-  margin-top:30px;
-  padding:35px;
-  background:rgba(255,255,255,0.95);
+/* ===== CARTA ===== */
+.letter-box{
+  max-width:700px;
+  width:100%;
+  background:white;
   color:#222;
-  border-radius:25px;
-  display:none;
-  animation:openLetter .8s ease;
+  padding:40px;
+  border-radius:30px;
   text-align:left;
   line-height:1.8;
   font-size:18px;
+  animation:fadeIn .6s ease;
 }
 
-@keyframes openLetter{
+@keyframes fadeIn{
   from{opacity:0; transform:translateY(20px);}
   to{opacity:1; transform:translateY(0);}
+}
+
+.back-btn{
+  margin-top:30px;
+  padding:12px 20px;
+  border:none;
+  background:#ff6b9d;
+  color:white;
+  border-radius:15px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.back-btn:hover{
+  opacity:.8;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  h1{font-size:28px;}
+  .intro-text{font-size:26px;}
+  .letter-box{font-size:16px; padding:25px;}
 }
 
 </style>
@@ -122,52 +172,74 @@ h1{
 
 <div class="stars"></div>
 
-<div class="container">
-  <h1>Para Lourdes</h1>
-  <div class="subtitle">Un mensaje del corazón</div>
-  <div class="pick">Elige una de las tres cartas</div>
-
-  <div class="card-btn" onclick="abrirCarta(1)">Mi Corazón <span>→</span></div>
-  <div class="card-btn" onclick="abrirCarta(2)">Mi Verdad <span>→</span></div>
-  <div class="card-btn" onclick="abrirCarta(3)">Para Siempre <span>→</span></div>
-
-  <div class="letter" id="carta1">
-    Desde que llegaste a mi vida algo cambió silenciosamente en mí.  
-    No fue un ruido fuerte ni un instante dramático… fue algo más profundo.  
-    Fue como si mi corazón reconociera el tuyo antes de que yo pudiera entenderlo.  
-    Contigo aprendí que el amor no siempre grita, a veces susurra…  
-    y en ese susurro encontré paz.
+<!-- INTRO -->
+<div class="intro" id="intro" onclick="entrar()">
+  <div class="intro-text">
+    Toca para ingresar
   </div>
+</div>
 
-  <div class="letter" id="carta2">
-    Mi verdad es simple, pero inmensa: me importas más de lo que las palabras pueden explicar.  
-    No es solo cariño, no es solo ilusión.  
-    Es admiración por tu esencia, respeto por tu manera de sentir,  
-    y una calma inexplicable cuando pienso en ti.  
-    No busco perfección, busco verdad… y contigo la siento real.
+<!-- MENU PRINCIPAL -->
+<div class="screen" id="menu">
+  <div class="container">
+    <h1>Para Lourdes</h1>
+    <div class="subtitle">Un mensaje del corazón</div>
+
+    <button class="card-btn" onclick="abrirCarta(1)">Mi Corazón</button>
+    <button class="card-btn" onclick="abrirCarta(2)">Mi Verdad</button>
+    <button class="card-btn" onclick="abrirCarta(3)">Para Siempre</button>
   </div>
+</div>
 
-  <div class="letter" id="carta3">
-    No sé qué escribirá el destino, pero sí sé lo que deseo.  
-    Deseo compartir momentos, silencios, risas y también días difíciles.  
-    Deseo que cuando el mundo pese, podamos mirarnos y recordar  
-    que no estamos solos.  
-    Si alguna vez decides caminar conmigo, prometo hacerlo con sinceridad,  
-    paciencia y el corazón abierto.
-  </div>
-
+<!-- CARTAS -->
+<div class="screen hidden" id="cartaScreen">
+  <div class="letter-box" id="contenidoCarta"></div>
 </div>
 
 <script>
-function abrirCarta(num){
-  const cartas = document.querySelectorAll(".letter");
-  cartas.forEach(c => c.style.display="none");
 
-  document.getElementById("carta"+num).style.display="block";
+function entrar(){
+  document.getElementById("intro").classList.add("hide");
 }
+
+const textos = {
+1: `Desde que llegaste a mi vida entendí que hay personas que no se buscan... simplemente llegan.
+No fue casualidad que aparecieras, fue una pausa hermosa en medio de mis días.
+Contigo aprendí que el amor no necesita ruido, solo verdad y presencia.`,
+
+2: `Mi verdad es que me importas profundamente.
+No desde la necesidad, sino desde la elección.
+Te admiro, te respeto y encuentro calma cuando pienso en ti.
+Eso no es algo que se encuentre todos los días.`,
+
+3: `No prometo un cuento perfecto, prometo intención sincera.
+Prometo quedarme cuando sea difícil,
+escuchar cuando el mundo pese,
+y caminar contigo sin máscaras.
+Si el destino nos permite escribir algo juntos,
+quiero hacerlo con el corazón abierto.`
+};
+
+function abrirCarta(num){
+  document.getElementById("menu").classList.add("hidden");
+  const cartaScreen = document.getElementById("cartaScreen");
+  const contenido = document.getElementById("contenidoCarta");
+
+  contenido.innerHTML = textos[num] + 
+  `<br><br><button class="back-btn" onclick="regresar()">Regresar</button>`;
+
+  cartaScreen.classList.remove("hidden");
+}
+
+function regresar(){
+  document.getElementById("cartaScreen").classList.add("hidden");
+  document.getElementById("menu").classList.remove("hidden");
+}
+
 </script>
 
 </body>
 </html>
+
 
 
