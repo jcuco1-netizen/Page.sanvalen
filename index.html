@@ -1,353 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<title>Para Lourdes 🤍 v3.0</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Lourdes 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
 
-:root{
-  --bg: #0a0514;
-  --accent: #ffffff;
-  --soft: #c9c3d9;
-  --gold: #f4d8a8;
-  --pink: #ff6b9d;
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
-
 body{
-  background: radial-gradient(ellipse 1400px 800px at 50% 0%, #2a1a3e 0%, var(--bg) 60%);
-  color:var(--accent);
-  font-family:'Inter',sans-serif;
-  min-height:100vh;
+  font-family:'Cormorant Garamond', serif;
+  background:radial-gradient(ellipse at bottom, #1b0c2e 0%, #090012 100%);
+  overflow:hidden;
+  color:white;
+}
+
+/* ================= ESTRELLAS ================= */
+.stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url("https://www.transparenttextures.com/patterns/stardust.png");
+  animation:moveStars 100s linear infinite;
+  z-index:-1;
+  opacity:.4;
+}
+
+@keyframes moveStars{
+  from{background-position:0 0;}
+  to{background-position:10000px 5000px;}
+}
+
+/* ================= INTRO TOUCH ================= */
+.intro-touch{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center, #2a1a3e 0%, #0a0514 80%);
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow-x:hidden;
-  position:relative;
+  z-index:9999;
+  cursor:pointer;
+  transition:opacity .8s ease, visibility .8s ease;
 }
 
-/* ===== ESTRELLAS ===== */
-.stars{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-}
-.star{
-  position:absolute;
-  width:2px;height:2px;
-  background:white;
-  border-radius:50%;
+.intro-touch.hide{
   opacity:0;
-  animation:twinkle 3s infinite;
-}
-@keyframes twinkle{
-  0%,100%{opacity:0;}
-  50%{opacity:.8;}
+  visibility:hidden;
 }
 
-/* ===== CORAZONES FLOTANTES ===== */
-.heart{
-  position:absolute;
-  width:10px;height:10px;
-  background:var(--pink);
-  transform:rotate(45deg);
-  opacity:0;
-  animation:floatHeart 15s ease-in-out infinite;
-}
-.heart::before,.heart::after{
-  content:"";
-  position:absolute;
-  width:10px;height:10px;
-  background:var(--pink);
-  border-radius:50%;
-}
-.heart::before{left:-5px;}
-.heart::after{top:-5px;}
-
-@keyframes floatHeart{
-  0%{transform:translateY(120vh) rotate(45deg) scale(.5);opacity:0;}
-  10%{opacity:.4;}
-  90%{opacity:.3;}
-  100%{transform:translateY(-20vh) rotate(405deg) scale(1);opacity:0;}
-}
-
-/* ===== CONTENEDOR ===== */
-.container{
-  width:min(600px,94vw);
-  background:linear-gradient(165deg,rgba(60,50,70,.98),rgba(40,35,50,.98));
-  border-radius:32px;
-  padding:48px 32px;
-  box-shadow:
-    0 40px 100px rgba(0,0,0,.7),
-    0 0 80px rgba(255,107,157,.2);
-  border:2px solid rgba(255,107,157,.4);
+.intro-content{
   text-align:center;
-  position:relative;
-  z-index:10;
-  animation:slideIn 1s ease;
+  animation:fadeIntro 2s ease infinite alternate;
 }
-@keyframes slideIn{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
+
+@keyframes fadeIntro{
+  from{opacity:.6;}
+  to{opacity:1;}
+}
+
+.intro-text{
+  font-size:38px;
+  letter-spacing:2px;
+  text-shadow:0 0 20px rgba(255,107,157,.6);
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+}
+
+.intro-sub{
+  margin-top:12px;
+  color:#ff8bb5;
+  font-size:16px;
+  opacity:.8;
+}
+
+/* ================= CONTENEDOR ================= */
+.container{
+  width:90%;
+  max-width:700px;
+  margin:100px auto;
+  background:rgba(255,255,255,0.08);
+  padding:50px;
+  border-radius:30px;
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.2);
+  text-align:center;
+  box-shadow:0 0 40px rgba(255,107,157,0.2);
+  animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 h1{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(32px,6vw,42px);
-  letter-spacing:2px;
+  font-size:42px;
   margin-bottom:10px;
-  background:linear-gradient(135deg,#fff,var(--soft));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
 }
 
-.sub{
-  color:var(--soft);
+.subtitle{
+  opacity:.8;
   margin-bottom:20px;
 }
 
-.instrucciones{
+.pick{
   color:#ff8bb5;
-  font-weight:500;
-  margin-bottom:30px;
-  text-shadow:0 0 20px rgba(255,107,157,.5);
+  margin-bottom:40px;
 }
 
-/* ===== CARTAS ===== */
-.cards-container{
+/* ================= BOTONES ================= */
+.card-btn{
   display:flex;
-  flex-direction:column;
-  gap:20px;
-  align-items:center;
-}
-
-.small-card{
-  width:100%;
-  max-width:320px;
-  height:80px;
-  background:linear-gradient(135deg,#fff,#ffe5f0);
-  border-radius:16px;
-  padding:0 20px;
-  border:3px solid #ff6b9d;
-  box-shadow:0 8px 24px rgba(255,107,157,.4);
-  display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
+  padding:20px 25px;
+  margin:20px 0;
+  background:rgba(255,255,255,0.9);
+  color:#222;
+  border-radius:20px;
+  border:3px solid #ff6b9d;
   cursor:pointer;
+  font-size:20px;
   transition:.3s;
-}
-.small-card:hover{
-  transform:translateY(-6px) scale(1.05);
+  box-shadow:0 0 20px rgba(255,107,157,0.4);
 }
 
-.card-left{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-.card-number{
-  font-size:24px;
-  font-weight:700;
-  color:#ff1a75;
-}
-.card-icon{font-size:28px;}
-.card-label{
-  font-family:'Cormorant Garamond',serif;
-  font-size:20px;
-  color:#2a1a3e;
-  font-weight:600;
-}
-.card-arrow{font-size:22px;color:#ff6b9d;}
-
-/* ===== MENSAJE ===== */
-.mensaje-completo{
-  position:fixed;
-  inset:0;
-  background:rgba(10,5,20,.97);
-  backdrop-filter:blur(20px);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:1000;
-}
-.mensaje-completo.show{display:flex;}
-
-.mensaje-contenido{
-  max-width:650px;
-  background:linear-gradient(165deg,#fff,#f5f0fa);
-  border-radius:32px;
-  padding:50px 40px;
-  border:3px solid rgba(255,107,157,.4);
-  box-shadow:0 40px 100px rgba(0,0,0,.8);
-  text-align:center;
+.card-btn:hover{
+  transform:scale(1.05);
 }
 
-.mensaje-snoopy{
-  width:120px;
-  margin:0 auto 20px;
-  animation:float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-}
-
-.mensaje-titulo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:28px;
-  margin-bottom:20px;
-  color:#2a1a3e;
-}
-
-.mensaje-texto{
-  font-family:'Cormorant Garamond',serif;
-  font-size:20px;
-  line-height:1.8;
-  margin-bottom:16px;
-  color:#3a2a4e;
-}
-
-.mensaje-firma{
-  margin-top:25px;
-  font-size:22px;
-  color:#ff6b9d;
-  font-style:italic;
-}
-
-.btn-cerrar{
-  position:absolute;
-  top:20px;
-  right:20px;
-  width:45px;height:45px;
-  border-radius:50%;
-  background:#ff6b9d;
-  color:white;
-  border:none;
-  font-size:20px;
-  cursor:pointer;
-}
-
-/* ===== PARTÍCULAS ===== */
+/* ================= PARTICULAS ================= */
 .particle{
   position:fixed;
-  width:8px;height:8px;
+  width:6px;
+  height:6px;
+  background:#ff8bb5;
   border-radius:50%;
   pointer-events:none;
-  animation:burst 1s forwards;
+  animation:explode 1s forwards;
 }
-@keyframes burst{
-  to{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0);}
+
+@keyframes explode{
+  to{
+    transform:translate(var(--x), var(--y));
+    opacity:0;
+  }
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="stars" id="stars"></div>
+<div class="stars"></div>
 
+<!-- INTRO -->
+<div class="intro-touch" id="introTouch" onclick="entrarPagina(event)">
+  <div class="intro-content">
+    <div class="intro-text">Toca para ingresar ✨</div>
+    <div class="intro-sub">Hay algo especial esperándote...</div>
+  </div>
+</div>
+
+<!-- CONTENIDO PRINCIPAL -->
 <div class="container">
-<h1>Para Lourdes</h1>
-<div class="sub">Un mensaje del corazón</div>
-<div class="instrucciones">Elige una de las 3 cartas 💌</div>
+  <h1>Para Lourdes</h1>
+  <div class="subtitle">Un mensaje del corazón</div>
+  <div class="pick">Elige una de las 3 cartas 💌</div>
 
-<div class="cards-container">
-<div class="small-card" onclick="abrirCarta(1,event)">
-<div class="card-left">
-<div class="card-number">1</div>
-<div class="card-icon">🐶</div>
-<div class="card-label">Mi Corazón</div>
-</div>
-<div class="card-arrow">→</div>
-</div>
-
-<div class="small-card" onclick="abrirCarta(2,event)">
-<div class="card-left">
-<div class="card-number">2</div>
-<div class="card-icon">💝</div>
-<div class="card-label">Mi Verdad</div>
-</div>
-<div class="card-arrow">→</div>
-</div>
-
-<div class="small-card" onclick="abrirCarta(3,event)">
-<div class="card-left">
-<div class="card-number">3</div>
-<div class="card-icon">🤍</div>
-<div class="card-label">Para Siempre</div>
-</div>
-<div class="card-arrow">→</div>
-</div>
-</div>
-</div>
-
-<div class="mensaje-completo" id="mensajeCompleto">
-<button class="btn-cerrar" onclick="cerrarMensaje()">✕</button>
-<div class="mensaje-contenido" id="mensajeContenido"></div>
+  <div class="card-btn">1 🐶 Mi Corazón <span>→</span></div>
+  <div class="card-btn">2 💖 Mi Verdad <span>→</span></div>
+  <div class="card-btn">3 🤍 Para Siempre <span>→</span></div>
 </div>
 
 <script>
-for(let i=0;i<50;i++){
-let s=document.createElement("div");
-s.className="star";
-s.style.left=Math.random()*100+"vw";
-s.style.top=Math.random()*100+"vh";
-s.style.animationDelay=Math.random()*3+"s";
-document.getElementById("stars").appendChild(s);
+
+/* ===== ENTRAR PAGINA ===== */
+function entrarPagina(e){
+  createParticles(e);
+  const intro = document.getElementById("introTouch");
+  intro.classList.add("hide");
+
+  setTimeout(()=>{
+    intro.style.display="none";
+  },800);
 }
 
-const mensajes={
-1:{titulo:"Mi Corazón",snoopy:"https://i.pinimg.com/originals/f5/6b/07/f56b07440d82c29e7c11b0f76136a3d4.gif",texto:"Tú eres mi lugar favorito en este mundo.",firma:"Con amor 🤍"},
-2:{titulo:"Mi Verdad",snoopy:"https://i.pinimg.com/originals/88/6d/f4/886df4c8e95e75dffce94772e04e6f5a.gif",texto:"Contigo todo tiene sentido.",firma:"Siempre tuyo 💕"},
-3:{titulo:"Para Siempre",snoopy:"https://i.pinimg.com/originals/c0/25/00/c025001c97bf1f38c00c0a63dd35cf72.gif",texto:"Quiero caminar contigo todos los días que vengan.",firma:"Benjamín 🐶"}
-};
-
-function abrirCarta(n,e){
-let m=mensajes[n];
-let box=document.getElementById("mensajeCompleto");
-let content=document.getElementById("mensajeContenido");
-
-content.innerHTML=`
-<img src="${m.snoopy}" class="mensaje-snoopy">
-<div class="mensaje-titulo">${m.titulo}</div>
-<div class="mensaje-texto">${m.texto}</div>
-<div class="mensaje-firma">${m.firma}</div>
-`;
-box.classList.add("show");
-createParticles(e);
-}
-
-function cerrarMensaje(){
-document.getElementById("mensajeCompleto").classList.remove("show");
-}
-
+/* ===== PARTICULAS ===== */
 function createParticles(e){
-if(!e)return;
-const colors=["#ff6b9d","#ffffff","#f4d8a8"];
-for(let i=0;i<15;i++){
-let p=document.createElement("div");
-p.className="particle";
-p.style.background=colors[Math.floor(Math.random()*colors.length)];
-p.style.left=e.clientX+"px";
-p.style.top=e.clientY+"px";
-let angle=(Math.PI*2*i)/15;
-let velocity=60;
-p.style.setProperty("--tx",Math.cos(angle)*velocity+"px");
-p.style.setProperty("--ty",Math.sin(angle)*velocity+"px");
-document.body.appendChild(p);
-setTimeout(()=>p.remove(),1000);
+  for(let i=0;i<20;i++){
+    const particle = document.createElement("div");
+    particle.className="particle";
+    document.body.appendChild(particle);
+
+    const x = (Math.random()-0.5)*200+"px";
+    const y = (Math.random()-0.5)*200+"px";
+
+    particle.style.left=e.clientX+"px";
+    particle.style.top=e.clientY+"px";
+    particle.style.setProperty("--x",x);
+    particle.style.setProperty("--y",y);
+
+    setTimeout(()=>particle.remove(),1000);
+  }
 }
-}
+
 </script>
 
 </body>
 </html>
+
