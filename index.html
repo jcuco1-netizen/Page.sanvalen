@@ -4,174 +4,602 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Para Lourdes 🤍</title>
-
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap');
+
 :root{
-  --bg:#0a0a0a;
-  --card:#121212;
-  --accent:#ffffff;
-  --soft:#bdbdbd;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  background:radial-gradient(1200px 600px at 50% -10%, #1a1a1a 0%, var(--bg) 60%);
-  color:var(--accent);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+  --bg: #0a0514;
+  --card: #1a1825;
+  --accent: #ffffff;
+  --soft: #c9c3d9;
+  --gold: #f4d8a8;
+  --pink: #ff6b9d;
 }
 
-/* corazones suaves */
-.heart{
-  position:absolute;
-  width:8px;height:8px;
-  background:#ff6b81;
-  transform:rotate(45deg);
-  opacity:.15;
-  animation:float 12s linear infinite;
-}
-.heart::before,.heart::after{
-  content:"";
-  position:absolute;
-  width:8px;height:8px;
-  background:#ff6b81;
-  border-radius:50%;
-}
-.heart::before{left:-4px}
-.heart::after{top:-4px}
-@keyframes float{
-  from{transform:translateY(120vh) rotate(45deg)}
-  to{transform:translateY(-20vh) rotate(45deg)}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.container{
-  width:min(420px,92vw);
-  background:linear-gradient(180deg, #141414, var(--card));
-  border-radius:28px;
-  padding:28px 22px 30px;
-  box-shadow:0 30px 80px rgba(0,0,0,.6);
-  text-align:center;
+body {
+  margin: 0;
+  background: radial-gradient(ellipse 1400px 800px at 50% 0%, #2a1a3e 0%, var(--bg) 60%);
+  color: var(--accent);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  position: relative;
 }
 
-h1{
-  font-weight:400;
-  letter-spacing:.5px;
-  margin:6px 0 6px;
-}
-.sub{
-  color:var(--soft);
-  font-size:14px;
-}
-
-.btn{
-  margin-top:18px;
-  padding:14px 36px;
-  border-radius:999px;
-  border:none;
-  background:#fff;
-  color:#000;
-  font-size:15px;
-  cursor:pointer;
+/* Estrellas de fondo */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.card{
-  margin-top:18px;
-  display:none;
-  animation:fade .8s ease forwards;
-}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-
-.snoopy{
-  width:170px;
-  margin:14px auto 6px;
-  display:block;
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 3s infinite;
 }
 
-.text{
-  margin-top:10px;
-  font-size:17px;
-  line-height:1.6;
-  min-height:120px;
+@keyframes twinkle {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.8; }
 }
 
-.footer{
-  margin-top:18px;
-  color:#8a8a8a;
-  font-size:12px;
+/* Corazones flotantes mejorados */
+.heart {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--pink);
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: floatHeart 15s ease-in-out infinite;
+  filter: blur(0.5px);
 }
 
-.tap{
-  margin-top:10px;
-  color:#9a9a9a;
-  font-size:12px;
+.heart::before, .heart::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--pink);
+  border-radius: 50%;
+}
+
+.heart::before { left: -5px; }
+.heart::after { top: -5px; }
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(120vh) rotate(45deg) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-20vh) rotate(405deg) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Contenedor principal */
+.container {
+  width: min(520px, 94vw);
+  background: linear-gradient(165deg, rgba(40, 30, 50, 0.95), rgba(25, 20, 35, 0.98));
+  border-radius: 32px;
+  padding: 48px 32px 42px;
+  box-shadow: 
+    0 40px 100px rgba(0, 0, 0, 0.7),
+    0 0 80px rgba(255, 107, 157, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  text-align: center;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 10;
+  animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-decoration {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 24px;
+  opacity: 0.6;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(32px, 6vw, 42px);
+  letter-spacing: 2px;
+  margin: 0 0 12px;
+  background: linear-gradient(135deg, #fff 0%, var(--soft) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sub {
+  color: var(--soft);
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+}
+
+/* Botón mejorado */
+.btn {
+  margin-top: 32px;
+  padding: 16px 48px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  color: #1a0a2e;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 107, 157, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 48px rgba(255, 255, 255, 0.25);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Tarjeta de contenido */
+.card {
+  margin-top: 36px;
+  display: none;
+  opacity: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.01);
+}
+
+.card.show {
+  display: block;
+  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Imagen con efecto */
+.image-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 28px;
+}
+
+.image-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 107, 157, 0.3) 0%, transparent 70%);
+  animation: pulse 3s ease-in-out infinite;
+  border-radius: 50%;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.snoopy {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Texto del mensaje */
+.text {
+  margin-top: 24px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(19px, 4vw, 22px);
+  line-height: 1.8;
+  min-height: 140px;
+  color: var(--soft);
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+.text .phrase {
+  display: block;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInPhrase 0.8s ease-out forwards;
+}
+
+@keyframes fadeInPhrase {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Decoración entre frases */
+.divider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 16px auto;
+  opacity: 0.4;
+}
+
+.tap {
+  margin-top: 24px;
+  color: var(--soft);
+  font-size: 13px;
+  opacity: 0.6;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+}
+
+.footer {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.footer-heart {
+  display: inline-block;
+  color: var(--pink);
+  animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  10%, 30% { transform: scale(1.2); }
+  20%, 40% { transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+    padding: 36px 24px 32px;
+  }
+  
+  h1 {
+    font-size: 36px;
+  }
+  
+  .btn {
+    padding: 14px 40px;
+    font-size: 15px;
+  }
+  
+  .image-container {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .snoopy {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Efecto de partículas al hacer clic */
+.particle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--pink);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particleBurst 1s ease-out forwards;
+  z-index: 1000;
+}
+
+@keyframes particleBurst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
 }
 </style>
 </head>
-
 <body>
 
-<!-- corazones -->
+<!-- Estrellas de fondo -->
+<div class="stars" id="stars"></div>
+
+<!-- Corazones flotantes -->
 <script>
-for(let i=0;i<22;i++){
-  const h=document.createElement('div');
-  h.className='heart';
-  h.style.left=Math.random()*100+'vw';
-  h.style.animationDelay=(Math.random()*10)+'s';
-  h.style.opacity=Math.random()*0.25;
+for(let i = 0; i < 18; i++){
+  const h = document.createElement('div');
+  h.className = 'heart';
+  h.style.left = Math.random() * 100 + 'vw';
+  h.style.animationDelay = (Math.random() * 15) + 's';
+  h.style.animationDuration = (12 + Math.random() * 8) + 's';
   document.body.appendChild(h);
+}
+
+// Estrellas
+for(let i = 0; i < 50; i++){
+  const s = document.createElement('div');
+  s.className = 'star';
+  s.style.left = Math.random() * 100 + 'vw';
+  s.style.top = Math.random() * 100 + 'vh';
+  s.style.animationDelay = (Math.random() * 3) + 's';
+  s.style.animationDuration = (2 + Math.random() * 2) + 's';
+  document.getElementById('stars').appendChild(s);
 }
 </script>
 
 <div class="container">
+  <div class="header-decoration"></div>
   <h1>Para Lourdes</h1>
-  <div class="sub">Toca el botón…</div>
-
-  <button class="btn" onclick="abrir()">Abrir carta</button>
-
+  <div class="sub">Un mensaje del corazón</div>
+  <button class="btn" onclick="abrir()">
+    <span>✨ Abrir carta ✨</span>
+  </button>
+  
   <div class="card" id="carta">
-    <img class="snoopy" src="https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png" alt="Snoopy"/>
-
+    <div class="image-container">
+      <div class="image-glow"></div>
+      <img class="snoopy" id="snoopyImg" src="https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png" alt="Snoopy"/>
+    </div>
     <div class="text" id="mensaje"></div>
-    <div class="tap">toca de nuevo para seguir</div>
+    <div class="tap" id="tapHint">✦ toca de nuevo para continuar ✦</div>
   </div>
-
-  <div class="footer">Hecho con intención — Benjamín</div>
+  
+  <div class="footer">
+    Hecho con <span class="footer-heart">♡</span> por Benjamín
+  </div>
 </div>
 
 <script>
-const frases=[
-  "Lourdes… no vengo a prometer cosas grandes.",
-  "Solo quería dejarte algo real.",
-  "Tu presencia calma más de lo que imaginas.",
-  "No siempre sé decirlo bonito, pero sí honesto.",
-  "Me importas. Así de simple.",
-  "Cuando pienso en ti, intento ser mejor.",
-  "Gracias por existir en mis días. 🤍"
+const frases = [
+  "Lourdes…",
+  "No vengo con palabras prestadas ni promesas vacías.",
+  "Solo traigo lo que siento, así de honesto, así de simple.",
+  "Tu presencia tiene algo que desarma el ruido del mundo.",
+  "Contigo, el silencio se siente como hogar.",
+  "No siempre encuentro las palabras perfectas, pero cuando pienso en ti, quiero intentar ser mejor persona.",
+  "Me importas. De las maneras que importan de verdad.",
+  "Gracias por existir en mis días, por hacer que valgan más la pena.",
+  "Esta carta no es gran cosa, pero tú sí lo eres. 🤍"
 ];
 
-let i=0;
+// GIFs de Snoopy enamorado
+const snoopyGifs = [
+  "https://i.pinimg.com/originals/21/39/5d/21395d904a906a686ed91977b53a595c.gif", // Snoopy con corazón
+  "https://media1.tenor.com/m/FRmGvDrsPI4AAAAC/snoopy-peanuts.gif", // Snoopy bailando amor
+  "https://media1.tenor.com/m/6o3F1pJPC5QAAAAC/snoopy-love.gif", // Snoopy mandando besos
+  "https://media.tenor.com/gsTJNPI298kAAAAi/snoopy-love.gif", // Snoopy con corazones
+  "https://media1.tenor.com/m/rqUv90U6NhsAAAAC/snoopy-hug.gif", // Snoopy abrazando
+  "https://i.pinimg.com/originals/49/26/ce/4926cedf0e36f68a7d006c6d951f99ce.gif", // Snoopy enamorado
+  "https://media1.tenor.com/m/YbUQAV8YJkMAAAAC/snoopy-woodstock.gif", // Snoopy y Woodstock amor
+  "https://i.pinimg.com/originals/88/ec/90/88ec90f421b0e1f46d6990bd33cb1bf5.gif", // Snoopy romántico
+  "https://media.tenor.com/T8N7WprSoQEAAAAi/snoopy-kiss.gif" // Snoopy besitos
+];
 
-function abrir(){
-  document.getElementById("carta").style.display="block";
-  escribir();
+let index = 0;
+let firstClick = true;
+
+function abrir() {
+  const carta = document.getElementById("carta");
+  const btn = document.querySelector(".btn");
+  
+  if(firstClick) {
+    carta.classList.add("show");
+    btn.style.display = "none";
+    firstClick = false;
+    escribir();
+  } else {
+    escribir();
+  }
+  
+  // Efecto de partículas
+  createParticles(event);
 }
 
-function escribir(){
-  if(i < frases.length){
-    const m=document.getElementById("mensaje");
-    m.innerHTML += frases[i] + "<br><br>";
-    i++;
-  }else{
-    // reinicia si tocan otra vez
-    i=0;
-    document.getElementById("mensaje").innerHTML="";
+function escribir() {
+  const mensaje = document.getElementById("mensaje");
+  const snoopyImg = document.getElementById("snoopyImg");
+  const tapHint = document.getElementById("tapHint");
+  
+  if(index < frases.length) {
+    // Cambiar imagen de Snoopy (usar GIF si no es la primera)
+    if(index > 0 && index <= snoopyGifs.length) {
+      snoopyImg.src = snoopyGifs[index - 1];
+    }
+    
+    const frase = document.createElement("span");
+    frase.className = "phrase";
+    frase.textContent = frases[index];
+    frase.style.animationDelay = "0s";
+    
+    mensaje.appendChild(frase);
+    
+    if(index < frases.length - 1) {
+      const divider = document.createElement("div");
+      divider.className = "divider";
+      mensaje.appendChild(divider);
+    } else {
+      // Ocultar hint cuando termine
+      tapHint.style.display = "none";
+    }
+    
+    index++;
+    
+    // Scroll suave hacia abajo
+    setTimeout(() => {
+      mensaje.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, 100);
+  } else {
+    // Reinicia
+    index = 0;
+    mensaje.innerHTML = "";
+    snoopyImg.src = "https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png";
+    tapHint.style.display = "block";
+    escribir();
   }
 }
+
+function createParticles(e) {
+  if(!e) return;
+  
+  const colors = ['#ff6b9d', '#f4d8a8', '#ffffff'];
+  
+  for(let i = 0; i < 12; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = e.clientX + 'px';
+    particle.style.top = e.clientY + 'px';
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+    
+    const angle = (Math.PI * 2 * i) / 12;
+    const velocity = 50 + Math.random() * 50;
+    const tx = Math.cos(angle) * velocity;
+    const ty = Math.sin(angle) * velocity;
+    
+    particle.style.setProperty('--tx', tx + 'px');
+    particle.style.setProperty('--ty', ty + 'px');
+    
+    document.body.appendChild(particle);
+    
+    setTimeout(() => particle.remove(), 1000);
+  }
+}
+
+// Agregar click listener al contenedor de la carta
+document.addEventListener('DOMContentLoaded', () => {
+  const carta = document.getElementById('carta');
+  carta.addEventListener('click', (e) => {
+    if(!firstClick) {
+      abrir();
+    }
+  });
+});
+
+// Hacer que el botón también funcione con Enter
+document.addEventListener('keypress', (e) => {
+  if(e.key === 'Enter') {
+    const carta = document.getElementById('carta');
+    if(!carta.classList.contains('show')) {
+      abrir();
+    } else if(index < frases.length) {
+      abrir();
+    }
+  }
+});
 </script>
 
 </body>
-  </html>
+</html>
