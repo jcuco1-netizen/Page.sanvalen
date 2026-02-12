@@ -3,13 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Lourdes 🤍</title>
+<title>Para Lourdes</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-
-/* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
@@ -19,17 +17,17 @@
 body{
   font-family:'Cormorant Garamond', serif;
   background:radial-gradient(ellipse at bottom, #1b0c2e 0%, #090012 100%);
-  overflow:hidden;
+  overflow-x:hidden;
   color:white;
 }
 
-/* ================= ESTRELLAS ================= */
+/* Estrellas */
 .stars{
   position:fixed;
   width:100%;
   height:100%;
   background:url("https://www.transparenttextures.com/patterns/stardust.png");
-  animation:moveStars 100s linear infinite;
+  animation:moveStars 120s linear infinite;
   z-index:-1;
   opacity:.4;
 }
@@ -39,76 +37,31 @@ body{
   to{background-position:10000px 5000px;}
 }
 
-/* ================= INTRO TOUCH ================= */
-.intro-touch{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at center, #2a1a3e 0%, #0a0514 80%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  cursor:pointer;
-  transition:opacity .8s ease, visibility .8s ease;
-}
-
-.intro-touch.hide{
-  opacity:0;
-  visibility:hidden;
-}
-
-.intro-content{
-  text-align:center;
-  animation:fadeIntro 2s ease infinite alternate;
-}
-
-@keyframes fadeIntro{
-  from{opacity:.6;}
-  to{opacity:1;}
-}
-
-.intro-text{
-  font-size:38px;
-  letter-spacing:2px;
-  text-shadow:0 0 20px rgba(255,107,157,.6);
-  animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.08);}
-}
-
-.intro-sub{
-  margin-top:12px;
-  color:#ff8bb5;
-  font-size:16px;
-  opacity:.8;
-}
-
-/* ================= CONTENEDOR ================= */
+/* Contenedor */
 .container{
   width:90%;
-  max-width:700px;
+  max-width:750px;
   margin:100px auto;
-  background:rgba(255,255,255,0.08);
-  padding:50px;
-  border-radius:30px;
-  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,0.06);
+  padding:60px;
+  border-radius:35px;
+  backdrop-filter:blur(12px);
   border:1px solid rgba(255,255,255,0.2);
   text-align:center;
-  box-shadow:0 0 40px rgba(255,107,157,0.2);
-  animation:fadeIn 2s ease;
+  box-shadow:0 0 60px rgba(255,105,180,0.2);
+  animation:fadeIn 1.5s ease;
 }
 
 @keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px);}
+  from{opacity:0; transform:translateY(30px);}
   to{opacity:1; transform:translateY(0);}
 }
 
 h1{
-  font-size:42px;
+  font-family:'Playfair Display', serif;
+  font-size:48px;
   margin-bottom:10px;
+  letter-spacing:2px;
 }
 
 .subtitle{
@@ -119,45 +72,47 @@ h1{
 .pick{
   color:#ff8bb5;
   margin-bottom:40px;
+  font-size:18px;
 }
 
-/* ================= BOTONES ================= */
+/* Botones */
 .card-btn{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 25px;
+  padding:22px 30px;
   margin:20px 0;
-  background:rgba(255,255,255,0.9);
+  background:rgba(255,255,255,0.95);
   color:#222;
-  border-radius:20px;
+  border-radius:25px;
   border:3px solid #ff6b9d;
   cursor:pointer;
   font-size:20px;
   transition:.3s;
-  box-shadow:0 0 20px rgba(255,107,157,0.4);
+  box-shadow:0 0 25px rgba(255,105,180,0.4);
 }
 
 .card-btn:hover{
   transform:scale(1.05);
 }
 
-/* ================= PARTICULAS ================= */
-.particle{
-  position:fixed;
-  width:6px;
-  height:6px;
-  background:#ff8bb5;
-  border-radius:50%;
-  pointer-events:none;
-  animation:explode 1s forwards;
+/* Carta abierta */
+.letter{
+  margin-top:30px;
+  padding:35px;
+  background:rgba(255,255,255,0.95);
+  color:#222;
+  border-radius:25px;
+  display:none;
+  animation:openLetter .8s ease;
+  text-align:left;
+  line-height:1.8;
+  font-size:18px;
 }
 
-@keyframes explode{
-  to{
-    transform:translate(var(--x), var(--y));
-    opacity:0;
-  }
+@keyframes openLetter{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 </style>
@@ -167,59 +122,52 @@ h1{
 
 <div class="stars"></div>
 
-<!-- INTRO -->
-<div class="intro-touch" id="introTouch" onclick="entrarPagina(event)">
-  <div class="intro-content">
-    <div class="intro-text">Toca para ingresar ✨</div>
-    <div class="intro-sub">Hay algo especial esperándote...</div>
-  </div>
-</div>
-
-<!-- CONTENIDO PRINCIPAL -->
 <div class="container">
   <h1>Para Lourdes</h1>
   <div class="subtitle">Un mensaje del corazón</div>
-  <div class="pick">Elige una de las 3 cartas 💌</div>
+  <div class="pick">Elige una de las tres cartas</div>
 
-  <div class="card-btn">1 🐶 Mi Corazón <span>→</span></div>
-  <div class="card-btn">2 💖 Mi Verdad <span>→</span></div>
-  <div class="card-btn">3 🤍 Para Siempre <span>→</span></div>
+  <div class="card-btn" onclick="abrirCarta(1)">Mi Corazón <span>→</span></div>
+  <div class="card-btn" onclick="abrirCarta(2)">Mi Verdad <span>→</span></div>
+  <div class="card-btn" onclick="abrirCarta(3)">Para Siempre <span>→</span></div>
+
+  <div class="letter" id="carta1">
+    Desde que llegaste a mi vida algo cambió silenciosamente en mí.  
+    No fue un ruido fuerte ni un instante dramático… fue algo más profundo.  
+    Fue como si mi corazón reconociera el tuyo antes de que yo pudiera entenderlo.  
+    Contigo aprendí que el amor no siempre grita, a veces susurra…  
+    y en ese susurro encontré paz.
+  </div>
+
+  <div class="letter" id="carta2">
+    Mi verdad es simple, pero inmensa: me importas más de lo que las palabras pueden explicar.  
+    No es solo cariño, no es solo ilusión.  
+    Es admiración por tu esencia, respeto por tu manera de sentir,  
+    y una calma inexplicable cuando pienso en ti.  
+    No busco perfección, busco verdad… y contigo la siento real.
+  </div>
+
+  <div class="letter" id="carta3">
+    No sé qué escribirá el destino, pero sí sé lo que deseo.  
+    Deseo compartir momentos, silencios, risas y también días difíciles.  
+    Deseo que cuando el mundo pese, podamos mirarnos y recordar  
+    que no estamos solos.  
+    Si alguna vez decides caminar conmigo, prometo hacerlo con sinceridad,  
+    paciencia y el corazón abierto.
+  </div>
+
 </div>
 
 <script>
+function abrirCarta(num){
+  const cartas = document.querySelectorAll(".letter");
+  cartas.forEach(c => c.style.display="none");
 
-/* ===== ENTRAR PAGINA ===== */
-function entrarPagina(e){
-  createParticles(e);
-  const intro = document.getElementById("introTouch");
-  intro.classList.add("hide");
-
-  setTimeout(()=>{
-    intro.style.display="none";
-  },800);
+  document.getElementById("carta"+num).style.display="block";
 }
-
-/* ===== PARTICULAS ===== */
-function createParticles(e){
-  for(let i=0;i<20;i++){
-    const particle = document.createElement("div");
-    particle.className="particle";
-    document.body.appendChild(particle);
-
-    const x = (Math.random()-0.5)*200+"px";
-    const y = (Math.random()-0.5)*200+"px";
-
-    particle.style.left=e.clientX+"px";
-    particle.style.top=e.clientY+"px";
-    particle.style.setProperty("--x",x);
-    particle.style.setProperty("--y",y);
-
-    setTimeout(()=>particle.remove(),1000);
-  }
-}
-
 </script>
 
 </body>
 </html>
+
 
