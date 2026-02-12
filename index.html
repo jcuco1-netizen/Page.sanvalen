@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,18 +18,18 @@
 
 body{
   font-family:'Cormorant Garamond', serif;
-  background:linear-gradient(135deg,#2b0f1f,#3a1627,#1f0a18);
-  color:#f8e8ef;
+  background:linear-gradient(135deg,#4b1e2f,#7a3b54,#3a1422);
+  color:#fbe6ec;
   overflow:hidden;
 }
 
-/* ===== ESTRELLAS SUAVES ===== */
-.stars{
+/* ===== FONDO CORAZONES SUAVES ===== */
+body::before{
+  content:"";
   position:fixed;
-  width:100%;
-  height:100%;
-  background:url("https://www.transparenttextures.com/patterns/stardust.png");
-  opacity:.2;
+  inset:0;
+  background-image:url("https://www.transparenttextures.com/patterns/hearts.png");
+  opacity:0.08;
   z-index:-1;
 }
 
@@ -35,7 +41,7 @@ body{
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  background:linear-gradient(135deg,#3a1627,#1f0a18);
+  background:linear-gradient(135deg,#7a3b54,#4b1e2f);
   z-index:999;
   cursor:pointer;
   transition:1s ease;
@@ -46,29 +52,22 @@ body{
 
 .intro h1{
   font-family:'Playfair Display', serif;
-  font-size:34px;
-  margin-bottom:10px;
+  font-size:32px;
 }
 
 .intro small{
+  margin-top:8px;
   font-size:14px;
   opacity:.8;
-  margin-top:10px;
 }
 
 .intro-text{
   margin-top:30px;
   font-size:18px;
-  opacity:.7;
-  animation:pulse 2s infinite;
+  opacity:.8;
 }
 
-@keyframes pulse{
-  0%,100%{opacity:.7;}
-  50%{opacity:1;}
-}
-
-/* ===== SCREENS ===== */
+/* ===== MENU ===== */
 .screen{
   position:absolute;
   inset:0;
@@ -78,37 +77,38 @@ body{
   padding:20px;
   transition:1s ease;
 }
+
 .hidden{opacity:0;visibility:hidden;}
 
-/* ===== MENU ===== */
 .container{
   width:100%;
   max-width:650px;
-  background:rgba(255,240,245,0.08);
+  background:rgba(255,192,203,0.08);
   padding:50px;
   border-radius:25px;
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(10px);
   text-align:center;
   border:1px solid rgba(255,182,193,0.3);
 }
 
 h2{
   font-family:'Playfair Display', serif;
-  font-size:38px;
+  font-size:36px;
   margin-bottom:10px;
 }
 
 .subtitle{
-  opacity:.8;
   margin-bottom:30px;
+  opacity:.8;
 }
 
+/* ===== BOTONES ===== */
 .card-btn{
   width:100%;
   padding:18px;
   margin:15px 0;
-  background:#f4d6e0;
-  color:#4a1f2d;
+  background:#f3c6d3;
+  color:#4b1e2f;
   border-radius:18px;
   border:none;
   font-size:18px;
@@ -117,37 +117,50 @@ h2{
 }
 
 .card-btn:hover{
-  background:#e8b7c7;
+  background:#e6a9bd;
 }
 
-/* ===== SOBRE ===== */
+/* ===== SOBRE SNOOPY STYLE ===== */
 .envelope{
   width:300px;
   height:200px;
-  background:#f4d6e0;
+  background:#f7d9e3;
   position:relative;
-  border-radius:8px;
+  border-radius:10px;
   cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
+
 .flap{
   position:absolute;
   width:100%;
   height:100%;
-  background:#e8b7c7;
+  background:#eab5c5;
   clip-path:polygon(0 0,100% 0,50% 60%);
   transform-origin:top;
   transition:1s ease;
 }
+
 .envelope.open .flap{
   transform:rotateX(180deg);
+}
+
+/* Pequeño Snoopy decorativo */
+.envelope::after{
+  content:"🐾";
+  position:absolute;
+  bottom:10px;
+  right:15px;
+  font-size:22px;
+  opacity:0.6;
 }
 
 /* ===== CARTA ===== */
 .letter-box{
   max-width:650px;
   width:100%;
-  background:#fff0f5;
-  color:#4a1f2d;
+  background:#ffeaf0;
+  color:#4b1e2f;
   padding:40px;
   border-radius:25px;
   text-align:left;
@@ -168,22 +181,24 @@ h2{
   margin-top:30px;
   padding:10px 18px;
   border:none;
-  background:#b76e79;
+  background:#c46a84;
   color:white;
   border-radius:12px;
   cursor:pointer;
 }
 
+.back-btn:hover{
+  background:#b25572;
+}
+
 @media(max-width:600px){
   .letter-box{font-size:16px;padding:25px;}
-  h2{font-size:28px;}
+  h2{font-size:26px;}
 }
 
 </style>
 </head>
 <body>
-
-<div class="stars"></div>
 
 <audio id="music" loop>
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5c0d1b6b44.mp3" type="audio/mpeg">
@@ -200,7 +215,7 @@ h2{
 <div class="screen hidden" id="menu">
   <div class="container">
     <h2>Para Lourdes</h2>
-    <div class="subtitle">Un mensaje sincero</div>
+    <div class="subtitle">Con cariño sincero</div>
     <button class="card-btn" onclick="preAbrir(1)">Mi Corazón</button>
     <button class="card-btn" onclick="preAbrir(2)">Mi Verdad</button>
     <button class="card-btn" onclick="preAbrir(3)">Para Siempre</button>
@@ -286,8 +301,3 @@ function escribirTexto(texto){
 
 </body>
 </html>
-
-
-
-
-
