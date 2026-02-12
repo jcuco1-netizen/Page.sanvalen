@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Para Lourdes 🤍</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Para Lourdes 🤍 v2.0</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap');
 
@@ -105,16 +108,16 @@ body {
 /* Contenedor principal */
 .container {
   width: min(520px, 94vw);
-  background: linear-gradient(165deg, rgba(40, 30, 50, 0.95), rgba(25, 20, 35, 0.98));
+  background: linear-gradient(165deg, rgba(60, 50, 70, 0.98), rgba(40, 35, 50, 0.98));
   border-radius: 32px;
   padding: 48px 32px 42px;
   box-shadow: 
     0 40px 100px rgba(0, 0, 0, 0.7),
-    0 0 80px rgba(255, 107, 157, 0.08),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    0 0 80px rgba(255, 107, 157, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
   text-align: center;
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 107, 157, 0.3);
   position: relative;
   z-index: 10;
   animation: slideIn 1s ease-out;
@@ -175,40 +178,46 @@ h1 {
   font-weight: 300;
   letter-spacing: 0.5px;
   opacity: 0.85;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
-/* Botón mejorado */
+/* Botón mejorado - MUY VISIBLE */
 .btn {
-  margin-top: 32px;
-  padding: 18px 52px;
+  margin-top: 40px;
+  padding: 20px 60px;
   border-radius: 50px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 240, 240, 0.95) 100%);
-  color: #1a0a2e;
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  border: 3px solid #ff6b9d;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe0eb 100%);
+  color: #ff1a75;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 
-    0 8px 32px rgba(255, 255, 255, 0.25),
-    0 0 60px rgba(255, 107, 157, 0.4);
+    0 10px 40px rgba(255, 107, 157, 0.5),
+    0 0 80px rgba(255, 107, 157, 0.6),
+    inset 0 2px 0 rgba(255, 255, 255, 0.9);
   position: relative;
   overflow: hidden;
-  animation: btnPulse 2s ease-in-out infinite;
+  text-transform: uppercase;
+  animation: btnGlow 2s ease-in-out infinite;
 }
 
-@keyframes btnPulse {
+@keyframes btnGlow {
   0%, 100% {
     box-shadow: 
-      0 8px 32px rgba(255, 255, 255, 0.25),
-      0 0 60px rgba(255, 107, 157, 0.4);
+      0 10px 40px rgba(255, 107, 157, 0.5),
+      0 0 80px rgba(255, 107, 157, 0.6),
+      inset 0 2px 0 rgba(255, 255, 255, 0.9);
+    transform: scale(1);
   }
   50% {
     box-shadow: 
-      0 8px 32px rgba(255, 255, 255, 0.35),
-      0 0 80px rgba(255, 107, 157, 0.6);
+      0 15px 50px rgba(255, 107, 157, 0.7),
+      0 0 120px rgba(255, 107, 157, 0.9),
+      inset 0 2px 0 rgba(255, 255, 255, 1);
+    transform: scale(1.02);
   }
 }
 
@@ -248,28 +257,30 @@ h1 {
 }
 
 .hint-text {
-  margin-top: 20px;
-  color: var(--soft);
-  font-size: 14px;
-  font-weight: 300;
-  opacity: 0.7;
+  margin-top: 24px;
+  color: #ff8bb5;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 1;
   letter-spacing: 0.5px;
-  animation: blink 2s ease-in-out infinite;
+  animation: blinkVisible 2s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(255, 107, 157, 0.6);
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 0.4; }
+@keyframes blinkVisible {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
 
 /* Contenedor de 3 cartas pequeñas */
 .cards-container {
   margin-top: 36px;
   display: none;
+  flex-direction: column;
   gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
   opacity: 0;
+  padding: 20px 0;
 }
 
 .cards-container.show {
@@ -278,80 +289,89 @@ h1 {
 }
 
 .small-card {
-  width: 140px;
-  height: 180px;
-  background: linear-gradient(165deg, rgba(60, 50, 70, 0.6), rgba(40, 30, 50, 0.8));
-  border-radius: 20px;
-  padding: 20px;
+  width: 280px;
+  height: 80px;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe5f0 100%);
+  border-radius: 16px;
+  padding: 0 24px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 3px solid #ff6b9d;
+  box-shadow: 
+    0 8px 24px rgba(255, 107, 157, 0.4),
+    0 0 40px rgba(255, 107, 157, 0.3);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  justify-content: space-between;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .small-card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(135deg, #ff6b9d, #ff8bb5, #ff6b9d);
+  border-radius: 18px;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(8px);
 }
 
 .small-card:hover::before {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .small-card:hover {
-  transform: translateY(-10px) scale(1.05);
-  border-color: rgba(255, 107, 157, 0.4);
+  transform: translateY(-6px) scale(1.05);
+  border-color: #ff1a75;
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.6),
-    0 0 40px rgba(255, 107, 157, 0.2);
+    0 16px 48px rgba(255, 107, 157, 0.6),
+    0 0 60px rgba(255, 107, 157, 0.5);
 }
 
 .small-card:active {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .card-number {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 28px;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--soft);
+  font-size: 28px;
+  font-weight: 700;
+  color: #ff1a75;
+  min-width: 40px;
 }
 
 .card-icon {
-  font-size: 48px;
+  font-size: 32px;
   animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 4px 12px rgba(255, 107, 157, 0.3));
 }
 
 .card-label {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  color: var(--soft);
+  font-size: 20px;
+  color: #2a1a3e;
+  font-weight: 600;
   letter-spacing: 0.5px;
-  text-align: center;
+}
+
+.card-arrow {
+  font-size: 24px;
+  color: #ff6b9d;
+  transition: transform 0.3s ease;
+}
+
+.small-card:hover .card-arrow {
+  transform: translateX(6px);
 }
 
 /* Mensaje completo */
@@ -361,7 +381,7 @@ h1 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(10, 5, 20, 0.95);
+  background: rgba(10, 5, 20, 0.97);
   backdrop-filter: blur(20px);
   z-index: 1000;
   display: none;
@@ -384,39 +404,45 @@ h1 {
 
 .btn-cerrar {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(255, 107, 157, 0.5);
   border-radius: 50%;
-  color: white;
-  font-size: 20px;
+  color: #ff6b9d;
+  font-size: 24px;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .btn-cerrar:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: rotate(90deg);
+  background: #ff6b9d;
+  color: white;
+  transform: rotate(90deg) scale(1.1);
 }
 
 .mensaje-contenido {
-  max-width: 600px;
+  max-width: 650px;
   width: 100%;
-  background: linear-gradient(165deg, rgba(40, 30, 50, 0.95), rgba(25, 20, 35, 0.98));
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(245, 240, 250, 0.98));
   border-radius: 32px;
   padding: 50px 40px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 40px 100px rgba(0, 0, 0, 0.8),
+    0 0 80px rgba(255, 107, 157, 0.3);
+  border: 3px solid rgba(255, 107, 157, 0.4);
   animation: slideInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  max-height: 80vh;
+  max-height: 85vh;
   overflow-y: auto;
+  position: relative;
 }
 
 @keyframes slideInScale {
@@ -430,55 +456,77 @@ h1 {
   }
 }
 
-.mensaje-texto {
+.mensaje-snoopy {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 24px;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 20px rgba(255, 107, 157, 0.3));
+}
+
+.mensaje-titulo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(20px, 4vw, 24px);
-  line-height: 1.9;
-  color: var(--soft);
+  font-size: clamp(26px, 5vw, 32px);
+  color: #2a1a3e;
   text-align: center;
   margin-bottom: 24px;
-  font-weight: 300;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.mensaje-texto {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 4vw, 21px);
+  line-height: 1.9;
+  color: #3a2a4e;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 400;
   letter-spacing: 0.3px;
 }
 
 .mensaje-firma {
   text-align: right;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  color: var(--gold);
+  font-size: 24px;
+  color: #ff6b9d;
   margin-top: 32px;
   font-style: italic;
+  font-weight: 500;
 }
 
 .mensaje-decoracion {
   width: 60px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, #ff6b9d, transparent);
   margin: 24px auto;
   opacity: 0.6;
 }
 
 .mensaje-footer {
-  margin-top: 20px;
+  margin-top: 28px;
   text-align: center;
 }
 
 .btn-volver {
-  padding: 12px 32px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 14px 36px;
+  background: linear-gradient(135deg, #ff6b9d, #ff8bb5);
+  border: 2px solid rgba(255, 107, 157, 0.5);
   border-radius: 50px;
-  color: var(--soft);
-  font-size: 14px;
+  color: white;
+  font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.5px;
+  box-shadow: 0 8px 24px rgba(255, 107, 157, 0.4);
 }
 
 .btn-volver:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateX(-4px);
+  background: linear-gradient(135deg, #ff8bb5, #ff6b9d);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(255, 107, 157, 0.6);
 }
 
 .footer {
@@ -523,17 +571,26 @@ h1 {
   }
   
   .small-card {
-    width: 120px;
-    height: 160px;
-    padding: 16px;
+    width: 100%;
+    max-width: 320px;
+    height: 70px;
+    padding: 0 20px;
+  }
+  
+  .card-number {
+    font-size: 24px;
   }
   
   .card-icon {
-    font-size: 40px;
+    font-size: 28px;
   }
   
   .card-label {
-    font-size: 16px;
+    font-size: 18px;
+  }
+  
+  .card-arrow {
+    font-size: 20px;
   }
   
   .btn-cerrar {
@@ -616,27 +673,43 @@ for(let i = 0; i < 50; i++){
   <h1>Para Lourdes</h1>
   <div class="sub">Un mensaje del corazón</div>
   <button class="btn" onclick="mostrarCartas()">
-    <span>✨ Abrir carta ✨</span>
+    <span>✨ ABRIR CARTA ✨</span>
   </button>
   
-  <div class="hint-text">Haz click para descubrir el mensaje</div>
+  <div class="hint-text">👇 Haz click arriba para descubrir el mensaje 👇</div>
   
   <!-- Contenedor de 3 cartas pequeñas -->
   <div class="cards-container" id="cardsContainer">
+    <div style="width: 100%; text-align: center; margin-bottom: 20px; grid-column: 1 / -1;">
+      <h2 style="color: #ff6b9d; font-size: 24px; font-family: 'Cormorant Garamond', serif; margin-bottom: 8px;">Elige una carta 💌</h2>
+      <p style="color: #ff8bb5; font-size: 16px; margin: 0;">Haz click en cualquiera de las 3 cartas:</p>
+    </div>
+    
     <div class="small-card" onclick="abrirCarta(1)">
-      <div class="card-number">1</div>
-      <div class="card-icon">💌</div>
-      <div class="card-label">Para ti</div>
+      <div class="card-left">
+        <div class="card-number">1</div>
+        <div class="card-icon">🐶</div>
+        <div class="card-label">Mi Corazón</div>
+      </div>
+      <div class="card-arrow">→</div>
     </div>
+    
     <div class="small-card" onclick="abrirCarta(2)">
-      <div class="card-number">2</div>
-      <div class="card-icon">💝</div>
-      <div class="card-label">Mi verdad</div>
+      <div class="card-left">
+        <div class="card-number">2</div>
+        <div class="card-icon">💝</div>
+        <div class="card-label">Mi Verdad</div>
+      </div>
+      <div class="card-arrow">→</div>
     </div>
+    
     <div class="small-card" onclick="abrirCarta(3)">
-      <div class="card-number">3</div>
-      <div class="card-icon">🤍</div>
-      <div class="card-label">Siempre</div>
+      <div class="card-left">
+        <div class="card-number">3</div>
+        <div class="card-icon">🤍</div>
+        <div class="card-label">Para Siempre</div>
+      </div>
+      <div class="card-arrow">→</div>
     </div>
   </div>
   
@@ -655,9 +728,11 @@ for(let i = 0; i < 50; i++){
 </div>
 
 <script>
-// Mensajes románticos completos para cada carta
+// Mensajes románticos completos para cada carta con imágenes de Snoopy
 const mensajes = {
   1: {
+    titulo: "Mi Corazón para Ti",
+    snoopy: "https://i.pinimg.com/originals/f5/6b/07/f56b07440d82c29e7c11b0f76136a3d4.gif",
     texto: `Lourdes,
     
     Hay personas que llegan y te cambian la perspectiva de todo. Tú eres esa persona para mí.
@@ -669,9 +744,11 @@ const mensajes = {
     No sé qué nos depara el futuro, pero sí sé que quiero que estés en él. De todas las formas posibles.
     
     Gracias por ser exactamente quien eres.`,
-    firma: "Con todo mi corazón"
+    firma: "Con todo mi corazón 💗"
   },
   2: {
+    titulo: "Mi Verdad Más Honesta",
+    snoopy: "https://i.pinimg.com/originals/88/6d/f4/886df4c8e95e75dffce94772e04e6f5a.gif",
     texto: `Mi verdad más honesta:
     
     Desde que te conozco, algo cambió. No puedo explicarlo con exactitud, pero es como si antes viviera en blanco y negro y tú llegaras con todos los colores.
@@ -683,9 +760,11 @@ const mensajes = {
     Eres el tipo de persona que hace que creer en la magia sea fácil. Y yo quiero seguir creyendo contigo.
     
     Esto es real. Tú y yo. Y es lo más bonito que tengo.`,
-    firma: "Para siempre, Benjamín"
+    firma: "Para siempre, Benjamín 🐶"
   },
   3: {
+    titulo: "Para Siempre",
+    snoopy: "https://i.pinimg.com/originals/c0/25/00/c025001c97bf1f38c00c0a63dd35cf72.gif",
     texto: `Siempre...
     
     Siempre voy a elegir hacerte sonreír.
@@ -701,7 +780,7 @@ const mensajes = {
     Gracias por existir, Lourdes. Gracias por dejarme estar cerca.
     
     Siempre. 🤍`,
-    firma: "Tu Benjamin"
+    firma: "Tu Benjamín 💕"
   }
 };
 
@@ -724,16 +803,14 @@ function abrirCarta(numeroCard) {
   
   const mensaje = mensajes[numeroCard];
   
-  // Formatear el mensaje con párrafos
-  const parrafos = mensaje.texto.split('\n').filter(p => p.trim() !== '');
-  let html = '';
+  // Formatear el mensaje con imagen de Snoopy y párrafos
+  let html = `<img src="${mensaje.snoopy}" alt="Snoopy" class="mensaje-snoopy" onerror="this.style.display='none'">`;
+  html += `<div class="mensaje-titulo">${mensaje.titulo}</div>`;
   
-  parrafos.forEach((parrafo, index) => {
-    if (index === 0) {
-      html += `<div class="mensaje-texto" style="font-size: 28px; font-weight: 400; margin-bottom: 32px;">${parrafo}</div>`;
-    } else {
-      html += `<div class="mensaje-texto">${parrafo}</div>`;
-    }
+  const parrafos = mensaje.texto.split('\n').filter(p => p.trim() !== '');
+  
+  parrafos.forEach((parrafo) => {
+    html += `<div class="mensaje-texto">${parrafo}</div>`;
   });
   
   html += `<div class="mensaje-decoracion"></div>`;
