@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <title>Para Lourdes 🤍 v2.0</title>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap');
 
@@ -19,852 +17,245 @@
   --pink: #ff6b9d;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin:0; padding:0; }
 
 body {
-  margin: 0;
   background: radial-gradient(ellipse 1400px 800px at 50% 0%, #2a1a3e 0%, var(--bg) 60%);
   color: var(--accent);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
-  position: relative;
+  font-family: 'Inter', sans-serif;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
 
-/* Estrellas de fondo */
-.stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0;
-  animation: twinkle 3s infinite;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 0.8; }
-}
-
-/* Corazones flotantes mejorados */
-.heart {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: var(--pink);
-  transform: rotate(45deg);
-  opacity: 0;
-  animation: floatHeart 15s ease-in-out infinite;
-  filter: blur(0.5px);
-}
-
-.heart::before, .heart::after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: var(--pink);
-  border-radius: 50%;
-}
-
-.heart::before { left: -5px; }
-.heart::after { top: -5px; }
-
-@keyframes floatHeart {
-  0% {
-    transform: translateY(120vh) rotate(45deg) scale(0.5);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.4;
-  }
-  90% {
-    opacity: 0.3;
-  }
-  100% {
-    transform: translateY(-20vh) rotate(405deg) scale(1);
-    opacity: 0;
-  }
-}
-
-/* Contenedor principal */
+/* CONTENEDOR PRINCIPAL */
 .container {
-  width: min(520px, 94vw);
-  background: linear-gradient(165deg, rgba(60, 50, 70, 0.98), rgba(40, 35, 50, 0.98));
-  border-radius: 32px;
-  padding: 48px 32px 42px;
-  box-shadow: 
-    0 40px 100px rgba(0, 0, 0, 0.7),
-    0 0 80px rgba(255, 107, 157, 0.15),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
-  text-align: center;
-  backdrop-filter: blur(20px);
-  border: 2px solid rgba(255, 107, 157, 0.3);
-  position: relative;
-  z-index: 10;
-  animation: slideIn 1s ease-out;
-}
-
-.deco-heart {
-  position: absolute;
-  font-size: 28px;
-  opacity: 0.6;
-  animation: floatDeco 4s ease-in-out infinite;
-  filter: drop-shadow(0 4px 12px rgba(255, 107, 157, 0.4));
-  pointer-events: none;
-}
-
-@keyframes floatDeco {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-15px) rotate(10deg);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.header-decoration {
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 0 auto 24px;
-  opacity: 0.6;
+  width:min(520px,94vw);
+  background:linear-gradient(165deg, rgba(60,50,70,.98), rgba(40,35,50,.98));
+  border-radius:32px;
+  padding:48px 32px;
+  text-align:center;
+  border:2px solid rgba(255,107,157,.3);
+  position:relative;
+  z-index:10;
 }
 
 h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: clamp(32px, 6vw, 42px);
-  letter-spacing: 2px;
-  margin: 0 0 12px;
-  background: linear-gradient(135deg, #fff 0%, var(--soft) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family:'Cormorant Garamond', serif;
+  font-size:40px;
+  margin-bottom:10px;
 }
 
 .sub {
-  color: var(--soft);
-  font-size: 15px;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  opacity: 0.85;
-  margin-bottom: 16px;
+  color:var(--soft);
+  margin-bottom:20px;
 }
 
-/* Botón mejorado - MUY VISIBLE */
+/* BOTÓN */
 .btn {
-  margin-top: 40px;
-  padding: 20px 60px;
-  border-radius: 50px;
-  border: 3px solid #ff6b9d;
-  background: linear-gradient(135deg, #ffffff 0%, #ffe0eb 100%);
-  color: #ff1a75;
-  font-size: 19px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
-    0 10px 40px rgba(255, 107, 157, 0.5),
-    0 0 80px rgba(255, 107, 157, 0.6),
-    inset 0 2px 0 rgba(255, 255, 255, 0.9);
-  position: relative;
-  overflow: hidden;
-  text-transform: uppercase;
-  animation: btnGlow 2s ease-in-out infinite;
-}
-
-@keyframes btnGlow {
-  0%, 100% {
-    box-shadow: 
-      0 10px 40px rgba(255, 107, 157, 0.5),
-      0 0 80px rgba(255, 107, 157, 0.6),
-      inset 0 2px 0 rgba(255, 255, 255, 0.9);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 
-      0 15px 50px rgba(255, 107, 157, 0.7),
-      0 0 120px rgba(255, 107, 157, 0.9),
-      inset 0 2px 0 rgba(255, 255, 255, 1);
-    transform: scale(1.02);
-  }
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 107, 157, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.btn:hover::before {
-  width: 300px;
-  height: 300px;
+  margin-top:20px;
+  padding:18px 50px;
+  border-radius:50px;
+  border:3px solid #ff6b9d;
+  background:linear-gradient(135deg,#fff,#ffe0eb);
+  color:#ff1a75;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
 }
 
 .btn:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 
-    0 16px 48px rgba(255, 255, 255, 0.35),
-    0 0 100px rgba(255, 107, 157, 0.7);
-  border-color: rgba(255, 107, 157, 0.5);
+  transform:scale(1.05);
 }
 
-.btn:active {
-  transform: translateY(-2px) scale(1.03);
-}
-
-.btn span {
-  position: relative;
-  z-index: 1;
-}
-
-.hint-text {
-  margin-top: 24px;
-  color: #ff8bb5;
-  font-size: 15px;
-  font-weight: 400;
-  opacity: 1;
-  letter-spacing: 0.5px;
-  animation: blinkVisible 2s ease-in-out infinite;
-  text-shadow: 0 0 20px rgba(255, 107, 157, 0.6);
-}
-
-@keyframes blinkVisible {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
-
-/* Contenedor de 3 cartas pequeñas */
+/* CARTAS */
 .cards-container {
-  margin-top: 36px;
-  display: none;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  opacity: 0;
-  padding: 20px 0;
+  margin-top:30px;
+  display:none;
+  flex-direction:column;
+  gap:15px;
+  align-items:center;
 }
 
 .cards-container.show {
-  display: flex;
-  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  display:flex;
 }
 
 .small-card {
-  width: 280px;
-  height: 80px;
-  background: linear-gradient(135deg, #ffffff 0%, #ffe5f0 100%);
-  border-radius: 16px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 3px solid #ff6b9d;
-  box-shadow: 
-    0 8px 24px rgba(255, 107, 157, 0.4),
-    0 0 40px rgba(255, 107, 157, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  overflow: visible;
-}
-
-.small-card::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: linear-gradient(135deg, #ff6b9d, #ff8bb5, #ff6b9d);
-  border-radius: 18px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-  filter: blur(8px);
-}
-
-.small-card:hover::before {
-  opacity: 0.8;
+  width:260px;
+  height:70px;
+  background:linear-gradient(135deg,#fff,#ffe5f0);
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  border:2px solid #ff6b9d;
+  cursor:pointer;
+  transition:.3s;
 }
 
 .small-card:hover {
-  transform: translateY(-6px) scale(1.05);
-  border-color: #ff1a75;
-  box-shadow: 
-    0 16px 48px rgba(255, 107, 157, 0.6),
-    0 0 60px rgba(255, 107, 157, 0.5);
-}
-
-.small-card:active {
-  transform: translateY(-4px) scale(1.03);
-}
-
-.card-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.card-number {
-  font-size: 28px;
-  font-weight: 700;
-  color: #ff1a75;
-  min-width: 40px;
-}
-
-.card-icon {
-  font-size: 32px;
-  animation: float 3s ease-in-out infinite;
+  transform:scale(1.05);
 }
 
 .card-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  color: #2a1a3e;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-weight:bold;
+  color:#2a1a3e;
 }
 
-.card-arrow {
-  font-size: 24px;
-  color: #ff6b9d;
-  transition: transform 0.3s ease;
-}
-
-.small-card:hover .card-arrow {
-  transform: translateX(6px);
-}
-
-/* Mensaje completo */
+/* MENSAJE COMPLETO */
 .mensaje-completo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(10, 5, 20, 0.97);
-  backdrop-filter: blur(20px);
-  z-index: 1000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  opacity: 0;
+  position:fixed;
+  inset:0;
+  background:rgba(10,5,20,.95);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
 .mensaje-completo.show {
-  display: flex;
-  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-.btn-cerrar {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgba(255, 107, 157, 0.5);
-  border-radius: 50%;
-  color: #ff6b9d;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.btn-cerrar:hover {
-  background: #ff6b9d;
-  color: white;
-  transform: rotate(90deg) scale(1.1);
+  display:flex;
 }
 
 .mensaje-contenido {
-  max-width: 650px;
-  width: 100%;
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(245, 240, 250, 0.98));
-  border-radius: 32px;
-  padding: 50px 40px;
-  box-shadow: 
-    0 40px 100px rgba(0, 0, 0, 0.8),
-    0 0 80px rgba(255, 107, 157, 0.3);
-  border: 3px solid rgba(255, 107, 157, 0.4);
-  animation: slideInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  max-height: 85vh;
-  overflow-y: auto;
-  position: relative;
-}
-
-@keyframes slideInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.9) translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.mensaje-snoopy {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 24px;
-  display: block;
-  animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 8px 20px rgba(255, 107, 157, 0.3));
+  background:#fff;
+  padding:40px;
+  border-radius:20px;
+  max-width:600px;
+  max-height:85vh;
+  overflow:auto;
+  color:#2a1a3e;
+  text-align:center;
 }
 
 .mensaje-titulo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(26px, 5vw, 32px);
-  color: #2a1a3e;
-  text-align: center;
-  margin-bottom: 24px;
-  font-weight: 500;
-  letter-spacing: 1px;
+  font-size:28px;
+  margin-bottom:20px;
 }
 
 .mensaje-texto {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(18px, 4vw, 21px);
-  line-height: 1.9;
-  color: #3a2a4e;
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 400;
-  letter-spacing: 0.3px;
+  margin-bottom:15px;
+  line-height:1.6;
 }
 
-.mensaje-firma {
-  text-align: right;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
-  color: #ff6b9d;
-  margin-top: 32px;
-  font-style: italic;
-  font-weight: 500;
-}
-
-.mensaje-decoracion {
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ff6b9d, transparent);
-  margin: 24px auto;
-  opacity: 0.6;
-}
-
-.mensaje-footer {
-  margin-top: 28px;
-  text-align: center;
-}
-
-.btn-volver {
-  padding: 14px 36px;
-  background: linear-gradient(135deg, #ff6b9d, #ff8bb5);
-  border: 2px solid rgba(255, 107, 157, 0.5);
-  border-radius: 50px;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  box-shadow: 0 8px 24px rgba(255, 107, 157, 0.4);
-}
-
-.btn-volver:hover {
-  background: linear-gradient(135deg, #ff8bb5, #ff6b9d);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(255, 107, 157, 0.6);
+.btn-cerrar {
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:#fff;
+  border:none;
+  font-size:22px;
+  cursor:pointer;
+  border-radius:50%;
+  width:40px;
+  height:40px;
 }
 
 .footer {
-  margin-top: 32px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 12px;
-  font-weight: 300;
-  letter-spacing: 1px;
-}
-
-.footer-heart {
-  display: inline-block;
-  color: var(--pink);
-  animation: heartBeat 1.5s ease-in-out infinite;
-}
-
-@keyframes heartBeat {
-  0%, 100% { transform: scale(1); }
-  10%, 30% { transform: scale(1.2); }
-  20%, 40% { transform: scale(1); }
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-  .container {
-    padding: 36px 24px 32px;
-  }
-  
-  h1 {
-    font-size: 36px;
-  }
-  
-  .btn {
-    padding: 16px 44px;
-    font-size: 16px;
-  }
-  
-  .deco-heart {
-    display: none;
-  }
-  
-  .small-card {
-    width: 100%;
-    max-width: 320px;
-    height: 70px;
-    padding: 0 20px;
-  }
-  
-  .card-number {
-    font-size: 24px;
-  }
-  
-  .card-icon {
-    font-size: 28px;
-  }
-  
-  .card-label {
-    font-size: 18px;
-  }
-  
-  .card-arrow {
-    font-size: 20px;
-  }
-  
-  .btn-cerrar {
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-  }
-  
-  .mensaje-contenido {
-    padding: 40px 28px;
-  }
-  
-  .mensaje-texto {
-    font-size: 18px;
-  }
-}
-
-/* Efecto de partículas al hacer clic */
-.particle {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: var(--pink);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: particleBurst 1s ease-out forwards;
-  z-index: 1000;
-}
-
-@keyframes particleBurst {
-  0% {
-    opacity: 1;
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(var(--tx), var(--ty)) scale(0);
-  }
+  margin-top:30px;
+  font-size:12px;
+  opacity:.5;
 }
 </style>
 </head>
 <body>
 
-<!-- Estrellas de fondo -->
-<div class="stars" id="stars"></div>
-
-<!-- Corazones flotantes -->
-<script>
-for(let i = 0; i < 18; i++){
-  const h = document.createElement('div');
-  h.className = 'heart';
-  h.style.left = Math.random() * 100 + 'vw';
-  h.style.animationDelay = (Math.random() * 15) + 's';
-  h.style.animationDuration = (12 + Math.random() * 8) + 's';
-  document.body.appendChild(h);
-}
-
-// Estrellas
-for(let i = 0; i < 50; i++){
-  const s = document.createElement('div');
-  s.className = 'star';
-  s.style.left = Math.random() * 100 + 'vw';
-  s.style.top = Math.random() * 100 + 'vh';
-  s.style.animationDelay = (Math.random() * 3) + 's';
-  s.style.animationDuration = (2 + Math.random() * 2) + 's';
-  document.getElementById('stars').appendChild(s);
-}
-</script>
-
 <div class="container">
-  <div class="header-decoration"></div>
-  
-  <!-- Corazones decorativos alrededor de la tarjeta -->
-  <div class="deco-heart" style="top: 15%; left: -5%; animation-delay: 0s;">💗</div>
-  <div class="deco-heart" style="top: 40%; right: -5%; animation-delay: 1s;">💕</div>
-  <div class="deco-heart" style="bottom: 20%; left: -8%; animation-delay: 2s;">💝</div>
-  <div class="deco-heart" style="bottom: 35%; right: -6%; animation-delay: 1.5s;">💖</div>
-  
   <h1>Para Lourdes</h1>
   <div class="sub">Un mensaje del corazón</div>
-  <button class="btn" onclick="mostrarCartas()">
-    <span>✨ ABRIR CARTA ✨</span>
+
+  <button class="btn" onclick="mostrarCartas(event)">
+    ✨ ABRIR CARTA ✨
   </button>
-  
-  <div class="hint-text">👇 Haz click arriba para descubrir el mensaje 👇</div>
-  
-  <!-- Contenedor de 3 cartas pequeñas -->
+
   <div class="cards-container" id="cardsContainer">
-    <div style="width: 100%; text-align: center; margin-bottom: 20px; grid-column: 1 / -1;">
-      <h2 style="color: #ff6b9d; font-size: 24px; font-family: 'Cormorant Garamond', serif; margin-bottom: 8px;">Elige una carta 💌</h2>
-      <p style="color: #ff8bb5; font-size: 16px; margin: 0;">Haz click en cualquiera de las 3 cartas:</p>
+
+    <div class="small-card" onclick="abrirCarta(1, event)">
+      <div class="card-label">🐶 Mi Corazón</div>
+      <div>→</div>
     </div>
-    
-    <div class="small-card" onclick="abrirCarta(1)">
-      <div class="card-left">
-        <div class="card-number">1</div>
-        <div class="card-icon">🐶</div>
-        <div class="card-label">Mi Corazón</div>
-      </div>
-      <div class="card-arrow">→</div>
+
+    <div class="small-card" onclick="abrirCarta(2, event)">
+      <div class="card-label">💝 Mi Verdad</div>
+      <div>→</div>
     </div>
-    
-    <div class="small-card" onclick="abrirCarta(2)">
-      <div class="card-left">
-        <div class="card-number">2</div>
-        <div class="card-icon">💝</div>
-        <div class="card-label">Mi Verdad</div>
-      </div>
-      <div class="card-arrow">→</div>
+
+    <div class="small-card" onclick="abrirCarta(3, event)">
+      <div class="card-label">🤍 Para Siempre</div>
+      <div>→</div>
     </div>
-    
-    <div class="small-card" onclick="abrirCarta(3)">
-      <div class="card-left">
-        <div class="card-number">3</div>
-        <div class="card-icon">🤍</div>
-        <div class="card-label">Para Siempre</div>
-      </div>
-      <div class="card-arrow">→</div>
-    </div>
+
   </div>
-  
-  <!-- Mensaje romántico completo -->
+
   <div class="mensaje-completo" id="mensajeCompleto">
     <button class="btn-cerrar" onclick="cerrarMensaje()">✕</button>
     <div class="mensaje-contenido" id="mensajeContenido"></div>
-    <div class="mensaje-footer">
-      <button class="btn-volver" onclick="cerrarMensaje()">← Volver a las cartas</button>
-    </div>
   </div>
-  
+
   <div class="footer">
-    Hecho con <span class="footer-heart">♡</span> por Benjamín
+    Hecho con ♡ por Benjamín
   </div>
 </div>
 
 <script>
-// Mensajes románticos completos para cada carta con imágenes de Snoopy
+
+/* MENSAJES */
 const mensajes = {
   1: {
-    titulo: "Mi Corazón para Ti",
-    snoopy: "https://i.pinimg.com/originals/f5/6b/07/f56b07440d82c29e7c11b0f76136a3d4.gif",
-    texto: `Lourdes,
-    
-    Hay personas que llegan y te cambian la perspectiva de todo. Tú eres esa persona para mí.
-    
-    No necesito grandes palabras ni promesas imposibles. Solo quiero que sepas que cuando pienso en ti, todo se siente más ligero, más real, más honesto.
-    
-    Tu risa es mi canción favorita. Tu manera de ver el mundo me hace querer ser mejor. Y tu presencia... tu presencia es ese lugar donde todo tiene sentido.
-    
-    No sé qué nos depara el futuro, pero sí sé que quiero que estés en él. De todas las formas posibles.
-    
-    Gracias por ser exactamente quien eres.`,
-    firma: "Con todo mi corazón 💗"
+    titulo:"Mi Corazón para Ti",
+    texto:`Hay personas que llegan y cambian todo.
+Tu risa es mi canción favorita.
+Gracias por ser exactamente quien eres.`,
+    firma:"Con todo mi corazón 💗"
   },
   2: {
-    titulo: "Mi Verdad Más Honesta",
-    snoopy: "https://i.pinimg.com/originals/88/6d/f4/886df4c8e95e75dffce94772e04e6f5a.gif",
-    texto: `Mi verdad más honesta:
-    
-    Desde que te conozco, algo cambió. No puedo explicarlo con exactitud, pero es como si antes viviera en blanco y negro y tú llegaras con todos los colores.
-    
-    Me importas de una manera que me asusta y me emociona al mismo tiempo. Quiero conocer cada historia que guardas, cada sueño que tienes, cada detalle que te hace sonreír.
-    
-    No soy perfecto. Cometo errores, tengo días difíciles, a veces no encuentro las palabras. Pero contigo quiero intentarlo. Siempre.
-    
-    Eres el tipo de persona que hace que creer en la magia sea fácil. Y yo quiero seguir creyendo contigo.
-    
-    Esto es real. Tú y yo. Y es lo más bonito que tengo.`,
-    firma: "Para siempre, Benjamín 🐶"
+    titulo:"Mi Verdad",
+    texto:`Desde que llegaste, todo tiene más color.
+No soy perfecto, pero contigo quiero intentarlo siempre.`,
+    firma:"Benjamín 🐶"
   },
   3: {
-    titulo: "Para Siempre",
-    snoopy: "https://i.pinimg.com/originals/c0/25/00/c025001c97bf1f38c00c0a63dd35cf72.gif",
-    texto: `Siempre...
-    
-    Siempre voy a elegir hacerte sonreír.
-    Siempre voy a escucharte, aunque el mundo sea ruidoso.
-    Siempre voy a cuidar lo que construimos juntos.
-    
-    No sé si creo en el destino, pero si existe, estoy seguro de que nos puso en el camino del otro por alguna razón.
-    
-    Quiero ser tu refugio en los días grises. Quiero celebrar contigo cada pequeña victoria. Quiero que sepas que no estás sola, que aquí estoy, que aquí estaré.
-    
-    Este mensaje es pequeño comparado con todo lo que siento, pero espero que puedas sentir aunque sea un poco de lo importante que eres para mí.
-    
-    Gracias por existir, Lourdes. Gracias por dejarme estar cerca.
-    
-    Siempre. 🤍`,
-    firma: "Tu Benjamín 💕"
+    titulo:"Para Siempre",
+    texto:`Siempre voy a elegir hacerte sonreír.
+Siempre voy a estar aquí.`,
+    firma:"Tu Benjamín 💕"
   }
 };
 
-function mostrarCartas() {
-  const btn = document.querySelector('.btn');
-  const cardsContainer = document.getElementById('cardsContainer');
-  const hintText = document.querySelector('.hint-text');
-  
-  btn.style.display = 'none';
-  if(hintText) hintText.style.display = 'none';
-  cardsContainer.classList.add('show');
-  
-  // Efecto de partículas
-  createParticles(event);
+function mostrarCartas(e){
+  document.querySelector('.btn').style.display='none';
+  document.getElementById('cardsContainer').classList.add('show');
 }
 
-function abrirCarta(numeroCard) {
-  const mensajeCompleto = document.getElementById('mensajeCompleto');
-  const mensajeContenido = document.getElementById('mensajeContenido');
-  
-  const mensaje = mensajes[numeroCard];
-  
-  // Formatear el mensaje con imagen de Snoopy y párrafos
-  let html = `<img src="${mensaje.snoopy}" alt="Snoopy" class="mensaje-snoopy" onerror="this.style.display='none'">`;
-  html += `<div class="mensaje-titulo">${mensaje.titulo}</div>`;
-  
-  const parrafos = mensaje.texto.split('\n').filter(p => p.trim() !== '');
-  
-  parrafos.forEach((parrafo) => {
-    html += `<div class="mensaje-texto">${parrafo}</div>`;
+function abrirCarta(num,e){
+  const mensaje = mensajes[num];
+  const cont = document.getElementById('mensajeContenido');
+
+  let html=`<div class="mensaje-titulo">${mensaje.titulo}</div>`;
+  mensaje.texto.split('\n').forEach(p=>{
+    html+=`<div class="mensaje-texto">${p}</div>`;
   });
-  
-  html += `<div class="mensaje-decoracion"></div>`;
-  html += `<div class="mensaje-firma">${mensaje.firma}</div>`;
-  
-  mensajeContenido.innerHTML = html;
-  mensajeCompleto.classList.add('show');
-  
-  // Efecto de partículas
-  createParticles(event);
+  html+=`<div style="margin-top:20px;font-style:italic;">${mensaje.firma}</div>`;
+
+  cont.innerHTML=html;
+  document.getElementById('mensajeCompleto').classList.add('show');
 }
 
-function cerrarMensaje() {
-  const mensajeCompleto = document.getElementById('mensajeCompleto');
-  mensajeCompleto.classList.remove('show');
-  
-  setTimeout(() => {
-    mensajeCompleto.style.display = 'none';
-  }, 300);
+function cerrarMensaje(){
+  document.getElementById('mensajeCompleto').classList.remove('show');
 }
 
-function createParticles(e) {
-  if(!e) return;
-  
-  const colors = ['#ff6b9d', '#f4d8a8', '#ffffff'];
-  
-  for(let i = 0; i < 15; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = e.clientX + 'px';
-    particle.style.top = e.clientY + 'px';
-    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-    
-    const angle = (Math.PI * 2 * i) / 15;
-    const velocity = 50 + Math.random() * 70;
-    const tx = Math.cos(angle) * velocity;
-    const ty = Math.sin(angle) * velocity;
-    
-    particle.style.setProperty('--tx', tx + 'px');
-    particle.style.setProperty('--ty', ty + 'px');
-    
-    document.body.appendChild(particle);
-    
-    setTimeout(() => particle.remove(), 1000);
-  }
-}
-
-// Cerrar mensaje con tecla ESC
-document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape') {
-    cerrarMensaje();
-  }
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') cerrarMensaje();
 });
+
 </script>
 
 </body>
 </html>
+
