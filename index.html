@@ -394,15 +394,17 @@ h1 {
 }
 
 .mensaje-texto {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(18px, 4vw, 21px);
-  line-height: 1.9;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(22px, 4vw, 26px);
+  line-height: 2;
   color: #3a2a4e;
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 400;
-  letter-spacing: 0.3px;
+  text-align: left;
+  margin-bottom: 22px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 0 10px;
 }
+
 
 .mensaje-firma {
   text-align: right;
@@ -647,56 +649,73 @@ const mensajes = {
   1: {
     titulo: "Mi Corazón para Ti",
     snoopy: "https://i.pinimg.com/originals/f5/6b/07/f56b07440d82c29e7c11b0f76136a3d4.gif",
-    texto: `Lourdes,
-    
-    Hay personas que llegan y te cambian la perspectiva de todo. Tú eres esa persona para mí.
-    
-    No necesito grandes palabras ni promesas imposibles. Solo quiero que sepas que cuando pienso en ti, todo se siente más ligero, más real, más honesto.
-    
-    Tu risa es mi canción favorita. Tu manera de ver el mundo me hace querer ser mejor. Y tu presencia... tu presencia es ese lugar donde todo tiene sentido.
-    
-    No sé qué nos depara el futuro, pero sí sé que quiero que estés en él. De todas las formas posibles.
-    
-    Gracias por ser exactamente quien eres.`,
-    firma: "Con todo mi corazón 💗"
+    texto: `Lourdes…
+
+    No sé en qué momento exacto empezaste a convertirte en algo tan importante para mí.
+
+    Pero sé que desde que apareciste, mi corazón late diferente. Más fuerte. Más consciente. Más lleno.
+
+    Hay algo en tu forma de existir que me desarma. Tu risa no solo me gusta… me calma. Me recuerda que el mundo puede ser suave.
+
+    No quiero impresionarte con promesas gigantes.
+    Quiero cuidarte en lo pequeño.
+    En lo diario.
+    En lo real.
+
+    Si alguna vez dudas de lo que significas…
+    recuerda que hay alguien aquí que te piensa con ternura, con respeto y con una profundidad que ni siquiera sabía que tenía.
+
+    Y ese alguien soy yo.`,
+    firma: "Con todo lo que soy 💗"
   },
+
   2: {
-    titulo: "Mi Verdad Más Honesta",
+    titulo: "Mi Verdad Más Profunda",
     snoopy: "https://i.pinimg.com/originals/88/6d/f4/886df4c8e95e75dffce94772e04e6f5a.gif",
-    texto: `Mi verdad más honesta:
-    
-    Desde que te conozco, algo cambió. No puedo explicarlo con exactitud, pero es como si antes viviera en blanco y negro y tú llegaras con todos los colores.
-    
-    Me importas de una manera que me asusta y me emociona al mismo tiempo. Quiero conocer cada historia que guardas, cada sueño que tienes, cada detalle que te hace sonreír.
-    
-    No soy perfecto. Cometo errores, tengo días difíciles, a veces no encuentro las palabras. Pero contigo quiero intentarlo. Siempre.
-    
-    Eres el tipo de persona que hace que creer en la magia sea fácil. Y yo quiero seguir creyendo contigo.
-    
-    Esto es real. Tú y yo. Y es lo más bonito que tengo.`,
-    firma: "Para siempre, Benjamín 🐶"
+    texto: `Voy a decirte algo que no le digo a cualquiera:
+
+    Me importas.
+
+    No de una forma ligera.
+    No como algo pasajero.
+
+    Me importas de esa manera que hace que uno tenga miedo… porque cuando algo se vuelve valioso, uno teme perderlo.
+
+    Contigo quiero conversaciones largas.
+    Silencios cómodos.
+    Miradas que no necesiten explicación.
+
+    No quiero ser perfecto.
+    Quiero ser verdadero contigo.
+
+    Y mi verdad es esta:
+    Si tú estás cerca, todo se siente más claro.`,
+    firma: "Siempre honesto contigo 🐶"
   },
+
   3: {
-    titulo: "Para Siempre",
+    titulo: "Siempre",
     snoopy: "https://i.pinimg.com/originals/c0/25/00/c025001c97bf1f38c00c0a63dd35cf72.gif",
-    texto: `Siempre...
-    
-    Siempre voy a elegir hacerte sonreír.
-    Siempre voy a escucharte, aunque el mundo sea ruidoso.
-    Siempre voy a cuidar lo que construimos juntos.
-    
-    No sé si creo en el destino, pero si existe, estoy seguro de que nos puso en el camino del otro por alguna razón.
-    
-    Quiero ser tu refugio en los días grises. Quiero celebrar contigo cada pequeña victoria. Quiero que sepas que no estás sola, que aquí estoy, que aquí estaré.
-    
-    Este mensaje es pequeño comparado con todo lo que siento, pero espero que puedas sentir aunque sea un poco de lo importante que eres para mí.
-    
-    Gracias por existir, Lourdes. Gracias por dejarme estar cerca.
-    
-    Siempre. 🤍`,
-    firma: "Tu Benjamín 💕"
+    texto: `Siempre es una palabra grande.
+
+    Pero contigo no me asusta.
+
+    Porque no hablo de un para siempre fantasioso…
+    Hablo de elegirte todos los días.
+
+    Elegirte cuando estés feliz.
+    Elegirte cuando estés cansada.
+    Elegirte incluso cuando el mundo se complique.
+
+    Si el destino existe, quiero que sepa que estoy dispuesto.
+    Y si no existe… entonces lo construimos nosotros.
+
+    Lourdes,
+    gracias por permitir que mi corazón te encuentre.`,
+    firma: "Tu Benjamín 🤍"
   }
 };
+
 
 function abrirCarta(numeroCard) {
   const mensajeCompleto = document.getElementById('mensajeCompleto');
