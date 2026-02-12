@@ -120,6 +120,24 @@ body {
   animation: slideIn 1s ease-out;
 }
 
+.deco-heart {
+  position: absolute;
+  font-size: 28px;
+  opacity: 0.6;
+  animation: floatDeco 4s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(255, 107, 157, 0.4));
+  pointer-events: none;
+}
+
+@keyframes floatDeco {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(10deg);
+  }
+}
+
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -157,24 +175,41 @@ h1 {
   font-weight: 300;
   letter-spacing: 0.5px;
   opacity: 0.85;
+  margin-bottom: 8px;
 }
 
 /* Botón mejorado */
 .btn {
   margin-top: 32px;
-  padding: 16px 48px;
+  padding: 18px 52px;
   border-radius: 50px;
-  border: none;
-  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 240, 240, 0.95) 100%);
   color: #1a0a2e;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 8px 32px rgba(255, 255, 255, 0.25),
+    0 0 60px rgba(255, 107, 157, 0.4);
   position: relative;
   overflow: hidden;
+  animation: btnPulse 2s ease-in-out infinite;
+}
+
+@keyframes btnPulse {
+  0%, 100% {
+    box-shadow: 
+      0 8px 32px rgba(255, 255, 255, 0.25),
+      0 0 60px rgba(255, 107, 157, 0.4);
+  }
+  50% {
+    box-shadow: 
+      0 8px 32px rgba(255, 255, 255, 0.35),
+      0 0 80px rgba(255, 107, 157, 0.6);
+  }
 }
 
 .btn::before {
@@ -185,7 +220,7 @@ h1 {
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(255, 107, 157, 0.2);
+  background: rgba(255, 107, 157, 0.3);
   transform: translate(-50%, -50%);
   transition: width 0.6s, height 0.6s;
 }
@@ -196,12 +231,15 @@ h1 {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 48px rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 
+    0 16px 48px rgba(255, 255, 255, 0.35),
+    0 0 100px rgba(255, 107, 157, 0.7);
+  border-color: rgba(255, 107, 157, 0.5);
 }
 
 .btn:active {
-  transform: translateY(0);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .btn span {
@@ -209,136 +247,238 @@ h1 {
   z-index: 1;
 }
 
-/* Tarjeta de contenido */
-.card {
-  margin-top: 36px;
-  display: none;
-  opacity: 0;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: scale(1.01);
-}
-
-.card.show {
-  display: block;
-  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Imagen con efecto */
-.image-container {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 28px;
-}
-
-.image-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(circle, rgba(255, 107, 157, 0.3) 0%, transparent 70%);
-  animation: pulse 3s ease-in-out infinite;
-  border-radius: 50%;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.1);
-    opacity: 0.8;
-  }
-}
-
-.snoopy {
-  width: 180px;
-  height: 180px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* Texto del mensaje */
-.text {
-  margin-top: 24px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(19px, 4vw, 22px);
-  line-height: 1.8;
-  min-height: 140px;
+.hint-text {
+  margin-top: 20px;
   color: var(--soft);
+  font-size: 14px;
   font-weight: 300;
-  letter-spacing: 0.3px;
-}
-
-.text .phrase {
-  display: block;
-  margin-bottom: 20px;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInPhrase 0.8s ease-out forwards;
-}
-
-@keyframes fadeInPhrase {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Decoración entre frases */
-.divider {
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 16px auto;
-  opacity: 0.4;
-}
-
-.tap {
-  margin-top: 24px;
-  color: var(--soft);
-  font-size: 13px;
-  opacity: 0.6;
-  font-weight: 300;
+  opacity: 0.7;
   letter-spacing: 0.5px;
   animation: blink 2s ease-in-out infinite;
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 0.3; }
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.4; }
+}
+
+/* Contenedor de 3 cartas pequeñas */
+.cards-container {
+  margin-top: 36px;
+  display: none;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+}
+
+.cards-container.show {
+  display: flex;
+  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.small-card {
+  width: 140px;
+  height: 180px;
+  background: linear-gradient(165deg, rgba(60, 50, 70, 0.6), rgba(40, 30, 50, 0.8));
+  border-radius: 20px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.small-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.small-card:hover::before {
+  opacity: 1;
+}
+
+.small-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  border-color: rgba(255, 107, 157, 0.4);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(255, 107, 157, 0.2);
+}
+
+.small-card:active {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.card-number {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--soft);
+}
+
+.card-icon {
+  font-size: 48px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(255, 107, 157, 0.3));
+}
+
+.card-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: var(--soft);
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Mensaje completo */
+.mensaje-completo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 5, 20, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+}
+
+.mensaje-completo.show {
+  display: flex;
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.btn-cerrar {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.btn-cerrar:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.mensaje-contenido {
+  max-width: 600px;
+  width: 100%;
+  background: linear-gradient(165deg, rgba(40, 30, 50, 0.95), rgba(25, 20, 35, 0.98));
+  border-radius: 32px;
+  padding: 50px 40px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: slideInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.mensaje-texto {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 4vw, 24px);
+  line-height: 1.9;
+  color: var(--soft);
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+.mensaje-firma {
+  text-align: right;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--gold);
+  margin-top: 32px;
+  font-style: italic;
+}
+
+.mensaje-decoracion {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 24px auto;
+  opacity: 0.6;
+}
+
+.mensaje-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-volver {
+  padding: 12px 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: var(--soft);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.btn-volver:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-4px);
 }
 
 .footer {
@@ -374,18 +514,41 @@ h1 {
   }
   
   .btn {
-    padding: 14px 40px;
-    font-size: 15px;
+    padding: 16px 44px;
+    font-size: 16px;
   }
   
-  .image-container {
-    width: 150px;
-    height: 150px;
+  .deco-heart {
+    display: none;
   }
   
-  .snoopy {
-    width: 150px;
-    height: 150px;
+  .small-card {
+    width: 120px;
+    height: 160px;
+    padding: 16px;
+  }
+  
+  .card-icon {
+    font-size: 40px;
+  }
+  
+  .card-label {
+    font-size: 16px;
+  }
+  
+  .btn-cerrar {
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .mensaje-contenido {
+    padding: 40px 28px;
+  }
+  
+  .mensaje-texto {
+    font-size: 18px;
   }
 }
 
@@ -443,19 +606,47 @@ for(let i = 0; i < 50; i++){
 
 <div class="container">
   <div class="header-decoration"></div>
+  
+  <!-- Corazones decorativos alrededor de la tarjeta -->
+  <div class="deco-heart" style="top: 15%; left: -5%; animation-delay: 0s;">💗</div>
+  <div class="deco-heart" style="top: 40%; right: -5%; animation-delay: 1s;">💕</div>
+  <div class="deco-heart" style="bottom: 20%; left: -8%; animation-delay: 2s;">💝</div>
+  <div class="deco-heart" style="bottom: 35%; right: -6%; animation-delay: 1.5s;">💖</div>
+  
   <h1>Para Lourdes</h1>
   <div class="sub">Un mensaje del corazón</div>
-  <button class="btn" onclick="abrir()">
+  <button class="btn" onclick="mostrarCartas()">
     <span>✨ Abrir carta ✨</span>
   </button>
   
-  <div class="card" id="carta">
-    <div class="image-container">
-      <div class="image-glow"></div>
-      <img class="snoopy" id="snoopyImg" src="https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png" alt="Snoopy"/>
+  <div class="hint-text">Haz click para descubrir el mensaje</div>
+  
+  <!-- Contenedor de 3 cartas pequeñas -->
+  <div class="cards-container" id="cardsContainer">
+    <div class="small-card" onclick="abrirCarta(1)">
+      <div class="card-number">1</div>
+      <div class="card-icon">💌</div>
+      <div class="card-label">Para ti</div>
     </div>
-    <div class="text" id="mensaje"></div>
-    <div class="tap" id="tapHint">✦ toca de nuevo para continuar ✦</div>
+    <div class="small-card" onclick="abrirCarta(2)">
+      <div class="card-number">2</div>
+      <div class="card-icon">💝</div>
+      <div class="card-label">Mi verdad</div>
+    </div>
+    <div class="small-card" onclick="abrirCarta(3)">
+      <div class="card-number">3</div>
+      <div class="card-icon">🤍</div>
+      <div class="card-label">Siempre</div>
+    </div>
+  </div>
+  
+  <!-- Mensaje romántico completo -->
+  <div class="mensaje-completo" id="mensajeCompleto">
+    <button class="btn-cerrar" onclick="cerrarMensaje()">✕</button>
+    <div class="mensaje-contenido" id="mensajeContenido"></div>
+    <div class="mensaje-footer">
+      <button class="btn-volver" onclick="cerrarMensaje()">← Volver a las cartas</button>
+    </div>
   </div>
   
   <div class="footer">
@@ -464,92 +655,104 @@ for(let i = 0; i < 50; i++){
 </div>
 
 <script>
-const frases = [
-  "Lourdes…",
-  "No vengo con palabras prestadas ni promesas vacías.",
-  "Solo traigo lo que siento, así de honesto, así de simple.",
-  "Tu presencia tiene algo que desarma el ruido del mundo.",
-  "Contigo, el silencio se siente como hogar.",
-  "No siempre encuentro las palabras perfectas, pero cuando pienso en ti, quiero intentar ser mejor persona.",
-  "Me importas. De las maneras que importan de verdad.",
-  "Gracias por existir en mis días, por hacer que valgan más la pena.",
-  "Esta carta no es gran cosa, pero tú sí lo eres. 🤍"
-];
-
-// GIFs de Snoopy enamorado
-const snoopyGifs = [
-  "https://i.pinimg.com/originals/21/39/5d/21395d904a906a686ed91977b53a595c.gif", // Snoopy con corazón
-  "https://media1.tenor.com/m/FRmGvDrsPI4AAAAC/snoopy-peanuts.gif", // Snoopy bailando amor
-  "https://media1.tenor.com/m/6o3F1pJPC5QAAAAC/snoopy-love.gif", // Snoopy mandando besos
-  "https://media.tenor.com/gsTJNPI298kAAAAi/snoopy-love.gif", // Snoopy con corazones
-  "https://media1.tenor.com/m/rqUv90U6NhsAAAAC/snoopy-hug.gif", // Snoopy abrazando
-  "https://i.pinimg.com/originals/49/26/ce/4926cedf0e36f68a7d006c6d951f99ce.gif", // Snoopy enamorado
-  "https://media1.tenor.com/m/YbUQAV8YJkMAAAAC/snoopy-woodstock.gif", // Snoopy y Woodstock amor
-  "https://i.pinimg.com/originals/88/ec/90/88ec90f421b0e1f46d6990bd33cb1bf5.gif", // Snoopy romántico
-  "https://media.tenor.com/T8N7WprSoQEAAAAi/snoopy-kiss.gif" // Snoopy besitos
-];
-
-let index = 0;
-let firstClick = true;
-
-function abrir() {
-  const carta = document.getElementById("carta");
-  const btn = document.querySelector(".btn");
-  
-  if(firstClick) {
-    carta.classList.add("show");
-    btn.style.display = "none";
-    firstClick = false;
-    escribir();
-  } else {
-    escribir();
+// Mensajes románticos completos para cada carta
+const mensajes = {
+  1: {
+    texto: `Lourdes,
+    
+    Hay personas que llegan y te cambian la perspectiva de todo. Tú eres esa persona para mí.
+    
+    No necesito grandes palabras ni promesas imposibles. Solo quiero que sepas que cuando pienso en ti, todo se siente más ligero, más real, más honesto.
+    
+    Tu risa es mi canción favorita. Tu manera de ver el mundo me hace querer ser mejor. Y tu presencia... tu presencia es ese lugar donde todo tiene sentido.
+    
+    No sé qué nos depara el futuro, pero sí sé que quiero que estés en él. De todas las formas posibles.
+    
+    Gracias por ser exactamente quien eres.`,
+    firma: "Con todo mi corazón"
+  },
+  2: {
+    texto: `Mi verdad más honesta:
+    
+    Desde que te conozco, algo cambió. No puedo explicarlo con exactitud, pero es como si antes viviera en blanco y negro y tú llegaras con todos los colores.
+    
+    Me importas de una manera que me asusta y me emociona al mismo tiempo. Quiero conocer cada historia que guardas, cada sueño que tienes, cada detalle que te hace sonreír.
+    
+    No soy perfecto. Cometo errores, tengo días difíciles, a veces no encuentro las palabras. Pero contigo quiero intentarlo. Siempre.
+    
+    Eres el tipo de persona que hace que creer en la magia sea fácil. Y yo quiero seguir creyendo contigo.
+    
+    Esto es real. Tú y yo. Y es lo más bonito que tengo.`,
+    firma: "Para siempre, Benjamín"
+  },
+  3: {
+    texto: `Siempre...
+    
+    Siempre voy a elegir hacerte sonreír.
+    Siempre voy a escucharte, aunque el mundo sea ruidoso.
+    Siempre voy a cuidar lo que construimos juntos.
+    
+    No sé si creo en el destino, pero si existe, estoy seguro de que nos puso en el camino del otro por alguna razón.
+    
+    Quiero ser tu refugio en los días grises. Quiero celebrar contigo cada pequeña victoria. Quiero que sepas que no estás sola, que aquí estoy, que aquí estaré.
+    
+    Este mensaje es pequeño comparado con todo lo que siento, pero espero que puedas sentir aunque sea un poco de lo importante que eres para mí.
+    
+    Gracias por existir, Lourdes. Gracias por dejarme estar cerca.
+    
+    Siempre. 🤍`,
+    firma: "Tu Benjamin"
   }
+};
+
+function mostrarCartas() {
+  const btn = document.querySelector('.btn');
+  const cardsContainer = document.getElementById('cardsContainer');
+  const hintText = document.querySelector('.hint-text');
+  
+  btn.style.display = 'none';
+  if(hintText) hintText.style.display = 'none';
+  cardsContainer.classList.add('show');
   
   // Efecto de partículas
   createParticles(event);
 }
 
-function escribir() {
-  const mensaje = document.getElementById("mensaje");
-  const snoopyImg = document.getElementById("snoopyImg");
-  const tapHint = document.getElementById("tapHint");
+function abrirCarta(numeroCard) {
+  const mensajeCompleto = document.getElementById('mensajeCompleto');
+  const mensajeContenido = document.getElementById('mensajeContenido');
   
-  if(index < frases.length) {
-    // Cambiar imagen de Snoopy (usar GIF si no es la primera)
-    if(index > 0 && index <= snoopyGifs.length) {
-      snoopyImg.src = snoopyGifs[index - 1];
-    }
-    
-    const frase = document.createElement("span");
-    frase.className = "phrase";
-    frase.textContent = frases[index];
-    frase.style.animationDelay = "0s";
-    
-    mensaje.appendChild(frase);
-    
-    if(index < frases.length - 1) {
-      const divider = document.createElement("div");
-      divider.className = "divider";
-      mensaje.appendChild(divider);
+  const mensaje = mensajes[numeroCard];
+  
+  // Formatear el mensaje con párrafos
+  const parrafos = mensaje.texto.split('\n').filter(p => p.trim() !== '');
+  let html = '';
+  
+  parrafos.forEach((parrafo, index) => {
+    if (index === 0) {
+      html += `<div class="mensaje-texto" style="font-size: 28px; font-weight: 400; margin-bottom: 32px;">${parrafo}</div>`;
     } else {
-      // Ocultar hint cuando termine
-      tapHint.style.display = "none";
+      html += `<div class="mensaje-texto">${parrafo}</div>`;
     }
-    
-    index++;
-    
-    // Scroll suave hacia abajo
-    setTimeout(() => {
-      mensaje.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }, 100);
-  } else {
-    // Reinicia
-    index = 0;
-    mensaje.innerHTML = "";
-    snoopyImg.src = "https://upload.wikimedia.org/wikipedia/en/5/53/Snoopy_Peanuts.png";
-    tapHint.style.display = "block";
-    escribir();
-  }
+  });
+  
+  html += `<div class="mensaje-decoracion"></div>`;
+  html += `<div class="mensaje-firma">${mensaje.firma}</div>`;
+  
+  mensajeContenido.innerHTML = html;
+  mensajeCompleto.classList.add('show');
+  
+  // Efecto de partículas
+  createParticles(event);
+}
+
+function cerrarMensaje() {
+  const mensajeCompleto = document.getElementById('mensajeCompleto');
+  mensajeCompleto.classList.remove('show');
+  
+  setTimeout(() => {
+    mensajeCompleto.style.display = 'none';
+  }, 300);
 }
 
 function createParticles(e) {
@@ -557,15 +760,15 @@ function createParticles(e) {
   
   const colors = ['#ff6b9d', '#f4d8a8', '#ffffff'];
   
-  for(let i = 0; i < 12; i++) {
+  for(let i = 0; i < 15; i++) {
     const particle = document.createElement('div');
     particle.className = 'particle';
     particle.style.left = e.clientX + 'px';
     particle.style.top = e.clientY + 'px';
     particle.style.background = colors[Math.floor(Math.random() * colors.length)];
     
-    const angle = (Math.PI * 2 * i) / 12;
-    const velocity = 50 + Math.random() * 50;
+    const angle = (Math.PI * 2 * i) / 15;
+    const velocity = 50 + Math.random() * 70;
     const tx = Math.cos(angle) * velocity;
     const ty = Math.sin(angle) * velocity;
     
@@ -578,25 +781,10 @@ function createParticles(e) {
   }
 }
 
-// Agregar click listener al contenedor de la carta
-document.addEventListener('DOMContentLoaded', () => {
-  const carta = document.getElementById('carta');
-  carta.addEventListener('click', (e) => {
-    if(!firstClick) {
-      abrir();
-    }
-  });
-});
-
-// Hacer que el botón también funcione con Enter
-document.addEventListener('keypress', (e) => {
-  if(e.key === 'Enter') {
-    const carta = document.getElementById('carta');
-    if(!carta.classList.contains('show')) {
-      abrir();
-    } else if(index < frases.length) {
-      abrir();
-    }
+// Cerrar mensaje con tecla ESC
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') {
+    cerrarMensaje();
   }
 });
 </script>
