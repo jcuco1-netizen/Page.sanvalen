@@ -1,225 +1,652 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Lourdes</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:'Poppins', sans-serif;
-  background:linear-gradient(135deg,#ff4d88,#c9184a,#6a0572);
-  overflow:hidden;
+  background: linear-gradient(135deg, #ff9ac1 0%, #ff6b9d 50%, #ff4d7d 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
   color:white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Corazones flotantes animados de fondo */
+.hearts-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heart-float {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.3;
+  animation: floatUp 15s linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Estrellas de fondo */
+body::before {
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 33% 80%, white, transparent);
+  background-size: 300px 300px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 50px, 250px 150px;
+  opacity: 0.4;
+  animation: sparkle 25s linear infinite;
+  z-index: 0;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
 }
 
 /* ===== INTRO SNOOPY ===== */
 .intro{
-  position:fixed;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  background:linear-gradient(135deg,#ff4d88,#c9184a,#6a0572);
-  z-index:999;
-  text-align:center;
-  cursor:pointer;
-  transition:1s ease;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, #ff9ac1 0%, #ff6b9d 50%, #ff4d7d 100%);
+  z-index: 999;
+  text-align: center;
+  cursor: pointer;
+  transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .intro.hide{
-  opacity:0;
-  visibility:hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.9);
+}
+
+.intro-content {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+  padding: 70px 60px;
+  border-radius: 50px;
+  box-shadow: 
+    0 30px 90px rgba(0, 0, 0, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+    0 0 100px rgba(255, 255, 255, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.intro-content:hover {
+  transform: scale(1.02);
 }
 
 .intro img{
-  width:200px;
-  margin-bottom:20px;
-  animation:float 3s ease-in-out infinite;
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  margin-bottom: 30px;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4));
 }
 
 @keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-15px);}
+  0%,100%{transform:translateY(0) rotate(-3deg);}
+  50%{transform:translateY(-25px) rotate(3deg);}
 }
 
 .intro h1{
   font-family:'Playfair Display', serif;
-  font-size:32px;
-  margin-bottom:10px;
+  font-size: 48px;
+  margin-bottom: 18px;
+  color: #fff;
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  line-height: 1.2;
 }
 
 .intro small{
-  font-size:14px;
-  opacity:.8;
+  font-size: 20px;
+  opacity: 0.95;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .intro-text{
-  margin-top:20px;
-  font-size:16px;
-  opacity:.8;
+  margin-top: 35px;
+  font-size: 20px;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 16px 40px;
+  border-radius: 30px;
+  animation: pulse 2s ease-in-out infinite;
+  font-weight: 500;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
+  50% { transform: scale(1.05); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3); }
 }
 
 /* ===== PANTALLA ===== */
 .screen{
-  position:absolute;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  transition:1s ease;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
 }
 
 .hidden{
-  opacity:0;
-  visibility:hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95);
 }
 
 .container{
-  width:100%;
-  max-width:600px;
-  background:rgba(255,255,255,0.1);
-  backdrop-filter:blur(12px);
-  padding:50px;
-  border-radius:30px;
-  text-align:center;
-  box-shadow:0 0 40px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 750px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(25px);
+  padding: 80px 70px;
+  border-radius: 45px;
+  text-align: center;
+  box-shadow: 
+    0 35px 100px rgba(0, 0, 0, 0.5),
+    inset 0 2px 0 rgba(255, 255, 255, 1),
+    0 0 0 1px rgba(255, 255, 255, 0.5);
+  border: 4px solid rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Snoopy decorativo en el fondo */
+.container::before {
+  content: '🐶';
+  position: absolute;
+  font-size: 280px;
+  opacity: 0.04;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  z-index: 0;
+}
+
+.container > * {
+  position: relative;
+  z-index: 1;
 }
 
 h2{
   font-family:'Playfair Display', serif;
-  font-size:36px;
-  margin-bottom:10px;
+  font-size: 56px;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #ff1b6b, #ff5c8a, #ff1b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 20px rgba(255, 27, 107, 0.3);
 }
 
 .subtitle{
-  margin-bottom:30px;
-  opacity:.9;
+  margin-bottom: 50px;
+  color: #555;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 
-/* BOTONES */
+.snoopy-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0 45px;
+}
+
+.snoopy-divider::before,
+.snoopy-divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ff85a6, transparent);
+  max-width: 150px;
+}
+
+.snoopy-divider span {
+  font-size: 40px;
+  filter: drop-shadow(0 4px 8px rgba(255, 107, 157, 0.3));
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+/* BOTONES MEJORADOS */
 .card-btn{
-  width:100%;
-  padding:18px;
-  margin:15px 0;
-  background:linear-gradient(135deg,#ff85a1,#ff4d6d);
-  border:none;
-  border-radius:25px;
-  color:white;
-  font-size:18px;
-  cursor:pointer;
-  transition:.4s;
+  width: 100%;
+  padding: 28px 35px;
+  margin: 22px 0;
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff4d7d 50%, #ff3366 100%);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 12px 35px rgba(255, 77, 125, 0.5),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 0.5px;
+}
+
+.card-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.6s;
+}
+
+.card-btn:hover::before {
+  left: 100%;
 }
 
 .card-btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 20px rgba(255,255,255,0.5);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 50px rgba(255, 77, 125, 0.7),
+    inset 0 2px 0 rgba(255, 255, 255, 0.6);
 }
 
-/* SOBRE */
+.card-btn:active {
+  transform: translateY(-5px) scale(1);
+}
+
+.btn-icon {
+  font-size: 36px;
+  margin-right: 20px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.btn-text {
+  flex: 1;
+  text-align: left;
+  font-size: 24px;
+}
+
+.btn-arrow {
+  font-size: 32px;
+  transition: transform 0.3s ease;
+  font-weight: bold;
+}
+
+.card-btn:hover .btn-arrow {
+  transform: translateX(8px);
+}
+
+/* SOBRE MEJORADO */
+.envelope-container {
+  perspective: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .envelope{
-  width:280px;
-  height:180px;
-  background:#ff8fab;
-  position:relative;
-  border-radius:12px;
-  cursor:pointer;
-  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+  width: 400px;
+  height: 250px;
+  background: linear-gradient(135deg, #ff85a6, #ff6b9d);
+  position: relative;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.envelope:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 40px 90px rgba(0,0,0,0.6);
 }
 
 .flap{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:#ff4d6d;
-  clip-path:polygon(0 0,100% 0,50% 60%);
-  transform-origin:top;
-  transition:1s ease;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff4d7d, #ff3366);
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  transform-origin: top;
+  transition: 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  border-radius: 20px 20px 0 0;
 }
 
 .envelope.open .flap{
-  transform:rotateX(180deg);
+  transform: rotateX(180deg);
 }
 
-/* CARTA */
+.envelope-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  z-index: 10;
+  animation: heartBeat 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  15%, 35% { transform: translate(-50%, -50%) scale(1.25); }
+  25%, 45% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.envelope-instruction {
+  margin-top: 50px;
+  font-size: 24px;
+  color: white;
+  opacity: 1;
+  animation: blink 2.5s ease-in-out infinite;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px 30px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.98); }
+}
+
+/* CARTA MEJORADA */
 .letter-box{
-  max-width:600px;
-  width:100%;
-  background:white;
-  color:#6a0572;
-  padding:40px;
-  border-radius:30px;
-  line-height:1.8;
-  font-size:18px;
-  position:relative;
+  max-width: 850px;
+  width: 100%;
+  background: #fffef9;
+  color: #2d2d2d;
+  padding: 70px 60px;
+  border-radius: 35px;
+  line-height: 2.2;
+  font-size: 22px;
+  position: relative;
+  box-shadow: 
+    0 35px 100px rgba(0, 0, 0, 0.5),
+    inset 0 0 120px rgba(255, 182, 193, 0.15);
+  border: 4px solid #ffccd5;
+  animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.letter-box::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  border: 2px dashed rgba(255, 107, 157, 0.25);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.letter-snoopy {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.letter-snoopy img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 20px rgba(255, 107, 157, 0.3));
+}
+
+#texto {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+  margin: 40px 0;
+  font-size: 22px;
+  line-height: 2.2;
 }
 
 .signature{
-  position:absolute;
-  bottom:15px;
-  right:20px;
-  font-size:14px;
-  color:#c9184a;
+  position: absolute;
+  bottom: 35px;
+  right: 50px;
+  font-size: 24px;
+  color: #ff4d7d;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: italic;
 }
 
 .back-btn{
-  margin-top:25px;
-  padding:10px 18px;
-  background:#c9184a;
-  color:white;
-  border:none;
-  border-radius:15px;
-  cursor:pointer;
+  margin-top: 45px;
+  padding: 18px 42px;
+  background: linear-gradient(135deg, #ff6b9d, #ff4d7d);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 12px 30px rgba(255, 77, 125, 0.5);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
 }
 
-@media(max-width:600px){
-  .intro img{width:150px;}
-  .letter-box{font-size:16px;padding:25px;}
-  h2{font-size:26px;}
+.back-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(255, 77, 125, 0.7);
+}
+
+.back-btn:active {
+  transform: translateY(-3px);
+}
+
+@media(max-width: 768px){
+  .intro-content { padding: 50px 40px; }
+  .intro img { width: 220px; height: 220px; }
+  .intro h1 { font-size: 38px; }
+  .intro small { font-size: 18px; }
+  .intro-text { font-size: 18px; padding: 14px 35px; }
+  
+  .container { padding: 60px 40px; max-width: 95%; }
+  h2 { font-size: 42px; }
+  .subtitle { font-size: 18px; margin-bottom: 35px; }
+  .snoopy-divider span { font-size: 32px; }
+  
+  .card-btn { font-size: 20px; padding: 24px 28px; margin: 18px 0; }
+  .btn-icon { font-size: 30px; }
+  .btn-text { font-size: 20px; }
+  .btn-arrow { font-size: 28px; }
+  
+  .envelope { width: 320px; height: 200px; }
+  .envelope-heart { font-size: 60px; }
+  .envelope-instruction { font-size: 20px; margin-top: 40px; }
+  
+  .letter-box { font-size: 19px; padding: 50px 35px; max-width: 95%; }
+  .letter-snoopy img { width: 130px; height: 130px; }
+  #texto { font-size: 19px; }
+  .signature { font-size: 20px; bottom: 30px; right: 35px; }
+  .back-btn { font-size: 16px; padding: 16px 36px; }
+}
+
+@media(max-width: 480px){
+  .intro-content { padding: 40px 30px; }
+  .intro img { width: 180px; height: 180px; }
+  .intro h1 { font-size: 32px; }
+  .intro small { font-size: 16px; }
+  .intro-text { font-size: 16px; padding: 12px 28px; }
+  
+  .container { padding: 45px 30px; }
+  h2 { font-size: 36px; }
+  .subtitle { font-size: 16px; }
+  
+  .card-btn { font-size: 18px; padding: 20px 24px; }
+  .btn-icon { font-size: 28px; margin-right: 15px; }
+  .btn-text { font-size: 18px; }
+  .btn-arrow { font-size: 24px; }
+  
+  .envelope { width: 280px; height: 180px; }
+  .envelope-heart { font-size: 50px; }
+  .envelope-instruction { font-size: 18px; padding: 10px 25px; }
+  
+  .letter-box { font-size: 17px; padding: 40px 25px; line-height: 2; }
+  .letter-box::before { top: 20px; left: 20px; right: 20px; bottom: 20px; }
+  .letter-snoopy img { width: 110px; height: 110px; }
+  #texto { font-size: 17px; margin: 30px 0; }
+  .signature { font-size: 18px; }
+  .back-btn { padding: 14px 32px; }
 }
 
 </style>
 </head>
 <body>
 
+<!-- Corazones flotantes animados -->
+<div class="hearts-bg">
+  <div class="heart-float" style="left: 10%; animation-delay: 0s;">💕</div>
+  <div class="heart-float" style="left: 20%; animation-delay: 2s;">💗</div>
+  <div class="heart-float" style="left: 30%; animation-delay: 4s;">💖</div>
+  <div class="heart-float" style="left: 40%; animation-delay: 1s;">💝</div>
+  <div class="heart-float" style="left: 50%; animation-delay: 3s;">💕</div>
+  <div class="heart-float" style="left: 60%; animation-delay: 5s;">💗</div>
+  <div class="heart-float" style="left: 70%; animation-delay: 2.5s;">💖</div>
+  <div class="heart-float" style="left: 80%; animation-delay: 4.5s;">💝</div>
+  <div class="heart-float" style="left: 90%; animation-delay: 1.5s;">💕</div>
+</div>
+
 <!-- INTRO -->
 <div class="intro" id="intro" onclick="entrar()">
-  <img src="https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif">
-  <h1>Feliz 14 de febrero, mi amor</h1>
-  <small>de Benja</small>
-  <div class="intro-text">Toca para comenzar</div>
+  <div class="intro-content">
+    <img src="https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif" alt="Snoopy">
+    <h1>Feliz 14 de febrero, mi amor</h1>
+    <small>de Benja 💕</small>
+    <div class="intro-text">✨ Toca para comenzar ✨</div>
+  </div>
 </div>
 
 <!-- MENU -->
 <div class="screen hidden" id="menu">
   <div class="container">
     <h2>Para Lourdes</h2>
-    <div class="subtitle">Con todo mi cariño</div>
-    <button class="card-btn" onclick="preAbrir(1)">Mi Corazón</button>
-    <button class="card-btn" onclick="preAbrir(2)">Mi Verdad</button>
-    <button class="card-btn" onclick="preAbrir(3)">Para Siempre</button>
+    <div class="subtitle">Con todo mi cariño 💝</div>
+    
+    <div class="snoopy-divider">
+      <span>🐶</span>
+    </div>
+    
+    <button class="card-btn" onclick="preAbrir(1)">
+      <span class="btn-icon">💌</span>
+      <span class="btn-text">Mi Corazón</span>
+      <span class="btn-arrow">→</span>
+    </button>
+    
+    <button class="card-btn" onclick="preAbrir(2)">
+      <span class="btn-icon">💝</span>
+      <span class="btn-text">Mi Verdad</span>
+      <span class="btn-arrow">→</span>
+    </button>
+    
+    <button class="card-btn" onclick="preAbrir(3)">
+      <span class="btn-icon">🤍</span>
+      <span class="btn-text">Para Siempre</span>
+      <span class="btn-arrow">→</span>
+    </button>
   </div>
 </div>
 
 <!-- SOBRE -->
 <div class="screen hidden" id="envelopeScreen">
-  <div class="envelope" id="envelope" onclick="abrirCarta()">
-    <div class="flap"></div>
+  <div class="envelope-container">
+    <div class="envelope" id="envelope" onclick="abrirCarta()">
+      <div class="flap"></div>
+      <div class="envelope-heart">💌</div>
+    </div>
+    <div class="envelope-instruction">Toca el sobre para abrirlo</div>
   </div>
 </div>
 
 <!-- CARTA -->
 <div class="screen hidden" id="letterScreen">
   <div class="letter-box">
+    <div class="letter-snoopy">
+      <img id="snoopyImg" src="https://i.pinimg.com/originals/f5/6b/07/f56b07440d82c29e7c11b0f76136a3d4.gif" alt="Snoopy">
+    </div>
     <div id="texto"></div>
     <div class="signature">de Benja ♥</div>
-    <button class="back-btn" onclick="regresar()">Regresar</button>
+    <button class="back-btn" onclick="regresar()">← Regresar</button>
   </div>
 </div>
 
@@ -227,15 +654,25 @@ h2{
 
 let cartaActual=1;
 
+const snoopyImgs = {
+  1: "https://i.pinimg.com/originals/f5/6b/07/f56b07440d82c29e7c11b0f76136a3d4.gif",
+  2: "https://i.pinimg.com/originals/88/6d/f4/886df4c8e95e75dffce94772e04e6f5a.gif",
+  3: "https://i.pinimg.com/originals/c0/25/00/c025001c97bf1f38c00c0a63dd35cf72.gif"
+};
+
 function entrar(){
   document.getElementById("intro").classList.add("hide");
-  document.getElementById("menu").classList.remove("hidden");
+  setTimeout(() => {
+    document.getElementById("menu").classList.remove("hidden");
+  }, 300);
 }
 
 function preAbrir(num){
   cartaActual=num;
   document.getElementById("menu").classList.add("hidden");
-  document.getElementById("envelopeScreen").classList.remove("hidden");
+  setTimeout(() => {
+    document.getElementById("envelopeScreen").classList.remove("hidden");
+  }, 300);
 }
 
 function abrirCarta(){
@@ -243,34 +680,43 @@ function abrirCarta(){
   setTimeout(()=>{
     document.getElementById("envelopeScreen").classList.add("hidden");
     document.getElementById("letterScreen").classList.remove("hidden");
+    document.getElementById("snoopyImg").src = snoopyImgs[cartaActual];
     escribirTexto(textos[cartaActual]);
-  },1000);
+  },1200);
 }
 
 function regresar(){
   document.getElementById("letterScreen").classList.add("hidden");
-  document.getElementById("menu").classList.remove("hidden");
-  document.getElementById("envelope").classList.remove("open");
-  document.getElementById("texto").innerHTML="";
+  setTimeout(() => {
+    document.getElementById("menu").classList.remove("hidden");
+    document.getElementById("envelope").classList.remove("open");
+    document.getElementById("texto").innerHTML="";
+  }, 300);
 }
 
 const textos={
 1:`Desde que llegaste entendí que hay personas que no se buscan, simplemente llegan ♥ 
+
 No hiciste ruido, pero cambiaste mi calma ♥ 
+
 Y en esa tranquilidad descubrí algo que no sabía que necesitaba ♥`,
 
 2:`Mi verdad es sencilla pero profunda ♥ 
+
 Me importas más de lo que imaginas ♥ 
+
 Tu esencia transmite una paz que no se encuentra todos los días ♥`,
 
 3:`No prometo perfección, prometo intención sincera ♥ 
+
 Prometo quedarme cuando sea difícil ♥ 
+
 Y elegirte incluso en los días grises ♥`
 };
 
 function escribirTexto(texto){
   let i=0;
-  const speed=30;
+  const speed=40;
   function type(){
     if(i<texto.length){
       document.getElementById("texto").innerHTML+=texto.charAt(i);
