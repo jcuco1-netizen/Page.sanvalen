@@ -291,7 +291,6 @@ h2{
   25% { transform: rotate(-10deg) scale(1.1); }
   75% { transform: rotate(10deg) scale(1.1); }
 }
-
 /* BOTONES MEJORADOS */
 .card-btn{
   width: 100%;
@@ -312,7 +311,8 @@ h2{
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 15px;
   letter-spacing: 0.5px;
 }
 
@@ -342,10 +342,23 @@ h2{
   transform: translateY(-5px) scale(1);
 }
 
-.btn-icon {
-  font-size: 36px;
+/* 🆕 GIFs animados para botones (reemplaza los emojis básicos) */
+.btn-icon-gif {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
   margin-right: 20px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  border-radius: 12px;
+  animation: floatIcon 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(255, 77, 125, 0.4));
+  background: rgba(255, 255, 255, 0.25);
+  padding: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-5px) scale(1.08); }
 }
 
 .btn-text {
@@ -358,6 +371,7 @@ h2{
   font-size: 32px;
   transition: transform 0.3s ease;
   font-weight: bold;
+  margin-left: auto;
 }
 
 .card-btn:hover .btn-arrow {
@@ -553,6 +567,7 @@ h2{
 .back-btn:active {
   transform: translateY(-3px);
 }
+
 
 /* ===== MEDIA QUERIES - RESPONSIVE DESIGN ===== */
 
