@@ -275,9 +275,10 @@ h2{
   max-width: 150px;
 }
 
+/* 🟢 DIVIDER GIF - MÁS PEQUEÑO 🟢 */
 .divider-gif {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
   animation: wiggle 2s ease-in-out infinite;
   filter: drop-shadow(0 4px 8px rgba(255, 107, 157, 0.4));
@@ -343,10 +344,10 @@ h2{
   transform: translateY(-5px) scale(1);
 }
 
-/* 🟢🟢🟢 GIFS ANIMADOS PARA BOTONES - AQUÍ CAMBIAS LAS URLS 🟢🟢🟢 */
+/* 🟢🟢🟢 GIFS BOTONES - MÁS PEQUEÑOS 🟢🟢🟢 */
 .btn-icon-gif {
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   object-fit: contain;
   margin-right: 20px;
   border-radius: 12px;
@@ -495,31 +496,18 @@ h2{
   margin-bottom: 35px;
 }
 
+/* 🟢 GIF DE LA CARTA - MÁS PEQUEÑO Y CENTRADO 🟢 */
 .letter-snoopy img {
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
   animation: float 3s ease-in-out infinite;
   filter: drop-shadow(0 8px 20px rgba(255, 107, 157, 0.3));
 }
 
-/* 🟢🟢🟢 GIFS ESPECÍFICOS PARA CADA CARTA - AQUÍ CAMBIAS LAS URLS 🟢🟢🟢 */
+/* 🟢🟢🟢 GIF EXTRA ELIMINADO 🟢🟢🟢 */
 .carta-gif {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin: 20px auto;
-  display: block;
-  animation: floatGif 3s ease-in-out infinite;
-  filter: drop-shadow(0 8px 15px rgba(255, 107, 157, 0.4));
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 8px;
-}
-
-@keyframes floatGif {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-8px) scale(1.05); }
+  display: none;
 }
 
 #texto {
@@ -580,12 +568,12 @@ h2{
   .container { padding: 60px 50px; max-width: 90%; }
   h2 { font-size: 48px; }
   
-  .divider-gif { width: 60px; height: 60px; }
-  .btn-icon-gif { width: 40px; height: 40px; }
+  .divider-gif { width: 45px; height: 45px; }
+  .btn-icon-gif { width: 32px; height: 32px; }
   
   .envelope { width: 350px; height: 220px; }
   .letter-box { font-size: 20px; padding: 60px 50px; max-width: 90%; }
-  .carta-gif { width: 90px; height: 90px; }
+  .letter-snoopy img { width: 100px; height: 100px; }
 }
 
 /* Móvil Grande / Tablet Pequeña */
@@ -600,7 +588,7 @@ h2{
   h2 { font-size: 42px; }
   .subtitle { font-size: 18px; margin-bottom: 35px; }
   
-  .divider-gif { width: 55px; height: 55px; }
+  .divider-gif { width: 40px; height: 40px; }
   .snoopy-divider { gap: 15px; }
   
   .card-btn { 
@@ -609,8 +597,8 @@ h2{
     margin: 16px 0; 
   }
   .btn-icon-gif { 
-    width: 38px; 
-    height: 38px; 
+    width: 30px; 
+    height: 30px; 
     margin-right: 15px; 
   }
   .btn-text { font-size: 20px; }
@@ -625,8 +613,7 @@ h2{
     padding: 50px 35px; 
     max-width: 95%; 
   }
-  .letter-snoopy img { width: 130px; height: 130px; }
-  .carta-gif { width: 80px; height: 80px; margin: 15px auto; }
+  .letter-snoopy img { width: 90px; height: 90px; }
   #texto { font-size: 19px; }
   .signature { 
     font-size: 20px; 
@@ -682,8 +669,8 @@ h2{
   }
   
   .divider-gif { 
-    width: 45px; 
-    height: 45px; 
+    width: 35px; 
+    height: 35px; 
   }
   .snoopy-divider {
     margin: 25px 0 30px;
@@ -697,8 +684,8 @@ h2{
     border-radius: 20px;
   }
   .btn-icon-gif { 
-    width: 32px; 
-    height: 32px; 
+    width: 28px; 
+    height: 28px; 
     margin-right: 12px; 
   }
   .btn-text { 
@@ -734,15 +721,9 @@ h2{
     bottom: 15px; 
   }
   .letter-snoopy img { 
-    width: 90px; 
-    height: 90px; 
+    width: 80px; 
+    height: 80px; 
     margin-bottom: 5px;
-  }
-  .carta-gif { 
-    width: 70px; 
-    height: 70px; 
-    margin: 10px auto; 
-    padding: 5px;
   }
   #texto { 
     font-size: 15px; 
@@ -768,8 +749,8 @@ h2{
   .container { padding: 25px 15px; }
   h2 { font-size: 28px; }
   
-  .divider-gif { width: 40px; height: 40px; }
-  .btn-icon-gif { width: 28px; height: 28px; }
+  .divider-gif { width: 30px; height: 30px; }
+  .btn-icon-gif { width: 25px; height: 25px; }
   
   .card-btn { 
     padding: 14px 15px; 
@@ -785,7 +766,7 @@ h2{
     font-size: 13px; 
     padding: 20px 12px; 
   }
-  .carta-gif { width: 60px; height: 60px; }
+  .letter-snoopy img { width: 70px; height: 70px; }
   #texto { font-size: 13px; }
   .signature { font-size: 13px; }
   .back-btn { padding: 10px 20px; font-size: 12px; }
@@ -817,7 +798,7 @@ h2{
   </div>
 </div>
 
-<!-- 🟢🟢🟢 MENU - CON GIFS EN BOTONES - AQUÍ CAMBIAS LAS URLS 🟢🟢🟢 -->
+<!-- 🟢🟢🟢 MENU - CON GIFS EN BOTONES 🟢🟢🟢 -->
 <div class="screen hidden" id="menu">
   <div class="container">
     <h2>Para mi lobis</h2>
@@ -825,7 +806,7 @@ h2{
     
     <!-- 🟢 DIVIDER GIF - CAMBIA ESTA URL 🟢 -->
     <div class="snoopy-divider">
-      <img src="https://media1.tenor.com/m/qPa9uJo18WcAAAAC/snoopy.gif" alt="Snoopy corazón">
+      <img src="https://media1.tenor.com/m/qPa9uJo18WcAAAAC/snoopy.gif" class="divider-gif" alt="Snoopy corazón">
     </div>
     
     <!-- 🟢 BOTÓN 1 GIF - CAMBIA ESTA URL 🟢 -->
@@ -845,7 +826,7 @@ h2{
     <!-- 🟢 BOTÓN 3 GIF - CAMBIA ESTA URL 🟢 -->
     <button class="card-btn" onclick="preAbrir(3)">
       <span class="btn-text">algo que sera para Siempre</span>
-      <img src="https://i.pinimg.com/originals/70/fc/b3/70fcb3622ee947ed09c78c53321abbf5.gif" class="divider-gif" alt="🤍" class="btn-icon-gif">
+      <img src="https://i.pinimg.com/originals/70/fc/b3/70fcb3622ee947ed09c78c53321abbf5.gif" alt="🤍" class="btn-icon-gif">
       <span class="btn-arrow">→</span>
     </button>
   </div>
@@ -869,7 +850,7 @@ h2{
       <!-- 🟢 SOLO ESTE GIF APARECE - CAMBIA LA URL EN EL SCRIPT 🟢 -->
       <img id="snoopyImg" src="https://gifdb.com/images/high/buenos-dias-snoopy-450-x-472-gif-zj6lgvw15cnha5fv.webp" alt="Snoopy">
     </div>
-    <!-- 🟢 CONTENEDOR ELIMINADO - YA NO APARECE GIF EXTRA 🟢 -->
+    <!-- 🟢 GIF EXTRA ELIMINADO 🟢 -->
     
     <div id="texto"></div>
     <div class="signature">de Benja ♥</div>
@@ -918,9 +899,7 @@ function abrirCarta(){
     // Cambiar el GIF principal de Snoopy
     document.getElementById("snoopyImg").src = snoopyImgs[cartaActual];
     
-    // Agregar GIF específico de la carta
-    const gifContainer = document.getElementById("cartaGifContainer");
-    gifContainer.innerHTML = `<img src="${cartaGifs[cartaActual]}" alt="Snoopy especial" class="carta-gif">`;
+    // 🟢 GIF EXTRA ELIMINADO - YA NO SE MUESTRA 🟢
     
     // Limpiar y escribir texto
     document.getElementById("texto").innerHTML = "";
@@ -934,7 +913,6 @@ function regresar(){
     document.getElementById("menu").classList.remove("hidden");
     document.getElementById("envelope").classList.remove("open");
     document.getElementById("texto").innerHTML = "";
-    document.getElementById("cartaGifContainer").innerHTML = "";
   }, 300);
 }
 
