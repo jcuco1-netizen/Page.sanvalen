@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para mi amor ❤️ </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Para mi amor ❤️ San Valentín</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -114,6 +114,7 @@ body::before {
   border: 3px solid rgba(255, 255, 255, 0.3);
   transform: scale(1);
   transition: transform 0.3s ease;
+  max-width: 90%;
 }
 
 .intro-content:hover {
@@ -179,7 +180,7 @@ body::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 20px;
   transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;
 }
@@ -363,6 +364,7 @@ h2{
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .envelope{
@@ -375,6 +377,7 @@ h2{
   box-shadow: 0 30px 70px rgba(0,0,0,0.5);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 3px solid rgba(255, 255, 255, 0.3);
+  max-width: 90%;
 }
 
 .envelope:hover {
@@ -426,6 +429,7 @@ h2{
   padding: 12px 30px;
   border-radius: 25px;
   backdrop-filter: blur(10px);
+  text-align: center;
 }
 
 @keyframes blink {
@@ -449,6 +453,8 @@ h2{
     inset 0 0 120px rgba(255, 182, 193, 0.15);
   border: 4px solid #ffccd5;
   animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .letter-box::before {
@@ -485,6 +491,7 @@ h2{
   font-size: 22px;
   line-height: 2.2;
   white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .signature{
@@ -522,62 +529,204 @@ h2{
   transform: translateY(-3px);
 }
 
-@media(max-width: 768px){
+/* ===== MEDIA QUERIES - RESPONSIVE DESIGN ===== */
+
+/* Tablet */
+@media(max-width: 900px){
   .intro-content { padding: 50px 40px; }
   .intro img { width: 220px; height: 220px; }
-  .intro h1 { font-size: 38px; }
-  .intro small { font-size: 18px; }
-  .intro-text { font-size: 18px; padding: 14px 35px; }
+  .intro h1 { font-size: 42px; }
   
-  .container { padding: 60px 40px; max-width: 95%; }
+  .container { padding: 60px 50px; max-width: 90%; }
+  h2 { font-size: 48px; }
+  
+  .envelope { width: 350px; height: 220px; }
+  .letter-box { font-size: 20px; padding: 60px 50px; max-width: 90%; }
+}
+
+/* Móvil Grande / Tablet Pequeña */
+@media(max-width: 768px){
+  .intro-content { padding: 45px 35px; }
+  .intro img { width: 200px; height: 200px; }
+  .intro h1 { font-size: 36px; }
+  .intro small { font-size: 18px; }
+  .intro-text { font-size: 18px; padding: 14px 30px; }
+  
+  .container { padding: 50px 35px; }
   h2 { font-size: 42px; }
   .subtitle { font-size: 18px; margin-bottom: 35px; }
-  .snoopy-divider span { font-size: 32px; }
+  .snoopy-divider span { font-size: 36px; }
   
-  .card-btn { font-size: 20px; padding: 24px 28px; margin: 18px 0; }
-  .btn-icon { font-size: 30px; }
+  .card-btn { 
+    font-size: 20px; 
+    padding: 22px 25px; 
+    margin: 16px 0; 
+  }
+  .btn-icon { font-size: 30px; margin-right: 15px; }
   .btn-text { font-size: 20px; }
   .btn-arrow { font-size: 28px; }
   
   .envelope { width: 320px; height: 200px; }
   .envelope-heart { font-size: 60px; }
-  .envelope-instruction { font-size: 20px; margin-top: 40px; }
+  .envelope-instruction { font-size: 20px; margin-top: 35px; }
   
-  .letter-box { font-size: 19px; padding: 50px 35px; max-width: 95%; }
+  .letter-box { 
+    font-size: 19px; 
+    padding: 50px 35px; 
+    max-width: 95%; 
+  }
   .letter-snoopy img { width: 130px; height: 130px; }
   #texto { font-size: 19px; }
-  .signature { font-size: 20px; bottom: 30px; right: 35px; }
-  .back-btn { font-size: 16px; padding: 16px 36px; }
+  .signature { 
+    font-size: 20px; 
+    bottom: 30px; 
+    right: 35px; 
+    position: relative;
+    text-align: right;
+    margin-top: 20px;
+  }
+  .back-btn { 
+    font-size: 16px; 
+    padding: 16px 36px; 
+    margin-top: 35px;
+  }
 }
 
+/* Móvil */
 @media(max-width: 480px){
-  .intro-content { padding: 40px 30px; }
-  .intro img { width: 180px; height: 180px; }
-  .intro h1 { font-size: 32px; }
-  .intro small { font-size: 16px; }
-  .intro-text { font-size: 16px; padding: 12px 28px; }
+  .intro-content { 
+    padding: 35px 20px; 
+    max-width: 95%;
+  }
+  .intro img { 
+    width: 150px; 
+    height: 150px; 
+    margin-bottom: 20px;
+  }
+  .intro h1 { 
+    font-size: 28px; 
+    margin-bottom: 12px;
+  }
+  .intro small { 
+    font-size: 14px; 
+    margin-bottom: 5px;
+  }
+  .intro-text { 
+    font-size: 14px; 
+    padding: 12px 20px; 
+    margin-top: 20px;
+  }
   
-  .container { padding: 45px 30px; }
-  h2 { font-size: 36px; }
-  .subtitle { font-size: 16px; }
+  .container { 
+    padding: 35px 20px; 
+    border-radius: 35px;
+  }
+  h2 { 
+    font-size: 32px; 
+    margin-bottom: 10px;
+  }
+  .subtitle { 
+    font-size: 14px; 
+    margin-bottom: 25px; 
+  }
+  .snoopy-divider {
+    margin: 25px 0 30px;
+    gap: 15px;
+  }
+  .snoopy-divider span { 
+    font-size: 28px; 
+  }
   
-  .card-btn { font-size: 18px; padding: 20px 24px; }
-  .btn-icon { font-size: 28px; margin-right: 15px; }
-  .btn-text { font-size: 18px; }
-  .btn-arrow { font-size: 24px; }
+  .card-btn { 
+    font-size: 16px; 
+    padding: 16px 18px; 
+    margin: 12px 0;
+    border-radius: 20px;
+  }
+  .btn-icon { 
+    font-size: 24px; 
+    margin-right: 12px; 
+  }
+  .btn-text { 
+    font-size: 16px; 
+  }
+  .btn-arrow { 
+    font-size: 20px; 
+  }
   
-  .envelope { width: 280px; height: 180px; }
-  .envelope-heart { font-size: 50px; }
-  .envelope-instruction { font-size: 18px; padding: 10px 25px; }
+  .envelope { 
+    width: 250px; 
+    height: 160px; 
+  }
+  .envelope-heart { 
+    font-size: 45px; 
+  }
+  .envelope-instruction { 
+    font-size: 16px; 
+    padding: 10px 20px;
+    margin-top: 30px;
+  }
   
-  .letter-box { font-size: 17px; padding: 40px 25px; line-height: 2; }
-  .letter-box::before { top: 20px; left: 20px; right: 20px; bottom: 20px; }
-  .letter-snoopy img { width: 110px; height: 110px; }
-  #texto { font-size: 17px; margin: 30px 0; }
-  .signature { font-size: 18px; }
-  .back-btn { padding: 14px 32px; }
+  .letter-box { 
+    font-size: 15px; 
+    padding: 30px 20px; 
+    line-height: 2;
+    border-radius: 25px;
+  }
+  .letter-box::before { 
+    top: 15px; 
+    left: 15px; 
+    right: 15px; 
+    bottom: 15px; 
+  }
+  .letter-snoopy img { 
+    width: 90px; 
+    height: 90px; 
+    margin-bottom: 5px;
+  }
+  #texto { 
+    font-size: 15px; 
+    margin: 25px 0; 
+  }
+  .signature { 
+    font-size: 16px; 
+    bottom: 20px; 
+    right: 25px; 
+  }
+  .back-btn { 
+    padding: 12px 25px; 
+    font-size: 14px;
+    margin-top: 25px;
+  }
 }
 
+/* Móvil muy pequeño */
+@media(max-width: 360px){
+  .intro img { width: 120px; height: 120px; }
+  .intro h1 { font-size: 24px; }
+  
+  .container { padding: 25px 15px; }
+  h2 { font-size: 28px; }
+  
+  .card-btn { 
+    padding: 14px 15px; 
+    margin: 10px 0;
+  }
+  .btn-icon { font-size: 20px; margin-right: 10px; }
+  .btn-text { font-size: 14px; }
+  .btn-arrow { font-size: 18px; }
+  
+  .envelope { width: 220px; height: 140px; }
+  .envelope-heart { font-size: 40px; }
+  
+  .letter-box { 
+    font-size: 14px; 
+    padding: 25px 15px; 
+  }
+  #texto { font-size: 14px; }
+  .signature { font-size: 14px; }
+  .back-btn { padding: 10px 20px; font-size: 13px; }
+}
 </style>
 </head>
 <body>
@@ -595,7 +744,7 @@ h2{
   <div class="heart-float" style="left: 90%; animation-delay: 1.5s;">💕</div>
 </div>
 
-<!-- INTRO - Snoopy con globo 🎈 -->
+<!-- INTRO - Snoopy con corazón -->
 <div class="intro" id="intro" onclick="entrar()">
   <div class="intro-content">
     <img src="https://i.gifer.com/7efs.gif" alt="Snoopy enamorado">
@@ -608,8 +757,8 @@ h2{
 <!-- MENU -->
 <div class="screen hidden" id="menu">
   <div class="container">
-    <h2>Para  mi lobis </h2>
-    <div class="subtitle">QUIZAS NO ERA LO QUE ESPERABAS PERO HAY UN PEDAZITO DE TI EN MI VIDA 💝</div>
+    <h2>Para Lourdes</h2>
+    <div class="subtitle">QUIZÁS NO ERA LO QUE ESPERABAS PERO HAY UN PEDAZITO DE TI EN MI VIDA 💝</div>
     
     <div class="snoopy-divider">
       <span>🐶</span>
@@ -617,19 +766,19 @@ h2{
     
     <button class="card-btn" onclick="preAbrir(1)">
       <span class="btn-icon">💌</span>
-      <span class="btn-text">Algo de mi Corazón</span>
+      <span class="btn-text">Mi Corazón</span>
       <span class="btn-arrow">→</span>
     </button>
     
     <button class="card-btn" onclick="preAbrir(2)">
       <span class="btn-icon">💝</span>
-      <span class="btn-text"> Una verdad con amor </span>
+      <span class="btn-text">Mi Verdad</span>
       <span class="btn-arrow">→</span>
     </button>
     
     <button class="card-btn" onclick="preAbrir(3)">
       <span class="btn-icon">🤍</span>
-      <span class="btn-text">Algo que lleves Siempre</span>
+      <span class="btn-text">Para Siempre</span>
       <span class="btn-arrow">→</span>
     </button>
   </div>
@@ -642,7 +791,7 @@ h2{
       <div class="flap"></div>
       <div class="envelope-heart">💌</div>
     </div>
-    <div class="envelope-instruction">preciona para abrir el sobrecito mi amor </div>
+    <div class="envelope-instruction">Toca el sobre para abrirlo</div>
   </div>
 </div>
 
@@ -654,14 +803,14 @@ h2{
     </div>
     <div id="texto"></div>
     <div class="signature">de Benja ♥</div>
-    <button class="back-btn" onclick="regresar()">← Regresa aqui amorcito</button>
+    <button class="back-btn" onclick="regresar()">← Regresa aquí amorcito</button>
   </div>
 </div>
 
 <script>
 let cartaActual = 1;
 
-// ✅ GIFs GRATUITOS de Snoopy que SIEMPRE funcionan (Gifer.com - dominio público/uso libre)
+// GIFs GRATUITOS de Snoopy
 const snoopyImgs = {
   1: "https://i.gifer.com/7efs.gif",      // Snoopy con corazón ❤️
   2: "https://i.gifer.com/7efr.gif",      // Snoopy abrazando 🤗
@@ -704,11 +853,11 @@ function regresar(){
 }
 
 const textos = {
-  1: `Es muy probable que no sea algo que no te hayan dado antes ♥
+  1: `Es muy probable que sea algo que ya te hayan dado antes ♥
  
-Pero quiero que esto como todo en nosotros sea diferente ♥
+Pero quiero que esto, como todo en nosotros, sea diferente ♥
  
-Con esto quiero decir que también mi manera de amar es diferente ♥
+Mi manera de amar también es diferente ♥
  
 Espero que haya sido una linda noche y quiero con esta carta llegar a ♥
  
@@ -718,26 +867,28 @@ Tu corazón.`,
 
 Me importas más de lo que imaginas ♥
 
-Tu propia esencia transmite una paz que no se encuentra todos los días ♥
+Tu esencia transmite una paz que no se encuentra todos los días ♥
 
 Y con esto quiero decir también que te amo ♥
 
-Aunque llegue a cerrarme muchas veces, siempre encuentras una manera de poder
-hacerme reír aunque no sea tu intención ♥
+Aunque a veces me cueste expresarme, tú siempre encuentras la manera 
+de hacerme reír, aunque no sea tu intención ♥
 
-Estoy trabajando en mi manera de expresarme, poder hacerlo más que todo ♥
+Estoy trabajando en mi forma de expresar lo que siento ♥
 
-Es solo que es la primera vez que también siento que me quieren escuchar ♥`,
+Es solo que es la primera vez que siento que realmente me quieren escuchar ♥`,
 
-  3: `No prometo perfección porque sabemos quién es el único perfecto, pero prometo intención sincera ♥
+  3: `No prometo perfección, porque sabemos quién es el único perfecto ♥
+
+Pero prometo intención sincera ♥
 
 Prometo quedarme cuando sea difícil ♥
 
 (No como algunos tienen por costumbre) jajaja
 
-Quiero encontrar en ti un momento donde pueda descansar, ser débil ♥
+Quiero encontrar en ti un lugar donde pueda descansar, ser débil ♥
 
-Un momento donde pueda descansar ♥
+Un momento donde pueda ser yo mismo ♥
 
 Un lugar donde me sienta elegido ♥
 
@@ -749,6 +900,7 @@ Y elegirte incluso en los días grises ♥`
 function escribirTexto(texto){
   let i = 0;
   const speed = 40;
+  document.getElementById("texto").innerHTML = "";
   function type(){
     if(i < texto.length){
       document.getElementById("texto").innerHTML += texto.charAt(i);
