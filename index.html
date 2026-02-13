@@ -222,16 +222,21 @@ body::before {
 
 /* Snoopy decorativo en el fondo */
 .container::before {
-  content: '🥰';
+  content: 'BENJA ❤️ LOBIS';
   position: absolute;
-  font-size: 280px;
-  opacity: 0.04;
+  font-size: 80px;
+  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+  color: #ff4d7d;
+  opacity: 0.08;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-15deg);
+  transform: translate(-50%, -50%) rotate(-10deg);
   z-index: 0;
+  white-space: nowrap;
+  letter-spacing: 10px;
+  text-transform: uppercase;
 }
-
 .container > * {
   position: relative;
   z-index: 1;
@@ -839,7 +844,7 @@ h2{
       <div class="flap"></div>
       <div class="envelope-heart">💌</div>
     </div>
-    <div class="envelope-instruction">Toca el sobre para abrirlo</div>
+    <div class="envelope-instruction">Preciona el sobre miamor </div>
   </div>
 </div>
 
@@ -863,9 +868,9 @@ let cartaActual = 1;
 
 // 🟢🟢🟢 UN SOLO GIF PARA TODAS LAS CARTAS - CAMBIA ESTA URL 🟢🟢🟢
 const snoopyImgs = {
-  1: "https://gifdb.com/images/high/snoopy-sending-kisses-5kt05azt2ziwqpkq.webp",  // ← PON AQUÍ LA URL DE TU GIF
-  2: "https://gifdb.com/images/high/snoopy-sending-kisses-5kt05azt2ziwqpkq.webp",  // ← LA MISMA URL
-  3: "https://gifdb.com/images/high/snoopy-sending-kisses-5kt05azt2ziwqpkq.webp"   // ← LA MISMA URL
+  1: "https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif",  // ← PON AQUÍ LA URL DE TU GIF
+  2: "https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif",  // ← LA MISMA URL
+  3: "https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif"   // ← LA MISMA URL
 };
 
 // 🟢🟢🟢 GIFS EXTRA ELIMINADOS - YA NO APARECEN 🟢🟢🟢
@@ -928,7 +933,7 @@ Me importas más de lo que imaginas ♥
 Tu esencia transmite una paz que no se encuentra todos los días ♥
 Y con esto quiero decir también que te amo ♥
 Aunque a veces me cueste expresarme, tú siempre encuentras la manera 
-de hacerme reír, aunque no sea tu intención ♥
+de hacerme reír, aunque no sea tu intención (es broma bonita) ♥
 Estoy trabajando en mi forma de expresar lo que siento ♥
 Es solo que es la primera vez que siento que realmente me quieren escuchar ♥`,
 
@@ -936,11 +941,11 @@ Es solo que es la primera vez que siento que realmente me quieren escuchar ♥`,
 Pero prometo intención sincera ♥
 Prometo quedarme cuando sea difícil ♥
 (No como algunos tienen por costumbre) jajaja
-Quiero encontrar en ti un lugar donde pueda descansar, ser débil ♥
+Quiero encontrar en ti un lugar donde pueda descansar,  ♥
 Un momento donde pueda ser yo mismo ♥
 Un lugar donde me sienta elegido ♥
 Gracias por trabajar tú también en eso ♥
-Y elegirte incluso en los días grises ♥`
+Y prometo elegirte incluso en los días grises ♥`
 };
 
 function escribirTexto(texto){
