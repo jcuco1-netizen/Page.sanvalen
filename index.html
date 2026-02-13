@@ -220,9 +220,9 @@ body::before {
   }
 }
 
-/* Snoopy decorativo en el fondo */
+/* Snoopy decorativo en el fondo - CORREGIDO */
 .container::before {
-  content: 'https://emojipedia.org/es/apple/ios-18.4/cara-sonriendo-con-corazones';
+  content: '🥰';
   position: absolute;
   font-size: 280px;
   opacity: 0.04;
@@ -257,6 +257,7 @@ h2{
   letter-spacing: 0.5px;
 }
 
+/* ===== DIVIDER CON GIF ANIMADO ===== */
 .snoopy-divider {
   display: flex;
   align-items: center;
@@ -274,16 +275,21 @@ h2{
   max-width: 150px;
 }
 
-.snoopy-divider span {
-  font-size: 40px;
-  filter: drop-shadow(0 4px 8px rgba(255, 107, 157, 0.3));
+.divider-gif {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
   animation: wiggle 2s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(255, 107, 157, 0.4));
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px;
 }
 
 @keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-10deg); }
-  75% { transform: rotate(10deg); }
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-10deg) scale(1.1); }
+  75% { transform: rotate(10deg) scale(1.1); }
 }
 
 /* BOTONES MEJORADOS */
@@ -482,6 +488,25 @@ h2{
   filter: drop-shadow(0 8px 20px rgba(255, 107, 157, 0.3));
 }
 
+/* GIFS ESPECÍFICOS PARA CADA CARTA */
+.carta-gif {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: 20px auto;
+  display: block;
+  animation: floatGif 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 15px rgba(255, 107, 157, 0.4));
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+}
+
+@keyframes floatGif {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-8px) scale(1.05); }
+}
+
 #texto {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -540,8 +565,11 @@ h2{
   .container { padding: 60px 50px; max-width: 90%; }
   h2 { font-size: 48px; }
   
+  .divider-gif { width: 60px; height: 60px; }
+  
   .envelope { width: 350px; height: 220px; }
   .letter-box { font-size: 20px; padding: 60px 50px; max-width: 90%; }
+  .carta-gif { width: 90px; height: 90px; }
 }
 
 /* Móvil Grande / Tablet Pequeña */
@@ -555,7 +583,9 @@ h2{
   .container { padding: 50px 35px; }
   h2 { font-size: 42px; }
   .subtitle { font-size: 18px; margin-bottom: 35px; }
-  .snoopy-divider span { font-size: 36px; }
+  
+  .divider-gif { width: 55px; height: 55px; }
+  .snoopy-divider { gap: 15px; }
   
   .card-btn { 
     font-size: 20px; 
@@ -576,6 +606,7 @@ h2{
     max-width: 95%; 
   }
   .letter-snoopy img { width: 130px; height: 130px; }
+  .carta-gif { width: 80px; height: 80px; margin: 15px auto; }
   #texto { font-size: 19px; }
   .signature { 
     font-size: 20px; 
@@ -629,12 +660,14 @@ h2{
     font-size: 14px; 
     margin-bottom: 25px; 
   }
+  
+  .divider-gif { 
+    width: 45px; 
+    height: 45px; 
+  }
   .snoopy-divider {
     margin: 25px 0 30px;
-    gap: 15px;
-  }
-  .snoopy-divider span { 
-    font-size: 28px; 
+    gap: 12px;
   }
   
   .card-btn { 
@@ -684,9 +717,15 @@ h2{
     height: 90px; 
     margin-bottom: 5px;
   }
+  .carta-gif { 
+    width: 70px; 
+    height: 70px; 
+    margin: 10px auto; 
+    padding: 5px;
+  }
   #texto { 
     font-size: 15px; 
-    margin: 25px 0; 
+    margin: 20px 0; 
   }
   .signature { 
     font-size: 16px; 
@@ -708,6 +747,8 @@ h2{
   .container { padding: 25px 15px; }
   h2 { font-size: 28px; }
   
+  .divider-gif { width: 40px; height: 40px; }
+  
   .card-btn { 
     padding: 14px 15px; 
     margin: 10px 0;
@@ -720,12 +761,13 @@ h2{
   .envelope-heart { font-size: 40px; }
   
   .letter-box { 
-    font-size: 14px; 
-    padding: 25px 15px; 
+    font-size: 13px; 
+    padding: 20px 12px; 
   }
-  #texto { font-size: 14px; }
-  .signature { font-size: 14px; }
-  .back-btn { padding: 10px 20px; font-size: 13px; }
+  .carta-gif { width: 60px; height: 60px; }
+  #texto { font-size: 13px; }
+  .signature { font-size: 13px; }
+  .back-btn { padding: 10px 20px; font-size: 12px; }
 }
 </style>
 </head>
@@ -747,32 +789,33 @@ h2{
 <!-- INTRO - Snoopy con corazón -->
 <div class="intro" id="intro" onclick="entrar()">
   <div class="intro-content">
-    <img src="https://gifdb.com/images/high/buenos-dias-snoopy-498-x-498-gif-ecmutgd4h14g3cw6.webp">
-    <h1> Pensado y diseñado para ti </h1>
-    <small> de Benja 💕</small>
-    <div class="intro-text">Preciona aca para seguir amorcito </div>
+    <img src="https://gifdb.com/images/high/buenos-dias-snoopy-498-x-498-gif-ecmutgd4h14g3cw6.webp" alt="Snoopy saludo">
+    <h1>Pensado y diseñado para ti</h1>
+    <small>de Benja 💕</small>
+    <div class="intro-text">Preciona aca para seguir amorcito</div>
   </div>
 </div>
 
-<!-- MENU -->
+<!-- MENU - CON GIF EN EL DIVIDER -->
 <div class="screen hidden" id="menu">
   <div class="container">
-    <h2>Para mi lobis </h2>
+    <h2>Para mi lobis</h2>
     <div class="subtitle">QUIZÁS NO ERA LO QUE ESPERABAS PERO HAY UN PEDAZITO DE TI EN MI VIDA 💝</div>
     
+    <!-- DIVIDER CON GIF ANIMADO -->
     <div class="snoopy-divider">
-      <span>🥰</span>
+      <img src="https://i.gifer.com/7efs.gif" alt="Snoopy corazón" class="divider-gif">
     </div>
     
     <button class="card-btn" onclick="preAbrir(1)">
-     <span class="btn-text">Algo de mi corazon</span>
+      <span class="btn-text">Algo de mi corazon</span>
       <span class="btn-icon">💌</span>
       <span class="btn-arrow">→</span>
     </button>
     
     <button class="card-btn" onclick="preAbrir(2)">
-      <span class="btn-text">Una verdad con amor </span>
-        <span class="btn-icon">💝</span>
+      <span class="btn-text">Una verdad con amor</span>
+      <span class="btn-icon">💝</span>
       <span class="btn-arrow">→</span>
     </button>
     
@@ -795,12 +838,14 @@ h2{
   </div>
 </div>
 
-<!-- CARTA -->
+<!-- CARTA - CON GIF ESPECÍFICO POR PÁGINA -->
 <div class="screen hidden" id="letterScreen">
   <div class="letter-box">
     <div class="letter-snoopy">
       <img id="snoopyImg" src="https://gifdb.com/images/high/buenos-dias-snoopy-450-x-472-gif-zj6lgvw15cnha5fv.webp" alt="Snoopy">
     </div>
+    <!-- CONTENEDOR PARA GIF ESPECÍFICO DE CADA CARTA -->
+    <div id="cartaGifContainer"></div>
     <div id="texto"></div>
     <div class="signature">de Benja ♥</div>
     <button class="back-btn" onclick="regresar()">← Regresa aquí amorcito</button>
@@ -810,11 +855,18 @@ h2{
 <script>
 let cartaActual = 1;
 
-// GIFs GRATUITOS de Snoopy
+// GIFs GRATUITOS de Snoopy para las cartas
 const snoopyImgs = {
   1: "https://i.gifer.com/7efs.gif",      // Snoopy con corazón ❤️
   2: "https://i.gifer.com/7efr.gif",      // Snoopy abrazando 🤗
   3: "https://i.gifer.com/7eft.gif"       // Snoopy bailando 💃
+};
+
+// GIFs ESPECÍFICOS para cada carta (adicionales)
+const cartaGifs = {
+  1: "https://i.gifer.com/ZZ5H.gif",      // Snoopy enamorado para carta 1
+  2: "https://i.gifer.com/8EtD.gif",      // Snoopy feliz para carta 2
+  3: "https://i.gifer.com/9TpW.gif"       // Snoopy dance para carta 3
 };
 
 function entrar(){
@@ -837,7 +889,15 @@ function abrirCarta(){
   setTimeout(() => {
     document.getElementById("envelopeScreen").classList.add("hidden");
     document.getElementById("letterScreen").classList.remove("hidden");
+    
+    // Cambiar el GIF principal de Snoopy
     document.getElementById("snoopyImg").src = snoopyImgs[cartaActual];
+    
+    // Agregar GIF específico de la carta
+    const gifContainer = document.getElementById("cartaGifContainer");
+    gifContainer.innerHTML = `<img src="${cartaGifs[cartaActual]}" alt="Snoopy especial" class="carta-gif">`;
+    
+    // Limpiar y escribir texto
     document.getElementById("texto").innerHTML = "";
     escribirTexto(textos[cartaActual]);
   }, 1200);
@@ -849,6 +909,7 @@ function regresar(){
     document.getElementById("menu").classList.remove("hidden");
     document.getElementById("envelope").classList.remove("open");
     document.getElementById("texto").innerHTML = "";
+    document.getElementById("cartaGifContainer").innerHTML = ""; // Limpiar GIF
   }, 300);
 }
 
