@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para mi amor ❤️ San Valentín</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
@@ -590,7 +597,7 @@ h2{
 <!-- INTRO -->
 <div class="intro" id="intro" onclick="entrar()">
   <div class="intro-content">
-    <img src="https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif" alt="Snoopy">
+    <img src="https://media.tenor.com/snoopy-love.gif" alt="Snoopy" onerror="this.src='https://i.imgur.com/snoopy-fallback.png'">
     <h1>Feliz 14 de febrero, mi amor</h1>
     <small>de Benja 💕</small>
     <div class="intro-text">✨ Toca para comenzar ✨</div>
@@ -601,7 +608,7 @@ h2{
 <div class="screen hidden" id="menu">
   <div class="container">
     <h2>Para Lourdes</h2>
-    <div class="subtitle"> QUIZAS NO ERA LO QUE ESPERABAS PERO HAY UN PEDAZITO DE TI EN MI VIDA 💝</div>
+    <div class="subtitle">QUIZAS NO ERA LO QUE ESPERABAS PERO HAY UN PEDAZITO DE TI EN MI VIDA 💝</div>
     
     <div class="snoopy-divider">
       <span>🐶</span>
@@ -642,22 +649,21 @@ h2{
 <div class="screen hidden" id="letterScreen">
   <div class="letter-box">
     <div class="letter-snoopy">
-      <img id="snoopyImg" src="https://i.pinimg.com/originals/46/87/54/46875403d553f589d6a2966d54b5316d.gif" alt="Snoopy">
+      <img id="snoopyImg" src="https://media.tenor.com/snoopy-hug.gif" alt="Snoopy">
     </div>
     <div id="texto"></div>
     <div class="signature">de Benja ♥</div>
-    <button class="back-btn" onclick="regresar()">← Regresa aqui amorcito </button>
+    <button class="back-btn" onclick="regresar()">← Regresa aqui amorcito</button>
   </div>
 </div>
 
 <script>
-
-let cartaActual=1;
+let cartaActual = 1;
 
 const snoopyImgs = {
-  1: "https://i.pinimg.com/originals/46/87/54/46875403d553f589d6a2966d54b5316d.gif",
-  2: "https://i.pinimg.com/originals/06/8a/e6/068ae63acdb61c04f78d578b4fdb2053.gif",
-  3: "https://i.pinimg.com/originals/70/fc/b3/70fcb3622ee947ed09c78c53321abbf5.gif"
+  1: "https://media.tenor.com/snoopy-love.gif",
+  2: "https://media.tenor.com/snoopy-hug.gif",
+  3: "https://media.tenor.com/snoopy-dance.gif"
 };
 
 function entrar(){
@@ -668,7 +674,7 @@ function entrar(){
 }
 
 function preAbrir(num){
-  cartaActual=num;
+  cartaActual = num;
   document.getElementById("menu").classList.add("hidden");
   setTimeout(() => {
     document.getElementById("envelopeScreen").classList.remove("hidden");
@@ -677,12 +683,13 @@ function preAbrir(num){
 
 function abrirCarta(){
   document.getElementById("envelope").classList.add("open");
-  setTimeout(()=>{
+  setTimeout(() => {
     document.getElementById("envelopeScreen").classList.add("hidden");
     document.getElementById("letterScreen").classList.remove("hidden");
     document.getElementById("snoopyImg").src = snoopyImgs[cartaActual];
+    document.getElementById("texto").innerHTML = "";
     escribirTexto(textos[cartaActual]);
-  },1200);
+  }, 1200);
 }
 
 function regresar(){
@@ -690,67 +697,65 @@ function regresar(){
   setTimeout(() => {
     document.getElementById("menu").classList.remove("hidden");
     document.getElementById("envelope").classList.remove("open");
-    document.getElementById("texto").innerHTML="";
+    document.getElementById("texto").innerHTML = "";
   }, 300);
 }
 
-const textos={
-1:`es muy probable que no sea algo que no te hayan dado antes  ♥ 
-
- pero quiero que esto como todo en nosotros sea diferente  ♥ 
-
- con esto quiero decir que tambien mi manera de amar es diferente y  ♥
+const textos = {
+  1: `Es muy probable que no sea algo que no te hayan dado antes ♥
  
- espero que haya sido una linda noche y quiero con esta carta llegar a ♥ 
-
- tu corazon.  `
+Pero quiero que esto como todo en nosotros sea diferente ♥
+ 
+Con esto quiero decir que también mi manera de amar es diferente y ♥
+ 
+Espero que haya sido una linda noche y quiero con esta carta llegar a ♥
+ 
+Tu corazón.`,
   
-2:`Mi verdad es sencilla pero profunda ♥ 
+  2: `Mi verdad es sencilla pero profunda ♥
 
-Me importas más de lo que imaginas ♥ 
+Me importas más de lo que imaginas ♥
 
 Tu propia esencia transmite una paz que no se encuentra todos los días ♥
 
-y con esto quiero decir tambien que te amo ♥ 
+Y con esto quiero decir también que te amo ♥
 
-aun que llegue a cerrarme muchas veces siempre encuentras una manera de poder 
+Aunque llegue a cerrarme muchas veces, siempre encuentras una manera de poder
+hacerme reír aunque no sea tu intención jaja bromas mi amorcito ♥
 
-hacerme reir aun que no sea tu intencion jaja bromas mi amorcito ♥ 
+Estoy trabajando en mi manera de expresarme, poder hacerlo más que todo ♥
 
-estoy trabajando en mi manera de expresarme poder hacerlo mas que todo ♥ 
+Es solo que es la primera vez que también siento que me quieren escuchar ♥`,
 
-es solo que es la primera vez que tambien siento que me quieren escuchar ♥ `,
+  3: `No prometo perfección porque sabemos quién es el único perfecto, pero prometo intención sincera ♥
 
-3:`No prometo una perfección porque sabemos quien es el unico perfecto ,  pero prometo intención sincera ♥ 
+Prometo quedarme cuando sea difícil ♥
 
-Prometo quedarme cuando sea difícil ♥ 
+(No como algunos tienen por costumbre) jajaja
 
-(no como algunos tienen por costumbre) jajaja
+Quiero encontrar en ti un momento donde pueda descansar, ser débil ♥
 
-quiero encontrar en ti un momento donde pueda descansaar ser debil ♥ 
+Un momento donde pueda descansar ♥
 
-un momento donde pueda descansar ♥ 
+Un lugar donde me sienta elegido ♥
 
-un lugar donde me sienta elegido ♥ 
-
-gracias por trabajar tu tambien en eso ♥ 
+Gracias por trabajar tú también en eso ♥
 
 Y elegirte incluso en los días grises ♥`
 };
 
 function escribirTexto(texto){
-  let i=0;
-  const speed=40;
+  let i = 0;
+  const speed = 40;
   function type(){
-    if(i<texto.length){
-      document.getElementById("texto").innerHTML+=texto.charAt(i);
+    if(i < texto.length){
+      document.getElementById("texto").innerHTML += texto.charAt(i);
       i++;
-      setTimeout(type,speed);
+      setTimeout(type, speed);
     }
   }
   type();
 }
-
 </script>
 
 </body>
