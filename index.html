@@ -20,7 +20,7 @@ body{
   justify-content: center;
 }
 
-/* Corazones flotantes animados de fondo */
+
 .hearts-bg {
   position: fixed;
   top: 0;
@@ -56,7 +56,7 @@ body{
   }
 }
 
-/* Estrellas de fondo */
+
 body::before {
   content: '';
   position: fixed;
@@ -81,7 +81,7 @@ body::before {
   50% { opacity: 0.6; }
 }
 
-/* ===== INTRO SNOOPY ===== */
+
 .intro{
   position: fixed;
   inset: 0;
@@ -173,7 +173,7 @@ body::before {
   50% { transform: scale(1.05); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3); }
 }
 
-/* ===== PANTALLA ===== */
+
 .screen{
   position: fixed;
   inset: 0;
@@ -220,7 +220,7 @@ body::before {
   }
 }
 
-/* Snoopy decorativo en el fondo */
+
 .container::before {
   content: 'BENJA ❤️ LOBIS';
   position: absolute;
@@ -262,7 +262,7 @@ h2{
   letter-spacing: 0.5px;
 }
 
-/* ===== DIVIDER CON GIF ANIMADO ===== */
+
 .snoopy-divider {
   display: flex;
   align-items: center;
@@ -280,7 +280,7 @@ h2{
   max-width: 150px;
 }
 
-/* 🟢 DIVIDER GIF - MÁS PEQUEÑO 🟢 */
+
 .divider-gif {
   width: 50px;
   height: 50px;
@@ -298,7 +298,7 @@ h2{
   75% { transform: rotate(10deg) scale(1.1); }
 }
 
-/* ===== BOTONES MEJORADOS ===== */
+
 .card-btn{
   width: 100%;
   padding: 28px 35px;
@@ -349,7 +349,7 @@ h2{
   transform: translateY(-5px) scale(1);
 }
 
-/* 🟢🟢🟢 GIFS BOTONES - MÁS PEQUEÑOS 🟢🟢🟢 */
+
 .btn-icon-gif {
   width: 35px;
   height: 35px;
@@ -464,7 +464,6 @@ h2{
   50% { opacity: 0.6; transform: scale(0.98); }
 }
 
-/* CARTA MEJORADA */
 .letter-box{
   max-width: 850px;
   width: 100%;
@@ -501,7 +500,7 @@ h2{
   margin-bottom: 35px;
 }
 
-/* 🟢 GIF DE LA CARTA - MÁS PEQUEÑO Y CENTRADO 🟢 */
+
 .letter-snoopy img {
   width: 120px;
   height: 120px;
@@ -510,7 +509,7 @@ h2{
   filter: drop-shadow(0 8px 20px rgba(255, 107, 157, 0.3));
 }
 
-/* 🟢🟢🟢 GIF EXTRA ELIMINADO 🟢🟢🟢 */
+
 .carta-gif {
   display: none;
 }
@@ -562,9 +561,8 @@ h2{
   transform: translateY(-3px);
 }
 
-/* ===== MEDIA QUERIES - RESPONSIVE DESIGN ===== */
 
-/* Tablet */
+
 @media(max-width: 900px){
   .intro-content { padding: 50px 40px; }
   .intro img { width: 220px; height: 220px; }
@@ -581,7 +579,7 @@ h2{
   .letter-snoopy img { width: 100px; height: 100px; }
 }
 
-/* Móvil Grande / Tablet Pequeña */
+
 @media(max-width: 768px){
   .intro-content { padding: 45px 35px; }
   .intro img { width: 200px; height: 200px; }
@@ -635,7 +633,7 @@ h2{
   }
 }
 
-/* Móvil */
+
 @media(max-width: 480px){
   .intro-content { 
     padding: 35px 20px; 
@@ -746,7 +744,7 @@ h2{
   }
 }
 
-/* Móvil muy pequeño */
+
 @media(max-width: 360px){
   .intro img { width: 120px; height: 120px; }
   .intro h1 { font-size: 24px; }
@@ -780,7 +778,7 @@ h2{
 </head>
 <body>
 
-<!-- Corazones flotantes animados -->
+
 <div class="hearts-bg">
   <div class="heart-float" style="left: 10%; animation-delay: 0s;">💕</div>
   <div class="heart-float" style="left: 20%; animation-delay: 2s;">💗</div>
@@ -793,7 +791,7 @@ h2{
   <div class="heart-float" style="left: 90%; animation-delay: 1.5s;">💕</div>
 </div>
 
-<!-- INTRO - Snoopy con corazón -->
+
 <div class="intro" id="intro" onclick="entrar()">
   <div class="intro-content">
     <img src="https://gifdb.com/images/high/buenos-dias-snoopy-498-x-498-gif-ecmutgd4h14g3cw6.webp" alt="Snoopy saludo">
@@ -803,32 +801,31 @@ h2{
   </div>
 </div>
 
-<!-- 🟢🟢🟢 MENU - CON GIFS EN BOTONES 🟢🟢🟢 -->
 <div class="screen hidden" id="menu">
   <div class="container">
     <h2>Para mi lobis</h2>
     <div class="subtitle">QUIZÁS NO ERA LO QUE ESPERABAS PERO HAY UN PEDACITO DE TI EN MI VIDA 💝</div>
     
-    <!-- 🟢 DIVIDER GIF - CAMBIA ESTA URL 🟢 -->
+  
     <div class="snoopy-divider">
       <img src="https://media1.tenor.com/m/qPa9uJo18WcAAAAC/snoopy.gif" class="divider-gif" alt="Snoopy corazón">
     </div>
     
-    <!-- 🟢 BOTÓN 1 GIF - CAMBIA ESTA URL 🟢 -->
+   
     <button class="card-btn" onclick="preAbrir(1)">
       <span class="btn-text">Algo de mi corazon</span>
       <img src="https://i.pinimg.com/736x/13/1c/bb/131cbbfc7385ac8847ba76e9571d3c1d.jpg" alt="❤️" class="btn-icon-gif">
       <span class="btn-arrow">→</span>
     </button>
     
-    <!-- 🟢 BOTÓN 2 GIF - CAMBIA ESTA URL 🟢 -->
+   
     <button class="card-btn" onclick="preAbrir(2)">
       <span class="btn-text">Una verdad con amor</span>
       <img src="https://gifdb.com/images/high/buenos-dias-snoopy-480-x-480-gif-6axcvezl56w6tdht.webp" alt="💝" class="btn-icon-gif">
       <span class="btn-arrow">→</span>
     </button>
     
-    <!-- 🟢 BOTÓN 3 GIF - CAMBIA ESTA URL 🟢 -->
+    
     <button class="card-btn" onclick="preAbrir(3)">
       <span class="btn-text">algo que sera para Siempre</span>
       <img src="https://i.pinimg.com/originals/70/fc/b3/70fcb3622ee947ed09c78c53321abbf5.gif" alt="🤍" class="btn-icon-gif">
@@ -837,7 +834,6 @@ h2{
   </div>
 </div>
 
-<!-- SOBRE -->
 <div class="screen hidden" id="envelopeScreen">
   <div class="envelope-container">
     <div class="envelope" id="envelope" onclick="abrirCarta()">
@@ -848,14 +844,14 @@ h2{
   </div>
 </div>
 
-<!-- 🟢🟢🟢 CARTA - CON UN SOLO GIF CENTRADO 🟢🟢🟢 -->
+
 <div class="screen hidden" id="letterScreen">
   <div class="letter-box">
     <div class="letter-snoopy">
-      <!-- 🟢 SOLO ESTE GIF APARECE - CAMBIA LA URL EN EL SCRIPT 🟢 -->
+     
       <img id="snoopyImg" src="https://gifdb.com/images/high/buenos-dias-snoopy-450-x-472-gif-zj6lgvw15cnha5fv.webp" alt="Snoopy">
     </div>
-    <!-- 🟢 GIF EXTRA ELIMINADO 🟢 -->
+  
     
     <div id="texto"></div>
     <div class="signature">de Benja ♥</div>
@@ -866,14 +862,14 @@ h2{
 <script>
 let cartaActual = 1;
 
-// 🟢🟢🟢 UN SOLO GIF PARA TODAS LAS CARTAS - CAMBIA ESTA URL 🟢🟢🟢
+
 const snoopyImgs = {
-  1: "https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif",  // ← PON AQUÍ LA URL DE TU GIF
-  2: "https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif",  // ← LA MISMA URL
-  3: "https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif"   // ← LA MISMA URL
+  1: "https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif",  
+  2: "https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif",  
+  3: "https://i.pinimg.com/originals/cd/c1/31/cdc131bd280551132d41924e86973599.gif"   
 };
 
-// 🟢🟢🟢 GIFS EXTRA ELIMINADOS - YA NO APARECEN 🟢🟢🟢
+
 const cartaGifs = {
   1: "",
   2: "",
@@ -901,12 +897,10 @@ function abrirCarta(){
     document.getElementById("envelopeScreen").classList.add("hidden");
     document.getElementById("letterScreen").classList.remove("hidden");
     
-    // Cambiar el GIF principal de Snoopy
+    
     document.getElementById("snoopyImg").src = snoopyImgs[cartaActual];
     
-    // 🟢 GIF EXTRA ELIMINADO - YA NO SE MUESTRA 🟢
-    
-    // Limpiar y escribir texto
+   
     document.getElementById("texto").innerHTML = "";
     escribirTexto(textos[cartaActual]);
   }, 1200);
