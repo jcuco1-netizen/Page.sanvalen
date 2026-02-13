@@ -825,7 +825,7 @@ h2{
     
     <!-- 🟢 DIVIDER GIF - CAMBIA ESTA URL 🟢 -->
     <div class="snoopy-divider">
-      <img src="https://i.pinimg.com/originals/70/fc/b3/70fcb3622ee947ed09c78c53321abbf5.gif" class="divider-gif" alt="Snoopy corazón">
+      <img src="https://media1.tenor.com/m/qPa9uJo18WcAAAAC/snoopy.gif" alt="Snoopy corazón">
     </div>
     
     <!-- 🟢 BOTÓN 1 GIF - CAMBIA ESTA URL 🟢 -->
@@ -845,7 +845,7 @@ h2{
     <!-- 🟢 BOTÓN 3 GIF - CAMBIA ESTA URL 🟢 -->
     <button class="card-btn" onclick="preAbrir(3)">
       <span class="btn-text">algo que sera para Siempre</span>
-      <img src="https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fwww.gifss.com%2Fcomics%2Fsnoopy%2F&ved=0CBUQjRxqGAoTCPD-2LGv1ZIDFQAAAAAdAAAAABCKAQ&opi=89978449" alt="🤍" class="btn-icon-gif">
+      <img src="https://i.pinimg.com/originals/70/fc/b3/70fcb3622ee947ed09c78c53321abbf5.gif" class="divider-gif" alt="🤍" class="btn-icon-gif">
       <span class="btn-arrow">→</span>
     </button>
   </div>
@@ -862,15 +862,15 @@ h2{
   </div>
 </div>
 
-<!-- 🟢🟢🟢 CARTA - CON GIFS ESPECÍFICOS - AQUÍ CAMBIAS LAS URLS 🟢🟢🟢 -->
+<!-- 🟢🟢🟢 CARTA - CON UN SOLO GIF CENTRADO 🟢🟢🟢 -->
 <div class="screen hidden" id="letterScreen">
   <div class="letter-box">
     <div class="letter-snoopy">
-      <!-- 🟢 SNOOPY PRINCIPAL CARTA - CAMBIA ESTAS URLS EN EL SCRIPT 🟢 -->
+      <!-- 🟢 SOLO ESTE GIF APARECE - CAMBIA LA URL EN EL SCRIPT 🟢 -->
       <img id="snoopyImg" src="https://gifdb.com/images/high/buenos-dias-snoopy-450-x-472-gif-zj6lgvw15cnha5fv.webp" alt="Snoopy">
     </div>
-    <!-- 🟢 CONTENEDOR PARA GIF ESPECÍFICO - CAMBIA URLS EN EL SCRIPT 🟢 -->
-    <div id="cartaGifContainer"></div>
+    <!-- 🟢 CONTENEDOR ELIMINADO - YA NO APARECE GIF EXTRA 🟢 -->
+    
     <div id="texto"></div>
     <div class="signature">de Benja ♥</div>
     <button class="back-btn" onclick="regresar()">← Regresa aquí amorcito</button>
@@ -880,18 +880,18 @@ h2{
 <script>
 let cartaActual = 1;
 
-// 🟢🟢🟢 GIFS PRINCIPALES DE LAS CARTAS - CAMBIA ESTAS URLS 🟢🟢🟢
+// 🟢🟢🟢 UN SOLO GIF PARA TODAS LAS CARTAS - CAMBIA ESTA URL 🟢🟢🟢
 const snoopyImgs = {
-  1: "https://i.gifer.com/7efs.gif",      // Snoopy con corazón ❤️
-  2: "https://i.gifer.com/7efr.gif",      // Snoopy abrazando 🤗
-  3: "https://i.gifer.com/7eft.gif"       // Snoopy bailando 💃
+  1: "https://i.gifer.com/7efs.gif",  // ← PON AQUÍ LA URL DE TU GIF
+  2: "https://i.gifer.com/7efs.gif",  // ← LA MISMA URL
+  3: "https://i.gifer.com/7efs.gif"   // ← LA MISMA URL
 };
 
-// 🟢🟢🟢 GIFS ESPECÍFICOS PARA CADA CARTA - CAMBIA ESTAS URLS 🟢🟢🟢
+// 🟢🟢🟢 GIFS EXTRA ELIMINADOS - YA NO APARECEN 🟢🟢🟢
 const cartaGifs = {
-  1: "https://i.gifer.com/ZZ5H.gif",      // Snoopy enamorado para carta 1
-  2: "https://i.gifer.com/8EtD.gif",      // Snoopy feliz para carta 2
-  3: "https://i.gifer.com/9TpW.gif"       // Snoopy dance para carta 3
+  1: "",
+  2: "",
+  3: ""
 };
 
 function entrar(){
